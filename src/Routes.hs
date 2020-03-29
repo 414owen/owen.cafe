@@ -12,7 +12,7 @@ import Data.Text.Encoding
 import System.Directory
 import System.FilePath
 
-import Css
+import Css.Default
 import Index
 import RouteTree
 
