@@ -7,6 +7,7 @@ module Main where
 import Control.Concurrent
 import Control.Monad.IO.Class
 import qualified Data.ByteString.Lazy as LB
+import Data.Functor
 import Data.Semigroup ((<>))
 import Data.String (IsString(..))
 import Data.Text.Encoding
@@ -15,6 +16,7 @@ import qualified Data.Text.Lazy as LT
 import Network.Mime
 import Options.Applicative
 import System.FilePath
+import System.Directory
 import Text.Blaze.Html
 import Text.Blaze.Html.Renderer.Utf8
 import Web.Scotty
@@ -57,13 +59,22 @@ flattenRoutes = concatMap flattenRoute
 addPath :: String -> Route -> Route
 addPath n (n', m, s) = (n </> n', m, s)
 
+gen :: FilePath -> RouteTree -> IO ()
+gen dir (File name contents) = do
+  createDirectoryIfMissing True dir
+  contents >>= LB.writeFile (dir </> name)
+gen dir (Dir d subs) = do
+  sequence_ $ gen (dir </> d) <$> subs
+
 run :: [RouteTree] -> IO ()
 run routes = do
   let flattenedRoutes = flattenRoutes routes
+  dir <- getCurrentDirectory <&> takeDirectory
   args <- execParser optParser
-  case dev args of
+  fn <- case dev args of
     True -> serve flattenedRoutes
-    False -> putStrLn "not implemented"
+    False -> gen dir $ Dir "result" routes
+  pure ()
 
 main :: IO ()
 main = routes >>= run

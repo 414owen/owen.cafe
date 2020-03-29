@@ -16,7 +16,7 @@ baseTemplate title rest = pure $ renderHtml $
       meta ! charset "utf-8"
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
-      link ! rel "stylesheet" ! href "/css/default.css"
+      link ! rel "stylesheet" ! href "./css/default.css"
       link ! rel "icon" ! type_ "image/png" ! href "./favicon.png"
       H.title $ title
     body $ do
