@@ -1,5 +1,3 @@
-{-# LANGUAGE OverloadedStrings #-}
-
 module Css.Default (defaultStyle) where
 
 import Clay

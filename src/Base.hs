@@ -18,7 +18,7 @@ baseTemplate title rest = pure $ renderHtml $
       meta ! name "theme-color" ! content "#000"
       link ! rel "stylesheet" ! href "./css/default.css"
       link ! rel "icon" ! type_ "image/png" ! href "./favicon.png"
-      H.title $ title
+      H.title title
     body $ do
-      h1 $ title
+      h1 title
       rest

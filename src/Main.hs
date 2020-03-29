@@ -1,6 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE LambdaCase #-}
 
 module Main where
 
@@ -26,7 +24,7 @@ import RouteTree
 
 type Route = (FilePath, MimeType, Servable)
 
-data Args = Args { dev :: Bool }
+newtype Args = Args { dev :: Bool }
 
 args :: Parser Args
 args = Args <$> switch ( long "dev" <> short 'd' <> help "Run the live reload server")
@@ -37,19 +35,19 @@ optParser = info (args <**> helper)
 
 serveServable :: Route -> ScottyM ()
 serveServable s@(path, mime, getter) = get (fromString $ "/" <> path) $ do
-  res <- liftIO $ getter
+  res <- liftIO getter
   setHeader "Content-Type" $ LT.fromStrict $ decodeUtf8 mime
-  raw $ res
+  raw res
 
 createRoutes :: [Route] -> ScottyM ()
-createRoutes routes = mapM_ serveServable routes
+createRoutes = mapM_ serveServable
 
 serve :: [Route] -> IO ()
 serve = scotty 8000 . createRoutes
 
 flattenRoute :: RouteTree -> [Route]
 flattenRoute (File n s) = let m = defaultMimeLookup (T.pack n) in
-  [(n, m, s)] <> if isPrefixOf "index" n then [("", m, s)] else []
+  [(n, m, s)] <> [("", m, s) | "index" `isPrefixOf` n]
 flattenRoute (Dir n s) = addPath n <$> flattenRoutes s
 
 flattenRoutes :: [RouteTree] -> [Route]
@@ -62,17 +60,16 @@ gen :: FilePath -> RouteTree -> IO ()
 gen dir (File name contents) = do
   createDirectoryIfMissing True dir
   contents >>= LB.writeFile (dir </> name)
-gen dir (Dir d subs) = do
-  sequence_ $ gen (dir </> d) <$> subs
+gen dir (Dir d subs) = sequence_ $ gen (dir </> d) <$> subs
 
 run :: [RouteTree] -> IO ()
 run routes = do
   let flattenedRoutes = flattenRoutes routes
   dir <- getCurrentDirectory <&> takeDirectory
   args <- execParser optParser
-  fn <- case dev args of
-    True -> serve flattenedRoutes
-    False -> gen dir $ Dir "result" routes
+  fn <- if dev args
+    then serve flattenedRoutes
+    else gen dir $ Dir "result" routes
   pure ()
 
 main :: IO ()

@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TupleSections #-}
 
 module Routes where
 
@@ -31,8 +30,8 @@ imageRoute fname = File fname $ LB.readFile $ "img" </> fname
 routes :: IO [RouteTree]
 routes = do
   images <- listDirectory "./img"
-  pure $
-    [ File "index.xhtml" $ index
+  pure
+    [ File "index.xhtml" index
     , Dir "css" $ cssRoute <$>
       [ ("default.css", defaultStyle)
       ]
