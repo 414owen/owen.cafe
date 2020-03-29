@@ -16,5 +16,5 @@ nix-shell live.nix --run ./live.sh
 ### Generate static site:
 
 ```bash
-nix-shell live.nix --run 'cd src; runhaskell Main.hs'
+nix-shell --run 'cd src; runhaskell Main.hs'
 ```
