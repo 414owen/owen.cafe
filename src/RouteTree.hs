@@ -2,7 +2,6 @@ module RouteTree where
 
 import qualified Data.ByteString.Lazy as LB
 import Data.List
-import Text.Blaze.Html
 
 type Servable = IO LB.ByteString
 

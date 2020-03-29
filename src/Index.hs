@@ -2,9 +2,8 @@
 
 module Index (index) where
 
-import Text.Blaze.Html
 import Text.Blaze.XHtml5 as H
-import Text.Blaze.Html5.Attributes as A
+import Text.Blaze.XHtml5.Attributes as A
 
 import Base
 import RouteTree

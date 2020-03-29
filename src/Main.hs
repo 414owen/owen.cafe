@@ -8,6 +8,7 @@ import Control.Concurrent
 import Control.Monad.IO.Class
 import qualified Data.ByteString.Lazy as LB
 import Data.Functor
+import Data.List
 import Data.Semigroup ((<>))
 import Data.String (IsString(..))
 import Data.Text.Encoding
@@ -17,8 +18,6 @@ import Network.Mime
 import Options.Applicative
 import System.FilePath
 import System.Directory
-import Text.Blaze.Html
-import Text.Blaze.Html.Renderer.Utf8
 import Web.Scotty
 
 import Index
@@ -50,7 +49,7 @@ serve = scotty 8000 . createRoutes
 
 flattenRoute :: RouteTree -> [Route]
 flattenRoute (File n s) = let m = defaultMimeLookup (T.pack n) in
-  [(n, m, s)] <> if n == "index.html" then [("", m, s)] else []
+  [(n, m, s)] <> if isPrefixOf "index" n then [("", m, s)] else []
 flattenRoute (Dir n s) = addPath n <$> flattenRoutes s
 
 flattenRoutes :: [RouteTree] -> [Route]

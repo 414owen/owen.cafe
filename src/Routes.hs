@@ -32,12 +32,12 @@ routes :: IO [RouteTree]
 routes = do
   images <- listDirectory "./img"
   pure $
-    [ File "index.html" $ index
+    [ File "index.xhtml" $ index
     , Dir "css" $ cssRoute <$>
       [ ("default.css", defaultStyle)
       ]
     , Dir "img" $ imageRoute <$> images
     , Dir "test"
-      [ File "index.html" $ pure "DootDoot"
+      [ File "index.xhtml" $ pure "DootDoot"
       ]
     ]
