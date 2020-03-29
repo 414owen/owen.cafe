@@ -16,6 +16,6 @@ index = baseTemplate "buss" $ do
     li "Want the full abstractive power of Haskell"
     li "Like having a little server that reloads"
     li "Prefer functions to templating systems"
-    li "Use nix (preferably)"
+    li "Use nix"
   img ! alt "haskell" ! src "img/haskell.svg"
   img ! alt "nix" ! src "img/nix.svg"
