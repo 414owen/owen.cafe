@@ -12,8 +12,8 @@ import Data.Text.Encoding
 import System.Directory
 import System.FilePath
 
-import Css.Default
-import Index
+import Css.Default (defaultStyle)
+import Index (index)
 import RouteTree
 
 cssRoute :: (String, C.Css) -> RouteTree
