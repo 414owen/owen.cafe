@@ -34,6 +34,7 @@ routes = do
     [ File "index.xhtml" index
     , Dir "css" $ cssRoute <$>
       [ ("default.css", defaultStyle)
+      , ("index.css", defaultStyle)
       ]
     , Dir "img" $ imageRoute <$> images
     , Dir "test"

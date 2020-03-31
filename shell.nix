@@ -5,7 +5,7 @@ let
 
   inherit (nixpkgs) pkgs;
 
-  f = { mkDerivation, base, blaze-html, bytestring, clay, directory
+  f = { mkDerivation, base, blaze-html, blaze-svg, bytestring, clay, directory
       , filepath, mime-types, optparse-applicative, scotty, stdenv, text
       }:
       mkDerivation {
@@ -15,7 +15,7 @@ let
         isLibrary = false;
         isExecutable = true;
         executableHaskellDepends = [
-          base blaze-html bytestring clay directory filepath mime-types
+          base blaze-html blaze-svg bytestring clay directory filepath mime-types
           optparse-applicative scotty text
         ];
         license = "unknown";
@@ -26,12 +26,16 @@ let
                        then pkgs.haskellPackages
                        else pkgs.haskell.packages.${compiler};
 
-  variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
+  h = haskellPackages.override {
+    overrides = hsSelf: hsSuper: {
+      clay = pkgs.haskell.lib.overrideCabal hsSuper.clay (oa: {
+        version = "0.13.3";
+        sha256 = "192lsbyj6azjs2ygpx4i47fyr8zfmvwcas8mia07ndqglk2c9csx";
+      });
+    };
+  };
 
-  # h = haskellPackages.extend (self: super: {
-  #   clay = self.callHackage "clay" "0.13.2" {};
-  # });
-  h = pkgs.haskellPackages;
+  variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
 
   drv = variant (h.callPackage f {});
 

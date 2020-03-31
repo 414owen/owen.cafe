@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#eee">
+  <path d="M0,39.4v433.2h512v-433.2h-512zM472.6,433.2h-433.2v-315h433.2v315zM79.5,309l135.5,-53.9v-42.9l-135.4,-53.9v42.8l81.7,32.5l-81.8,32.5v42.8z"/>
+  <path d="M215.1,309h135.6v39.8h-135.7v-39.8z">
+    <animate attributeType="XML" attributeName="fill-opacity" calcMode="discrete" values="1;0" dur="1.2s" repeatCount="indefinite"/>
+  </path>
+</svg>

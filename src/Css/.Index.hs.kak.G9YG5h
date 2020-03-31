@@ -1,0 +1,17 @@
+{-# LANGUAGE OverloadedStrings #-}
+
+module Css.Index (indexStyle) where
+
+import qualified Data.Text as T
+import Clay as C
+
+indexStyle :: Css
+indexStyle = do
+  "#techs" |> star ? do
+    position relative
+    transition color (sec 0.3)
+    label ? do
+      position absolute
+      width (pct 100)
+      height (pct 100)
+      cursor pointer

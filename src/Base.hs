@@ -7,18 +7,29 @@ import Text.Blaze.Html.Renderer.Utf8
 import Text.Blaze.XHtml5 as H
 import Text.Blaze.XHtml5.Attributes as A
 
+import Hamburger
+import Nav
 import RouteTree
 
-baseTemplate :: Html -> Html -> Servable
-baseTemplate title rest = pure $ renderHtml $
+baseTemplate :: Html -> Html -> Html -> Servable
+baseTemplate extraHead title rest = pure $ renderHtml $
   docTypeHtml ! xmlns "http://www.w3.org/1999/xhtml" ! lang "en" $ do
     H.head $ do
       meta ! charset "utf-8"
+      H.title title
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
-      link ! rel "stylesheet" ! href "./css/default.css"
       link ! rel "icon" ! type_ "image/png" ! href "./favicon.png"
-      H.title title
+      link ! rel "stylesheet" ! href "./css/default.css"
+      extraHead
     body $ do
-      h1 title
-      rest
+      input ! A.id "hb" ! class_ "logic" ! type_ "checkbox"
+      H.div ! A.id "page" $ do
+        H.div ! class_ "sidebar desk" $ do
+          cafeNav
+          H.div ! class_ "vsep" $ mempty
+        H.div ! A.id "mobcontainer" $ do
+          H.label ! for "hb" $ hamburger
+          H.div ! class_ "sidebar mob" $ cafeNav
+          H.div ! A.id "content" $ main rest
+      H.script "document.getElementById(\"hb\").checked = false;"
