@@ -2,7 +2,7 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TypeFamilies #-}
 
-module Css.Default (defaultStyle) where
+module Css.Default where
 
 import qualified Data.Text as T
 import Clay as C hiding (id, sticky)
@@ -40,6 +40,9 @@ vsepGrad = linearGradient (angular $ deg 0) [(transparent, pct 0), ("#fff", pct 
 padAll :: Size LengthUnit -> Css
 padAll = applyFourSame id padding
 
+margAll :: Size LengthUnit -> Css
+margAll = applyFourSame id margin
+
 pad20 :: Css
 pad20 = padAll px20
 
@@ -57,10 +60,6 @@ hide = display none
 
 defaultStyle :: Css
 defaultStyle = do
-  img ? do
-    width (px 100)
-    pad20
-
   html <> body <> "#page" ? do
     reset
     height (vh 100)
@@ -157,5 +156,3 @@ defaultStyle = do
 
   "#page" ? do
     isNotMobile $ display flex
-
-

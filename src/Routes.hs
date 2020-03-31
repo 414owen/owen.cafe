@@ -12,7 +12,7 @@ import System.Directory
 import System.FilePath
 
 import Css.Default (defaultStyle)
-import Index (index)
+import Index (index, indexStyle)
 import RouteTree
 
 cssRoute :: (String, C.Css) -> RouteTree
@@ -34,7 +34,7 @@ routes = do
     [ File "index.xhtml" index
     , Dir "css" $ cssRoute <$>
       [ ("default.css", defaultStyle)
-      , ("index.css", defaultStyle)
+      , ("index.css", indexStyle)
       ]
     , Dir "img" $ imageRoute <$> images
     , Dir "test"
