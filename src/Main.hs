@@ -1,12 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE ViewPatterns #-}
 
 module Main where
 
+import Control.Category ((>>>))
 import Control.Concurrent
 import Control.Monad.IO.Class
 import qualified Data.ByteString.Lazy as LB
 import Data.Functor
 import Data.List
+import qualified Data.Map as M
 import Data.Semigroup ((<>))
 import Data.String (IsString(..))
 import Data.Text.Encoding
@@ -46,30 +50,45 @@ serve :: [Route] -> IO ()
 serve = scotty 8000 . createRoutes
 
 flattenRoute :: RouteTree -> [Route]
-flattenRoute (File n s) = let m = defaultMimeLookup (T.pack n) in
-  [(n, m, s)] <> [("", m, s) | "index" `isPrefixOf` n]
-flattenRoute (Dir n s) = addPath n <$> flattenRoutes s
-
-flattenRoutes :: [RouteTree] -> [Route]
-flattenRoutes = concatMap flattenRoute
+flattenRoute (Dir subs) =
+  M.toList subs >>= \case
+    (n, File s) ->
+      let m = defaultMimeLookup (T.pack n) in
+        [(n, m, s)] <> [("", m, s) | "index" `isPrefixOf` n]
+    (n, flattenRoute -> els) -> els <&> \(n', m, s) -> (n </> n', m, s)
 
 addPath :: String -> Route -> Route
 addPath n (n', m, s) = (n </> n', m, s)
 
-gen :: FilePath -> RouteTree -> IO ()
-gen dir (File name contents) = do
-  createDirectoryIfMissing True dir
-  contents >>= LB.writeFile (dir </> name)
-gen dir (Dir d subs) = sequence_ $ gen (dir </> d) <$> subs
+writeRoute :: FilePath -> Route -> IO ()
+writeRoute p (f, _, c) = do
+  contents <- c
+  LB.writeFile (p </> f) contents
 
-run :: [RouteTree] -> IO ()
+gen :: FilePath -> [Route] -> IO ()
+gen prefix routes = mapM_ (writeRoute prefix) routes
+
+dirs :: RouteTree -> [FilePath]
+dirs (Dir (M.toList -> subs)) = subs >>= \case
+  (p, File _) -> [p]
+  (p, a) -> (p </>) <$> dirs a
+
+createDirs :: FilePath -> RouteTree -> IO ()
+createDirs prefix tree =
+  let ds = (prefix </>) <$> nub (dirs tree) in
+  mapM_ (createDirectoryIfMissing True) ds
+
+run :: RouteTree -> IO ()
 run routes = do
-  let flattenedRoutes = flattenRoutes routes
+  let flattenedRoutes = flattenRoute routes
+  mapM_ print $ (\(a, _, _) -> a) <$> flattenedRoutes
   dir <- getCurrentDirectory <&> takeDirectory
   args <- execParser optParser
   fn <- if dev args
     then serve flattenedRoutes
-    else gen dir $ Dir "result" routes
+    else do
+      createDirs dir routes
+      gen dir $ flattenedRoutes <&> \(f, m, s) -> ("result" </> f, m, s)
   pure ()
 
 main :: IO ()

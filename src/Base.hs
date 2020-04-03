@@ -23,13 +23,11 @@ baseTemplate extraHead title rest = pure $ renderHtml $
       link ! rel "stylesheet" ! href "./css/default.css"
       extraHead
     body $ do
-      input ! A.id "hb" ! class_ "logic" ! type_ "checkbox"
-      H.div ! A.id "page" $ do
-        H.div ! class_ "sidebar desk" $ do
-          cafeNav
-          H.div ! class_ "vsep" $ mempty
-        H.div ! A.id "mobcontainer" $ do
-          H.label ! for "hb" $ hamburger
-          H.div ! class_ "sidebar mob" $ cafeNav
-          H.div ! A.id "content" $ main rest
+      input ! A.id "hb" ! class_ "hidden" ! type_ "checkbox"
+      H.label ! for "hb" $ hamburger
+      H.div ! class_ "sidebar mob" $ cafeNav
+      H.div ! class_ "sidebar desk" $ do
+        cafeNav
+        H.div ! class_ "vsep" $ mempty
+      H.div ! A.id "content" $ main rest
       H.script "document.getElementById(\"hb\").checked = false;"

@@ -35,11 +35,12 @@ renderClickSwitch (ClickSwitch prefix extraCss options)
         psVal = textValue ps
         prefixedOpts = prefixOpt p <$> options
         noneAttr = textValue $ p <> "none"
-        noneLabel = H.label ! for noneAttr $ mempty
+        noneLabel = H.label ! for noneAttr ! checked "checked" $ mempty
     in  ( renderSwitch noneLabel <$> prefixedOpts & sequence_
           & H.div ! A.id psVal
-        , do renderElem psVal <$> prefixedOpts & sequence_
-             radioInput ! A.id noneAttr ! A.name psVal
+        , do
+            radioInput ! A.id noneAttr ! A.name psVal
+            renderElem psVal <$> prefixedOpts & sequence_
         , renderCss extraCss ps $ name <$> prefixedOpts
         )
 

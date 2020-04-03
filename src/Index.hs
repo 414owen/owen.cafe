@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Index (index, indexStyle) where
+module Index (indexRoute) where
 
 import qualified Clay as C
 import Control.Category
@@ -17,41 +17,96 @@ import RouteTree
 
 techs :: ClickSwitch
 techs = ClickSwitch "tech" (C.opacity 1.0) $ toClickSwitchOption <$>
-    ("haskell-anim-d.svg", "haskell")
-    :| [("phage-anim-d.svg", "phage")
-       , ("svg-d.svg", "svg")
-       , ("nix-d.svg", "nix")
-       , ("shell-anim-d.svg", "shell")
-       , ("lambda-d.svg", "lambda calculus")
-       , ("data-anim-d.svg", "data wrangling")
-       , ("minizinc-d.svg", "constraint optimisation")
+    ( "haskell-anim-d.svg"
+    , "haskell"
+    , do
+        "Haskell is an advanced, purely functional programming language."
+        H.div ! class_ "links" $ do
+          a ! href "https://www.haskell.org/" $ "homepage"
+          a ! href "https://github.com/414owen?tab=repositories&q=&type=source&language=haskell" $ "my haskell projects"
+    )
+    :| [ ( "phage-anim-d.svg"
+         , "phage"
+         , do
+             "Phage is my own homegrown lispy programming language."
+             H.div ! class_ "links" $ do
+               a ! href "https://github.com/414owen/phage" $ "homepage"
+         )
+       , ( "svg-d.svg"
+         , "svg"
+         , do
+             "I create animated SVG vector graphics."
+             H.div ! class_ "links" $ do
+               a ! href "https://codepen.io/shephero" $ "my codepen account"
+         )
+       , ( "nix-d.svg"
+         , "nix"
+         , do
+             "I use Nix, a purely functional package manager, and a powerful language for expressing environments and builds"
+             H.div ! class_ "links" $ do
+               a ! href "https://nixos.org/" $ "homepage"
+         )
+       , ( "shell-anim-d.svg"
+         , "shell"
+         , do
+             "I abuse shell scripts, for example "
+             a ! href (textValue "https://github.com/414owen/turtle-svg/tree/master/scripts") $ "creating, rasterizing and stiching together"
+             " thousands of svgs into a video."
+         )
+       , ( "lambda-d.svg"
+         , "lambda calculus"
+         , do
+             "I think good code needs a solid mathematical background."
+             H.div ! class_ "links" $ do
+               a ! href "https://owen.cafe/try-lambda/" $ "my lambda repl"
+         )
+       , ( "data-anim-d.svg"
+         , "data wrangling"
+         , do
+             "I wrangle data with the best of them; streaming, indexed, (un)structured, realtime."
+         )
+       , ( "minizinc-d.svg"
+         , "constraint optimisation"
+         , do
+             "I write constraint satisfaction and optimisation programs."
+         )
        ]
 
-toClickSwitchOption :: (T.Text, T.Text) -> ClickSwitchOption
-toClickSwitchOption (i, d) = let techName = T.takeWhile (/= '-') i in
-  ClickSwitchOption techName (toTechImage techName i d) $ H.span $ text techName
-
-toTechImage :: T.Text -> T.Text -> T.Text -> Html
-toTechImage name imgsrc desc
-  = img ! src (stringValue $ "img" </> T.unpack imgsrc) ! alt (textValue name)
-  >> text desc
+toClickSwitchOption :: (T.Text, T.Text, Html) -> ClickSwitchOption
+toClickSwitchOption (imgSrc, desc, longhand) =
+  ClickSwitchOption techName switch elem
+    where
+      techName = T.takeWhile (/= '-') imgSrc
+      image = img ! src (stringValue $ "img" </> T.unpack imgSrc) ! alt (textValue techName)
+      switch = do
+        image
+        H.div $ text desc
+      elem = H.div $ do
+        image
+        H.div longhand
 
 displays, switches :: Html
 techsCss :: C.Css
 (switches, displays, techsCss) = renderClickSwitch techs
 
-extraHead :: Html
-extraHead = link ! rel "stylesheet" ! href "./css/index.css"
-
-index :: Servable
-index = baseTemplate "hi" extraHead $ do
-  p "Hi, I'm Owen Shepherd."
-  p "I like"
-  H.div ! A.style "display: flex; flex-direction: column-reverse" $ do
+index :: Html
+index = do
+  section $ do
+    h2 "I am"
+    "Owen Shepherd"
+  section ! A.id"techs-container" $ do
     displays
     switches
+    h2 "I like"
+  H.script "document.getElementById(\"tech-none\").checked = true;"
 
 indexStyle :: C.Css
 indexStyle = do
   techsCss
   S.indexStyle
+
+indexStyleRoute :: CssRoute
+indexStyleRoute = CssRoute ["root"] indexStyle
+
+indexRoute :: CafeRoute
+indexRoute = CafeRoute [] mempty [indexStyleRoute] index

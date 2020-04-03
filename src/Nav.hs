@@ -10,5 +10,4 @@ import Text.Blaze.XHtml5.Attributes as A
 cafeNav :: Html
 cafeNav = nav ! class_ "links" $ do
   a ! href "/" $ "Home"
-  a ! href "/music" $ "Music"
-
+  a ! href "/projects" $ "Projects"

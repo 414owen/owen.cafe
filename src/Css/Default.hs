@@ -14,16 +14,10 @@ hbSize = (px 50)
 
 type FourStyle a = Size a -> Size a -> Size a -> Size a -> Css
 
-applyFour :: (b -> Size LengthUnit) -> FourStyle LengthUnit -> b -> b -> b -> b -> Css
-applyFour measure rule a b c d = rule (measure a) (measure b) (measure c) (measure d)
-
-applyFourSame :: (b -> Size LengthUnit) -> FourStyle LengthUnit -> b -> Css
-applyFourSame measure rule a = applyFour measure rule a a a a
-
 reset :: Css
 reset = do
-  applyFour id margin nil nil nil nil
-  applyFour id padding nil nil nil nil
+  sym margin nil
+  sym padding nil
 
 fg :: Color
 fg = "#eee"
@@ -37,14 +31,8 @@ px20 = px 20
 vsepGrad :: BackgroundImage
 vsepGrad = linearGradient (angular $ deg 0) [(transparent, pct 0), ("#fff", pct 50), (transparent, pct 100)]
 
-padAll :: Size LengthUnit -> Css
-padAll = applyFourSame id padding
-
-margAll :: Size LengthUnit -> Css
-margAll = applyFourSame id margin
-
 pad20 :: Css
-pad20 = padAll px20
+pad20 = sym padding px20
 
 mobileBreak :: Double
 mobileBreak = 600
@@ -69,11 +57,27 @@ defaultStyle = do
     color fg
     fontFamily [] [sansSerif]
 
+  body ? do
+    isNotMobile $ display flex
+
   star ?
     boxSizing borderBox
 
+  keyframesFromTo "fade-in" (opacity 0) (opacity 1)
+
   ".sidebar" ? do
     display flex
+
+    ".links" <? do
+       width (pct 100)
+       padding (px 40) (px 40) (px 40) (px 40)
+
+       a <? do
+         color fg
+         display block
+         fontSize px20
+         pad20
+         textDecoration none
 
     ".desk" & do
       width (px 300)
@@ -93,34 +97,21 @@ defaultStyle = do
         backgroundColor "#333"
         width (pct 100)
         C.not ":first-child" & marginTop px20
-
+        animationName "fade-in"
+        animationDuration (sec 0.3)
 
     ".vsep" <? do
       display inlineBlock
       right nil
 
-  "#hb" # C.not ":checked" |+ "#page" C.** ".sidebar" # ".mob" ?
-    hide
-  "#hb" ? hide
-  "#hb" # ":checked" |+ "#page" |> "#mobcontainer" |> "#content" ? hide
-
+  "#hb" # C.not ":checked" |+ star |+ ".sidebar" # ".mob" ? hide
+  "#hb" # ":checked" |~ "#content" ? hide
 
   ".vsep" ? do
     width $ px 1
     minWidth (px 1)
     height (pct 100)
     background vsepGrad
-
-  ".links" <? do
-     width (pct 100)
-     padding (px 40) (px 40) (px 40) (px 40)
-
-     a <? do
-       color fg
-       display block
-       fontSize px20
-       pad20
-       textDecoration none
 
   star # ("for" @= "hb") ? do
     zIndex 11
@@ -137,22 +128,23 @@ defaultStyle = do
 
   ".hidden" ? hide
 
-  "#mobcontainer" ? do
-    flexGrow 1
-    isNotMobile $ do
-      height (vh 100)
-      overflow auto
-
   "#content" ? do
-    padAll (px 60)
+    isMobile $ do
+      animationName "fade-in"
+      animationDuration (sec 0.3)
+    sym padding (px 60)
     maxWidth (px 600)
     main_ |> p <? do
       marginTop (px 40)
       marginBottom nil
     ":first-child" & marginTop nil
 
+  "#test" ? do
+    display flex
+    justifyContent center
+
+  h2 # ":first-child" ? marginTop nil
+
   a ? do
     color inherit
 
-  "#page" ? do
-    isNotMobile $ display flex
