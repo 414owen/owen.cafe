@@ -80,8 +80,8 @@ createDirs prefix tree =
 
 run :: RouteTree -> IO ()
 run routes = do
+  print routes
   let flattenedRoutes = flattenRoute routes
-  mapM_ print $ (\(a, _, _) -> a) <$> flattenedRoutes
   dir <- getCurrentDirectory <&> takeDirectory
   args <- execParser optParser
   fn <- if dev args

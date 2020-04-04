@@ -72,4 +72,4 @@ routes = do
     , ( "img"
       , Dir $ M.fromList $ imageRoute <$> images
       )
-    ]) <> mconcat [(cafeRouteTree indexRoute)]
+    ]) <> mconcat (cafeRouteTree <$> cafeRoutes)

@@ -28,8 +28,17 @@ bg = "#111"
 px20 :: Size LengthUnit
 px20 = px 20
 
+sepGradPts :: [(Color, Size Percentage)]
+sepGradPts = [(transparent, pct 0), ("#fff", pct 50), (transparent, pct 100)]
+
+sepGrad :: Double -> BackgroundImage
+sepGrad ang = linearGradient (angular $ deg ang) sepGradPts
+
 vsepGrad :: BackgroundImage
-vsepGrad = linearGradient (angular $ deg 0) [(transparent, pct 0), ("#fff", pct 50), (transparent, pct 100)]
+vsepGrad = sepGrad 0
+
+hsepGrad :: BackgroundImage
+hsepGrad = sepGrad 90
 
 pad20 :: Css
 pad20 = sym padding px20
@@ -107,6 +116,11 @@ defaultStyle = do
   "#hb" # C.not ":checked" |+ star |+ ".sidebar" # ".mob" ? hide
   "#hb" # ":checked" |~ "#content" ? hide
 
+  ".hsep" ? do
+    height $ px 1
+    width (pct 100)
+    background hsepGrad
+
   ".vsep" ? do
     width $ px 1
     minWidth (px 1)
@@ -129,16 +143,19 @@ defaultStyle = do
   ".hidden" ? hide
 
   "#content" ? do
+    overflow auto
+    maxWidth (px 600)
+    width (pct 100)
+    main_ <?
+      sym padding (px 60)
+    ":first-child" & marginTop nil
     isMobile $ do
       animationName "fade-in"
       animationDuration (sec 0.3)
-    sym padding (px 60)
-    maxWidth (px 600)
-    main_ |> p <? do
-      marginTop (px 40)
-      marginBottom nil
-    ":first-child" & marginTop nil
-
+      main_ <? do
+        sym padding (px 40)
+        paddingLeft (pct 8)
+        paddingRight (pct 8)
   "#test" ? do
     display flex
     justifyContent center

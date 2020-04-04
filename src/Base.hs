@@ -16,7 +16,7 @@ baseTemplate extraHead title rest = pure $ renderHtml $
   docTypeHtml ! xmlns "http://www.w3.org/1999/xhtml" ! lang "en" $ do
     H.head $ do
       meta ! charset "utf-8"
-      H.title title
+      H.title (title <> " owen.cafe")
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
       link ! rel "icon" ! type_ "image/png" ! href "./favicon.png"
