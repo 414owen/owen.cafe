@@ -24,8 +24,7 @@ merge (Dir suba) (Dir subb) = Dir $
           M.preserveMissing
           (M.zipWithMaybeMatched $ \k v1 v2 -> Just $ merge v1 v2)
           suba subb
-merge (Dir a) _ = error $ "merge failed: " <> unwords (M.keys a)
-merge _ (Dir a) = error $ "merge failed: " <> unwords (M.keys a)
+merge a b = b
 
 instance Semigroup RouteTree where
   (<>) = merge

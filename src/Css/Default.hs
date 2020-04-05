@@ -144,9 +144,9 @@ defaultStyle = do
 
   "#content" ? do
     overflow auto
-    maxWidth (px 600)
     width (pct 100)
-    main_ <?
+    main_ <? do
+      maxWidth (px 600)
       sym padding (px 60)
     ":first-child" & marginTop nil
     isMobile $ do

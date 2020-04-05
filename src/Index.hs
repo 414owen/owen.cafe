@@ -109,4 +109,4 @@ indexStyleRoute :: CssRoute
 indexStyleRoute = CssRoute ["root"] indexStyle
 
 indexRoute :: CafeRoute
-indexRoute = CafeRoute [] mempty [indexStyleRoute] index
+indexRoute = CafeRoute [] "home" [indexStyleRoute] index
