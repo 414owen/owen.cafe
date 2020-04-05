@@ -77,7 +77,7 @@ cssHead :: CssRoute -> Html
 cssHead (CssRoute path _) = H.link
   ! A.rel "stylesheet"
   ! A.type_ "text/css"
-  ! A.href (stringValue (foldl' (</>) "" path <> ".css"))
+  ! A.href (stringValue (foldl' (</>) "/" path <> ".css"))
 
 renderRoute :: CafeRoute -> [T.Text] -> RouteTree
 renderRoute c@(CafeRoute path title styles page) pathSegs = case pathSegs of

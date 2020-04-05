@@ -18,8 +18,7 @@ baseTemplate extraHead title cafeNav rest = pure $ renderHtml $
       H.title (title <> " - owen.cafe")
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
-      link ! rel "icon" ! type_ "image/png" ! href "./favicon.png"
-      link ! rel "stylesheet" ! href "./css/default.css"
+      link ! rel "stylesheet" ! href "/css/default.css"
       extraHead
     body $ do
       input ! A.id "hb" ! class_ "hidden" ! type_ "checkbox"

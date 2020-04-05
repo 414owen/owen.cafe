@@ -50,13 +50,13 @@ createRoutes = mapM_ serveServable
 serve :: [Route] -> IO ()
 serve = scotty 8000 . createRoutes
 
-flattenRoute :: RouteTree -> [Route]
-flattenRoute (Dir subs) =
+flattenRoute :: Bool -> RouteTree -> [Route]
+flattenRoute withDefault (Dir subs) =
   M.toList subs >>= \case
     (n, File s) ->
       let m = defaultMimeLookup (T.pack n) in
-        [(n, m, s)] <> [("", m, s) | "index" `isPrefixOf` n]
-    (n, flattenRoute -> els) -> els <&> \(n', m, s) -> (n </> n', m, s)
+        [(n, m, s)] <> [("", m, s) | withDefault && "index" `isPrefixOf` n]
+    (n, flattenRoute withDefault -> els) -> els <&> \(n', m, s) -> (n </> n', m, s)
 
 addPath :: String -> Route -> Route
 addPath n (n', m, s) = (n </> n', m, s)
@@ -71,25 +71,26 @@ gen prefix routes = mapM_ (writeRoute prefix) routes
 
 dirs :: RouteTree -> [FilePath]
 dirs (Dir (M.toList -> subs)) = subs >>= \case
-  (p, File _) -> [p]
+  (p, File _) -> [""]
   (p, a) -> (p </>) <$> dirs a
 
 createDirs :: FilePath -> RouteTree -> IO ()
 createDirs prefix tree =
   let ds = (prefix </>) <$> nub (dirs tree) in
-  mapM_ (createDirectoryIfMissing True) (traceShowId ds)
+  mapM_ (createDirectoryIfMissing True) ds
 
 run :: RouteTree -> IO ()
 run routes = do
-  let flattenedRoutes = flattenRoute routes
-  dir <- getCurrentDirectory <&> takeDirectory
+  dir <- (getCurrentDirectory <&> takeDirectory) <&> (</> "result")
   args <- execParser optParser
-  fn <- if dev args
-    then serve flattenedRoutes
+  if dev args
+    then do
+      let flattenedRoutes = flattenRoute True routes
+      serve flattenedRoutes
     else do
+      let flattenedRoutes = flattenRoute False routes
       createDirs dir routes
-      gen dir $ flattenedRoutes <&> \(f, m, s) -> ("result" </> f, m, s)
-  pure ()
+      gen dir $ flattenedRoutes <&> \(f, m, s) -> (f, m, s)
 
 main :: IO ()
 main = routes >>= run
