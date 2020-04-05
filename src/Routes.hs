@@ -21,6 +21,8 @@ import Text.Blaze.XHtml5.Attributes as A hiding (id)
 import Css.Default (defaultStyle)
 import Index (indexRoute)
 import Base (baseTemplate)
+import Contact (contactRoute)
+import Graphics (graphicsRoute)
 import Projects
 import RouteTree
 
@@ -28,18 +30,28 @@ cafeRoutes :: [CafeRoute]
 cafeRoutes =
   [ indexRoute
   , projectRoute
+  , graphicsRoute
+  , ExternalRoute "github" "https://github.com/414owen/"
+  , contactRoute
   ]
 
+toCurrent :: T.Text -> T.Text
+toCurrent t = "&#8594;&#160;&#160;" <> t
+
 mkLink :: CafeRoute -> [T.Text] -> Html
+mkLink (ExternalRoute name url) _ =
+  H.a ! target "_blank" ! href (textValue url) $ text name
 mkLink (CafeRoute path name _ _) current =
   let p = "/" <> T.intercalate "/" path in
-    H.a ! A.href (textValue p) ! mempty $ text name
+    H.a ! href (textValue p) $ preEscapedText $
+      if current == path then toCurrent name else name
 
 mkNavLinks :: [CafeRoute] -> [T.Text] -> Html
 mkNavLinks [] _ = mempty
 mkNavLinks (c@(CafeRoute path _ _ _) : rest) current =
   let a = mkLink c current
   in  (if current == path then a ! class_ "current" else a) >> mkNavLinks rest current
+mkNavLinks (c : rest) current = mkLink c current >> mkNavLinks rest current
 
 mkNav :: [T.Text] -> Html
 mkNav = (H.nav ! A.class_ "links") . mkNavLinks cafeRoutes
@@ -76,6 +88,7 @@ cafeRouteTree :: CafeRoute -> RouteTree
 cafeRouteTree r@(CafeRoute path title styles page) =
   renderRoute (CafeRoute path title styles page) (path <> ["index.xhtml"]) <>
   mconcat (cssRoute <$> styles)
+cafeRouteTree _ = Dir mempty
 
 routes :: IO RouteTree
 routes = do

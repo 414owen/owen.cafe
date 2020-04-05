@@ -41,8 +41,12 @@ instance Show RouteTree where
 
 data CssRoute = CssRoute [FilePath] Css
 
-data CafeRoute = CafeRoute
-  [T.Text]   -- path
-  T.Text     -- title
-  [CssRoute] -- extra css
-  H.Html     -- page
+data CafeRoute
+  = CafeRoute
+    [T.Text]   -- path
+    T.Text     -- title
+    [CssRoute] -- extra css
+    H.Html     -- page
+  | ExternalRoute
+    T.Text     -- name
+    T.Text     -- url

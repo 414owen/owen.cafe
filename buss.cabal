@@ -18,12 +18,14 @@ build-type:          Simple
 
 executable buss
   main-is:             Main.hs
-  other-modules:       Internal.Routes
+  -- other-modules:
   -- other-extensions:
   build-depends:       base >=4.12 && <4.13
                        , blaze-html
+                       , blaze-markup
                        , blaze-svg
                        , bytestring
+                       , containers
                        , clay
                        , directory
                        , filepath

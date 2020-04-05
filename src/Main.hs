@@ -4,6 +4,7 @@
 
 module Main where
 
+import Debug.Trace
 import Control.Category ((>>>))
 import Control.Concurrent
 import Control.Monad.IO.Class
@@ -76,7 +77,7 @@ dirs (Dir (M.toList -> subs)) = subs >>= \case
 createDirs :: FilePath -> RouteTree -> IO ()
 createDirs prefix tree =
   let ds = (prefix </>) <$> nub (dirs tree) in
-  mapM_ (createDirectoryIfMissing True) ds
+  mapM_ (createDirectoryIfMissing True) (traceShowId ds)
 
 run :: RouteTree -> IO ()
 run routes = do
