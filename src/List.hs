@@ -35,7 +35,7 @@ srcMod src = textValue $ "/img/" <> src <> ".svg"
 
 renderListItem :: Bool -> ListItem -> Html
 renderListItem isLast (ListItem name imgsrc desc url) = H.li $ do
-  let link = H.a ! href (textValue url)
+  let link = H.a ! href (textValue url) ! target "_blank"
   let Just stripped = T.stripPrefix "https://" url
   sep
   H.div ! A.class_ "media" $ do

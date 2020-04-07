@@ -64,7 +64,8 @@ defaultStyle = do
   html ? do
     background bg
     color fg
-    fontFamily [] [sansSerif]
+    fontFamily [] [monospace]
+    fontSize (px 13)
 
   body ? do
     isNotMobile $ display flex
