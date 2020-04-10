@@ -15,6 +15,7 @@ import Text.Blaze.XHtml5.Attributes as A hiding (name)
 import Base
 import Css.List
 import RouteTree
+import Util
 
 data Icon = Img T.Text | Obj T.Text
 
@@ -35,7 +36,7 @@ srcMod src = textValue $ "/img/" <> src <> ".svg"
 
 renderListItem :: Bool -> ListItem -> Html
 renderListItem isLast (ListItem name imgsrc desc url) = H.li $ do
-  let link = H.a ! href (textValue url) ! target "_blank"
+  let link = l ! href (textValue url)
   let Just stripped = T.stripPrefix "https://" url
   sep
   H.div ! A.class_ "media" $ do

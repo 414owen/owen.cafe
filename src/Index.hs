@@ -14,6 +14,7 @@ import Base
 import qualified Css.Index as S
 import ClickSwitch
 import RouteTree
+import Util
 
 techs :: ClickSwitch
 techs = ClickSwitch "tech" (C.opacity 1.0) $ toClickSwitchOption <$>
@@ -22,35 +23,35 @@ techs = ClickSwitch "tech" (C.opacity 1.0) $ toClickSwitchOption <$>
     , do
         "Haskell is an advanced, purely functional programming language."
         H.div ! class_ "links" $ do
-          a ! href "https://www.haskell.org/" $ "homepage"
-          a ! href "https://github.com/414owen?tab=repositories&q=&type=source&language=haskell" $ "my haskell projects"
+          l ! href "https://www.haskell.org/" $ "homepage"
+          l ! href "https://github.com/414owen?tab=repositories&q=&type=source&language=haskell" $ "my haskell projects"
     )
     :| [ ( "phage-anim-d.svg"
          , "phage"
          , do
              "Phage is my own homegrown lispy programming language."
              H.div ! class_ "links" $ do
-               a ! href "https://github.com/414owen/phage" $ "homepage"
+               l ! href "https://github.com/414owen/phage" $ "homepage"
          )
        , ( "svg-d.svg"
          , "svg"
          , do
              "I create animated SVG vector graphics."
              H.div ! class_ "links" $ do
-               a ! href "https://codepen.io/shephero" $ "my codepen account"
+               l ! href "https://codepen.io/shephero" $ "my codepen account"
          )
        , ( "nix-d.svg"
          , "nix"
          , do
              "I use Nix, a purely functional package manager, and a powerful language for expressing environments and builds"
              H.div ! class_ "links" $ do
-               a ! href "https://nixos.org/" $ "homepage"
+               l ! href "https://nixos.org/" $ "homepage"
          )
        , ( "shell-anim-d.svg"
          , "shell"
          , do
              "I abuse shell scripts, for example "
-             a ! href (textValue "https://github.com/414owen/turtle-svg/tree/master/scripts") $ "creating, rasterizing and stiching together"
+             l ! href (textValue "https://github.com/414owen/turtle-svg/tree/master/scripts") $ "creating, rasterizing and stiching together"
              " thousands of svgs into a video."
          )
        , ( "lambda-d.svg"
@@ -58,7 +59,7 @@ techs = ClickSwitch "tech" (C.opacity 1.0) $ toClickSwitchOption <$>
          , do
              "I think good code needs a solid mathematical background."
              H.div ! class_ "links" $ do
-               a ! href "https://owen.cafe/try-lambda/" $ "my lambda repl"
+               l ! href "https://lambda.how/" $ "my lambda repl"
          )
        , ( "data-anim-d.svg"
          , "data wrangling"
