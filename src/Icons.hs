@@ -21,8 +21,7 @@ objIcon :: T.Text -> T.Text -> Html
 objIcon name imgsrc =
   object ! type_ "image/svg+xml"
          ! data_ (srcVal imgsrc)
-         ! alt (altVal name)
-         $ mempty
+         $ text name
 
 animTup :: T.Text -> T.Text -> (Html, Html)
 animTup name iconname = (imgIcon name iconname, imgIcon name (iconname <> "-anim"))
