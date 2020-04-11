@@ -13,35 +13,38 @@ import RouteTree
 frame :: Html -> Html
 frame = iframe ! A.style "border: none"
 
-vid :: T.Text -> Html
-vid url =
+heading :: Html -> Html
+heading = h3
+
+vid :: T.Text -> T.Text -> Html
+vid name url = do
+  heading $ text name
   H.div ! class_ "aspect a16-9" $
-    frame ! src (textValue $ "https://www.youtube-nocookie.com/embed/7hOF8Ei-ys4")
+    frame ! A.title (textValue name)
+          ! src (textValue $ "https://www.youtube-nocookie.com/embed/7hOF8Ei-ys4")
           $ mempty
 
 allowfullscreen :: Attribute
 allowfullscreen = BI.customAttribute "allowfullscreen" ""
 
-pen :: T.Text -> Html
-pen  url =
+pen :: T.Text -> T.Text -> Html
+pen name url = do
+  heading $ text name
   H.div ! class_ "aspect a10-8" $
-    frame ! allowfullscreen
+    frame ! A.title (textValue name)
           ! src (textValue $ "https://codepen.io/shephero/embed/preview/"
                  <> url
-                 <> "?theme-id=dark&default-tab=result") $ mempty
+                 <> "?theme-id=dark&default-tab=result")
+          ! allowfullscreen
+          $  mempty
 
 graphicsPage :: H.Html
 graphicsPage = H.div ! class_ "frames" $ do
-  h3 "Tree Declarator"
-  pen "zYOZoWN"
-  h3 "Warp Speed"
-  pen "QWLpGBW"
-  h3 "Gravitational Fireflies"
-  pen "jrqrWW"
-  h3 "Declarative Spirangle"
-  pen "rNByWvM"
-  h3 "Fractal Trees"
-  vid "rte"
+  pen "Tree Declarator" "zYOZoWN"
+  pen "Warp Speed" "QWLpGBW"
+  pen "Gravitational Fireflies" "jrqrWW"
+  pen "Declarative Spirangle" "rNByWvM"
+  vid "Fractal Trees" "rte"
 
 graphicsRoute :: CafeRoute
 graphicsRoute = CafeRoute ["graphics"] "graphics" [frameStyleRoute] graphicsPage
