@@ -25,6 +25,7 @@ import Contact (contactRoute)
 import Graphics (graphicsRoute)
 import Projects
 import RouteTree
+import Util
 
 cafeRoutes :: [CafeRoute]
 cafeRoutes =
@@ -40,7 +41,7 @@ toCurrent t = "&#8594;&#160;&#160;" <> t
 
 mkLink :: CafeRoute -> [T.Text] -> Html
 mkLink (ExternalRoute name url) _ =
-  H.a ! target "_blank" ! href (textValue url) $ text name
+  l ! href (textValue url) $ text name
 mkLink (CafeRoute path name _ _) current =
   let p = "/" <> T.intercalate "/" path in
     H.a ! href (textValue p) $ preEscapedText $
