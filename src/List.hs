@@ -4,7 +4,6 @@ module List
   ( List
   , ListItem(..)
   , renderListPage
-  , Icon(..)
   ) where
 
 import Data.Maybe
@@ -16,8 +15,6 @@ import Base
 import Css.List
 import RouteTree
 import Util
-
-data Icon = Img T.Text | Obj T.Text
 
 data ListItem = ListItem
   { name :: T.Text
