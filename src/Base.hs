@@ -19,6 +19,7 @@ baseTemplate extraHead title cafeNav rest = pure $ renderHtml $
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
       link ! rel "stylesheet" ! href "/css/default.css"
+      link ! rel "apple-touch-icon" ! href "/favicon.png"
       extraHead
     body $ do
       input ! A.id "hb" ! class_ "hidden" ! type_ "checkbox"
