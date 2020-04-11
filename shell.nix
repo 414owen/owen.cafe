@@ -28,6 +28,11 @@ let
 
   h = haskellPackages.override {
     overrides = hsSelf: hsSuper: {
+      blaze-html = hsSelf.callCabal2nix "blaze-html" (pkgs.fetchgit {
+        url = "https://github.com/jaspervdj/blaze-html.git";
+        rev = "0fad644e86943ec309f0b3a0a5a01c59a64243d4";
+        sha256 = "1axz4r336vywyfla2drz5pbasn1vqzaqz0w8r2i8r4gxx9psy68s";
+      }) {};
       clay = hsSelf.callCabal2nix "clay" (pkgs.fetchgit {
         url = "https://github.com/sebastiaanvisser/clay.git";
         rev = "3808e460c044809f088ac8952ed3720cf801daf3";
