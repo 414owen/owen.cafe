@@ -16,8 +16,9 @@ baseTemplate extraHead title cafeNav rest = pure $ renderHtml $
     H.head $ do
       meta ! charset "utf-8"
       H.title (title <> " - owen.cafe")
-      meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       meta ! name "theme-color" ! content "#000"
+      meta ! name "description" ! content "Owen Shepherd's portfolio page and personal website"
+      meta ! name "viewport" ! content "width=device-width, initial-scale=1"
       link ! rel "stylesheet" ! href "/css/default.css"
       link ! rel "apple-touch-icon" ! href "/favicon.png"
       extraHead
