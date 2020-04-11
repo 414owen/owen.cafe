@@ -13,4 +13,4 @@ xmlnsXlink :: AttributeValue  -- ^ Attribute value.
 xmlnsXlink = attribute "xmlns:xlink" " xmlns:xlink=\""
 
 l :: Html -> Html
-l = a ! target "_blank"
+l = a ! target "_blank" ! rel "noopener"
