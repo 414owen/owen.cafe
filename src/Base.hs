@@ -19,7 +19,7 @@ baseTemplate extraHead title cafeNav rest = pure $ renderHtml $
       meta ! name "theme-color" ! content "#000"
       meta ! name "description" ! content "Owen Shepherd's portfolio page and personal website"
       meta ! name "viewport" ! content "width=device-width, initial-scale=1"
-      link ! rel "stylesheet" ! href "/css/default.css"
+      link ! type_ "text/css" ! rel "stylesheet" ! href "/css/default.css"
       link ! rel "apple-touch-icon" ! href "/favicon.png"
       extraHead
     body $ do
