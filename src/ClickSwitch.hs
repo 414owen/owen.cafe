@@ -1,9 +1,11 @@
+{-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module ClickSwitch where
 
 import Control.Category
 import qualified Clay as C
+import Data.String.QQ
 import Data.List.NonEmpty
 import Data.Function
 import Data.Semigroup
@@ -37,8 +39,8 @@ renderClickSwitch (ClickSwitch prefix extraCss options)
         noneAttr = textValue $ p <> "none"
         noneLabel = H.label ! for noneAttr ! checked "checked" $ mempty
     in  ( renderSwitch noneLabel <$> prefixedOpts & sequence_
-          & H.div ! A.id psVal
-        , do
+          & H.div ! A.class_ "switches" ! A.id psVal
+        , {- H.div ! A.id (psVal <> "-" <> "displays") $ -} do
             radioInput ! A.id noneAttr ! A.name psVal
             renderElem psVal <$> prefixedOpts & sequence_
         , renderCss extraCss ps $ name <$> prefixedOpts
@@ -74,7 +76,33 @@ renderElem switchName (ClickSwitchOption name _ elem) = do
 
 renderSwitch :: Html -> ClickSwitchOption -> Html
 renderSwitch noneLabel (ClickSwitchOption name switch _)
-  = H.div ! class_ (textValue $ name <> " clickswitch") $ do
+  = H.div ! class_ (textValue $ name <> " switch") $ do
       switch
       noneLabel
       H.label ! for (textValue name) $ mempty
+
+clickSwitchScript :: T.Text
+clickSwitchScript = [s|
+<![CDATA[
+(function(){
+  console.log('hi');
+  var ws = /\s/;
+  function scroll(ev) {
+    setTimeout(function() {
+      document.getElementById(
+        ev.target.getAttribute("for")
+      ).nextElementSibling
+       .scrollIntoView({ behavior: "smooth" });
+    });
+  }
+  var switches = document.getElementsByClassName("switch");
+  for (let i = 0; i < switches.length; i++) {
+    var sw = switches[i];
+    sw.addEventListener("click", scroll);
+    if (sw.className.split(ws).indexOf("none") >= 0) {
+      sw.checked = true;
+    }
+  }
+})();
+]]>
+|]

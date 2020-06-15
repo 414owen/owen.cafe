@@ -95,11 +95,11 @@ index = do
   section $ do
     h2 "I am"
     "Owen Shepherd"
-  section ! A.id"techs-container" $ do
+  section ! A.id "techs-container" $ do
     displays
     switches
     h2 "I like"
-  H.script "document.getElementById(\"tech-none\").checked = true;"
+  H.script $ text clickSwitchScript
 
 indexStyle :: C.Css
 indexStyle = do

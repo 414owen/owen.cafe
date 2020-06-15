@@ -1,5 +1,5 @@
 # <unstable> used because clay is currently broken in <nixpkgs>
-{ nixpkgs ? import <unstable>, compiler ? "default", doBenchmark ? false }:
+{ nixpkgs ? import <nixpkgs>, compiler ? "default", doBenchmark ? false }:
 
 let
 
@@ -7,6 +7,7 @@ let
 
   f = { mkDerivation, base, blaze-html, blaze-svg, bytestring, clay, directory
       , filepath, mime-types, optparse-applicative, scotty, stdenv, text
+      , string-qq
       }:
       mkDerivation {
         pname = "buss";
@@ -16,7 +17,7 @@ let
         isExecutable = true;
         executableHaskellDepends = [
           base blaze-html blaze-svg bytestring clay directory filepath mime-types
-          optparse-applicative scotty text
+          optparse-applicative scotty text string-qq
         ];
         license = "unknown";
         hydraPlatforms = stdenv.lib.platforms.none;
@@ -40,10 +41,6 @@ let
       }) {};
     };
   };
-
-  # h = haskellPackages.extend (self: super: {
-  #   clay = self.callHackage "clay" "0.13.2" {};
-  # });
 
   variant = if doBenchmark then pkgs.haskell.lib.doBenchmark else pkgs.lib.id;
 

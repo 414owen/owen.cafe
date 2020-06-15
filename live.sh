@@ -1,3 +1,6 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p psmisc
+
 waitForPort() {
   backoff=0.05
   first=""
@@ -10,7 +13,7 @@ waitForPort() {
 }
 run() {
   cd src
-  runhaskell Main.hs -d &
+  runhaskell Main.hs -d
   cd ..
 }
 if ss -tulwnH -A tcp | grep 0.0.0.0:8000 >/dev/null; then
