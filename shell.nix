@@ -1,9 +1,8 @@
-# <unstable> used because clay is currently broken in <nixpkgs>
-{ nixpkgs ? import <nixpkgs>, compiler ? "default", doBenchmark ? false }:
+{ nixpkgs ? import <nixpkgs> {}, compiler ? "default", doBenchmark ? false }:
 
 let
 
-  inherit (nixpkgs {} ) pkgs;
+  inherit (nixpkgs) pkgs;
 
   f = { mkDerivation, base, blaze-html, blaze-svg, bytestring, clay, directory
       , filepath, mime-types, optparse-applicative, scotty, stdenv, text

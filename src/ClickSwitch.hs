@@ -37,11 +37,11 @@ renderClickSwitch (ClickSwitch prefix extraCss options)
         psVal = textValue ps
         prefixedOpts = prefixOpt p <$> options
         noneAttr = textValue $ p <> "none"
-        noneLabel = H.label ! for noneAttr ! checked "checked" $ mempty
+        noneLabel = H.label ! for noneAttr $ mempty
     in  ( renderSwitch noneLabel <$> prefixedOpts & sequence_
           & H.div ! A.class_ "switches" ! A.id psVal
         , {- H.div ! A.id (psVal <> "-" <> "displays") $ -} do
-            radioInput ! A.id noneAttr ! A.name psVal
+            radioInput ! A.id noneAttr ! A.name psVal ! checked "checked"
             renderElem psVal <$> prefixedOpts & sequence_
         , renderCss extraCss ps $ name <$> prefixedOpts
         )
@@ -99,9 +99,6 @@ clickSwitchScript = [s|
   for (let i = 0; i < switches.length; i++) {
     var sw = switches[i];
     sw.addEventListener("click", scroll);
-    if (sw.className.split(ws).indexOf("none") >= 0) {
-      sw.checked = true;
-    }
   }
 })();
 ]]>

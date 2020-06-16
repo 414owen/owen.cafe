@@ -8,6 +8,9 @@ import qualified Data.Text as T
 import Clay as C hiding (id, sticky)
 import qualified Clay.Stylesheet as CS
 import qualified Clay.Media as CM
+import qualified Clay.Background as BG
+import Clay.Gradient
+import Clay.Property (unPrefixed, unValue)
 
 hbSize :: Size LengthUnit
 hbSize = (px 50)
