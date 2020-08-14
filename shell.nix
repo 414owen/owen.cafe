@@ -6,7 +6,7 @@ let
 
   f = { mkDerivation, base, blaze-html, blaze-svg, bytestring, clay, directory
       , filepath, mime-types, optparse-applicative, scotty, stdenv, text
-      , string-qq
+      , string-qq, pandoc, mtl, skylighting-core, file-embed
       }:
       mkDerivation {
         pname = "buss";
@@ -16,7 +16,8 @@ let
         isExecutable = true;
         executableHaskellDepends = [
           base blaze-html blaze-svg bytestring clay directory filepath mime-types
-          optparse-applicative scotty text string-qq
+          optparse-applicative scotty text string-qq pandoc mtl skylighting-core
+          file-embed
         ];
         license = "unknown";
         hydraPlatforms = stdenv.lib.platforms.none;

@@ -149,9 +149,9 @@ defaultStyle = do
   "#content" ? do
     overflow auto
     width (pct 100)
-    main_ <? do
-      maxWidth (px 600)
-      sym padding (px 60)
+  main_ <? do
+    maxWidth (px 600)
+    sym padding (px 60)
     ":first-child" & marginTop nil
     isMobile $ do
       animationName "fade-in"

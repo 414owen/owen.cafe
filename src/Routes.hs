@@ -5,6 +5,7 @@ module Routes where
 import Debug.Trace
 import qualified Clay as C
 import Control.Category ((>>>))
+import Control.Monad.Reader
 import Data.List
 import qualified Data.ByteString.Lazy as LB
 import qualified Data.Map as M
@@ -23,13 +24,17 @@ import Index (indexRoute)
 import Base (baseTemplate)
 import Contact (contactRoute)
 import Graphics (graphicsRoute)
+import Blog (mkBlogRoute, mkBlogs, blogCss)
 import Projects
 import RouteTree
 import Util
 
-cafeRoutes :: [CafeRoute]
-cafeRoutes =
+type RouteM = Reader [CafeRoute]
+
+mkCafeRoutes :: CafeRoute -> [CafeRoute]
+mkCafeRoutes blogRoute =
   [ indexRoute
+  , blogRoute
   , projectRoute
   , graphicsRoute
   , ExternalRoute "github" "https://github.com/414owen/"
@@ -54,8 +59,10 @@ mkNavLinks (c@(CafeRoute path _ _ _) : rest) current =
   in  (if current == path then a ! class_ "current" else a) >> mkNavLinks rest current
 mkNavLinks (c : rest) current = mkLink c current >> mkNavLinks rest current
 
-mkNav :: [T.Text] -> Html
-mkNav = (H.nav ! A.class_ "links") . mkNavLinks cafeRoutes
+mkNav :: [T.Text] -> RouteM Html
+mkNav current = do
+  cafeRoutes <- ask
+  pure $ H.nav ! A.class_ "links" $ mkNavLinks cafeRoutes current
 
 imageRoute :: FilePath -> (FilePath, RouteTree)
 imageRoute fname = (fname, File $ LB.readFile $ "img" </> fname)
@@ -80,25 +87,37 @@ cssHead (CssRoute path _) = H.link
   ! A.type_ "text/css"
   ! A.href (stringValue (foldl' (</>) "/" path <> ".css"))
 
-renderRoute :: CafeRoute -> [T.Text] -> RouteTree
-renderRoute c@(CafeRoute path title styles page) pathSegs = case pathSegs of
-  (x:xs) -> Dir $ M.singleton (T.unpack x) (renderRoute c xs)
-  [] -> File $ baseTemplate (mapM_ cssHead styles) (H.text title) (mkNav path) page
+renderRoute :: CafeRoute -> [T.Text] -> RouteM RouteTree
+renderRoute c@(CafeRoute path title styles page) pathSegs = do
+  nav <- mkNav path
+  case pathSegs of
+    (x:xs) -> do
+      sub <- renderRoute c xs
+      pure $ Dir $ M.singleton (T.unpack x) sub
+    [] -> pure $ File $ baseTemplate (mapM_ cssHead styles) (H.text title) nav page
 
-cafeRouteTree :: CafeRoute -> RouteTree
-cafeRouteTree r@(CafeRoute path title styles page) =
-  renderRoute (CafeRoute path title styles page) (path <> ["index.xhtml"]) <>
-  mconcat (cssRoute <$> styles)
-cafeRouteTree _ = Dir mempty
+cafeRouteTree :: CafeRoute -> RouteM RouteTree
+cafeRouteTree r@(CafeRoute path title styles page) = do
+  current <- renderRoute (CafeRoute path title styles page) (path <> ["index.xhtml"])
+  pure $ current <> mconcat (cssRoute <$> styles)
+cafeRouteTree _ = pure $ Dir mempty
 
 routes :: IO RouteTree
 routes = do
+  blogRoute <- mkBlogRoute
+  let cafeRoutes = mkCafeRoutes blogRoute
+  blogs <- mkBlogs (runReader (mkNav ["blog"]) cafeRoutes)
   images <- listDirectory "./img"
+  let routeTree = runReader (sequence $ cafeRouteTree <$> cafeRoutes) cafeRoutes
   pure $ traceShowId (Dir $ M.fromList
     [ ( "css"
-      , Dir $ M.singleton "default.css" $ File (servableCss defaultStyle)
+      , Dir $ M.fromList [ ("default.css", File $ servableCss defaultStyle)
+                         , ("highlight.css", File $ pure $ blogCss) ]
       )
     , ( "img"
       , Dir $ M.fromList $ imageRoute <$> images
       )
-    ]) <> mconcat (cafeRouteTree <$> cafeRoutes)
+    , ( "blog"
+      , Dir $ M.fromList blogs
+      )
+    ]) <> mconcat routeTree

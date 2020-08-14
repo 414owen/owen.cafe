@@ -29,9 +29,13 @@ executable buss
                        , clay
                        , directory
                        , filepath
+                       , file-embed
                        , mime-types
+                       , pandoc
+                       , mtl
                        , optparse-applicative
                        , scotty
+                       , skylighting-core
                        , text
                        , string-qq
   hs-source-dirs:      src
