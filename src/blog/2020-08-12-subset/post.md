@@ -30,9 +30,7 @@ Bool = { True, False }
 
 can be written in Haskell as
 
-```haskell
-data Bool = True | False
-```
+<!-- listing 01-bool-set.hs -->
 
 Haskell datatypes are encoded as the sum of products, however our examples will only cover simple sum types.
 
@@ -44,7 +42,7 @@ In Haskell, we relate types using typeclasses.
 
 We can encode a subset as a typeclass like this:
 
-<!-- listing 01-subset-class.hs -->
+<!-- listing 02-subset-class.hs -->
 
 This reads:
 

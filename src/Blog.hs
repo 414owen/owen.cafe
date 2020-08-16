@@ -134,8 +134,8 @@ posts = do
   paths <- getDirectoryContents "blog"
   filterM isBlogEntry paths
 
-highlightLink :: Html
-highlightLink = link ! type_ "text/css" ! rel "stylesheet" ! href "/css/blog.css"
+blogStyleLink :: Html
+blogStyleLink = link ! type_ "text/css" ! rel "stylesheet" ! href "/css/blog.css"
 
 blogJsLink :: Html
 blogJsLink = script ! type_ "text/javascript" ! src "/js/blog.js" $ mempty
@@ -146,7 +146,7 @@ renderBlog path nav = do
   blaze <- mdToBlaze contents
   let (date, title) = parsePath path
   baseTemplate
-    highlightLink
+    blogStyleLink
     (toHtml $ toLower <$> title)
     nav
     (preEscapedToHtml blaze <> blogJsLink)
@@ -154,16 +154,28 @@ renderBlog path nav = do
 renderListing :: FilePath -> FilePath -> (FilePath, RouteTree)
 renderListing postName listingName = (listingName, File $ LB.readFile (listingPath postName listingName))
 
-renderListings :: FilePath -> IO [(FilePath, RouteTree)]
-renderListings postName = do
-  T.readFile (postPath postName) <&> getListingPaths <&> fmap (renderListing postName)
+renderListings :: String -> [FilePath] -> [(FilePath, RouteTree)]
+renderListings postName = fmap (renderListing postName)
+
+renderListingLink :: FilePath -> Html
+renderListingLink path = li $ a ! href (stringValue $ "listings/" <> path) $ preEscapedString path
+
+listingLinks :: FilePath -> Html -> [FilePath] -> RouteTree
+listingLinks path nav links = File $ do
+  let (date, title) = parsePath path
+  baseTemplate
+    mempty
+    (toHtml $ toLower <$> title)
+    nav
+    (ul $ void $ traverse renderListingLink links)
 
 mkBlogEntry :: Html -> FilePath -> IO (FilePath, RouteTree)
 mkBlogEntry nav path = do
-  listings <- renderListings path
+  listingPaths <- getListingPaths <$> T.readFile (postPath path)
+  let listings = renderListings path listingPaths
   pure (path, Dir $ M.fromList
     [ ("index.xhtml", File $ renderBlog path nav)
-    , ("listings", Dir $ M.fromList listings)
+    , ("listings", Dir $ M.fromList $ ("index.xhtml", listingLinks path nav listingPaths) : listings)
     ])
 
 highlightStyle :: Style

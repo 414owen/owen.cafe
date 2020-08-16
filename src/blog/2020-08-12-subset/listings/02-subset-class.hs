@@ -3,5 +3,5 @@
 -----
 
 class Subset a b where
-    grow :: a -> b
+  grow   :: a -> b
   shrink :: b -> Maybe a
