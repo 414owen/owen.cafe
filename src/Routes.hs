@@ -24,7 +24,7 @@ import Index (indexRoute)
 import Base (baseTemplate)
 import Contact (contactRoute)
 import Graphics (graphicsRoute)
-import Blog (mkBlogRoute, mkBlogs, blogCss)
+import Blog (mkBlogRoute, mkBlogs, blogCss, blogJs)
 import Projects
 import RouteTree
 import Util
@@ -112,12 +112,16 @@ routes = do
   pure $ traceShowId (Dir $ M.fromList
     [ ( "css"
       , Dir $ M.fromList [ ("default.css", File $ servableCss defaultStyle)
-                         , ("highlight.css", File $ pure $ blogCss) ]
+                         , ("blog.css", File $ pure $ blogCss) ]
       )
     , ( "img"
       , Dir $ M.fromList $ imageRoute <$> images
       )
     , ( "blog"
       , Dir $ M.fromList blogs
+      )
+    , ( "js"
+      , Dir $ M.fromList [ ("blog.js", File $ blogJs)
+                         ]
       )
     ]) <> mconcat routeTree

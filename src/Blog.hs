@@ -1,18 +1,21 @@
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TupleSections #-}
 
-module Blog (mkBlogRoute, mkBlogs, blogCss) where
+module Blog (mkBlogRoute, mkBlogs, blogCss, blogJs) where
 
 import Control.Arrow
 import Control.Monad.Reader
 import Control.Category ((>>>))
-import qualified Data.ByteString.Lazy as LB
 import Data.Char
+import qualified Data.ByteString.Lazy as LB
 import Data.FileEmbed
 import Data.Functor
 import Data.Function
 import Data.List
+import Data.Maybe
 import qualified Data.Map as M
 import Data.Text (Text)
 import Data.Text.Encoding
@@ -72,11 +75,19 @@ processListing listingType listing = case splitListing listingType listing of
     processedListings <- traverse mdToBlaze $ fmap (wrapListing $ show listingType) (dropLeadingLines <$> as)
     pure $ T.unlines $ "<div class=\"multi-listing\">" : processedListings <> ["</div>"]
 
+tryExtractListing :: Text -> Maybe String
+tryExtractListing = T.words >>> \case
+  ["<!--", "listing", (T.unpack -> listingName), "-->"] -> Just listingName
+  _ -> Nothing
+
+getListingPaths :: Text -> [String]
+getListingPaths = T.lines >>> fmap tryExtractListing >>> catMaybes
+
 processMd :: String -> Text -> IO Text
 processMd post (T.lines -> ls)  = forM ls processLine <&> T.unlines
   where
     processLine :: Text -> IO Text
-    processLine (T.splitOn " " -> ["<!--", "listing", (T.unpack -> listingName), "-->"]) = do
+    processLine (tryExtractListing -> Just listingName) = do
       let listingType = getListingType listingName
       listing <- T.readFile $ listingPath post listingName
       processListing listingType listing
@@ -112,7 +123,8 @@ toBlogLink path@(parsePath -> (date, title))
   = li $ a ! A.href ("/blog/" <> stringValue (removeExtension path)) $ toHtml title
 
 blogPage :: [FilePath] -> Html
-blogPage paths = ul $ mapM_ toBlogLink paths
+blogPage paths = do
+  ul $ mapM_ toBlogLink paths
 
 isBlogEntry :: FilePath -> IO Bool
 isBlogEntry path = doesPathExist $ postPath path
@@ -123,7 +135,10 @@ posts = do
   filterM isBlogEntry paths
 
 highlightLink :: Html
-highlightLink = link ! type_ "text/css" ! rel "stylesheet" ! href "/css/highlight.css"
+highlightLink = link ! type_ "text/css" ! rel "stylesheet" ! href "/css/blog.css"
+
+blogJsLink :: Html
+blogJsLink = script ! type_ "text/javascript" ! src "/js/blog.js" $ mempty
 
 renderBlog :: FilePath -> Html -> Servable
 renderBlog path nav = do
@@ -134,10 +149,22 @@ renderBlog path nav = do
     highlightLink
     (toHtml $ toLower <$> title)
     nav
-    (preEscapedToHtml blaze)
+    (preEscapedToHtml blaze <> blogJsLink)
 
-mkBlogEntry :: Html -> FilePath -> (FilePath, RouteTree)
-mkBlogEntry nav path = (removeExtension path, Dir $ M.fromList [("index.xhtml", File $ renderBlog path nav)])
+renderListing :: FilePath -> FilePath -> (FilePath, RouteTree)
+renderListing postName listingName = (listingName, File $ LB.readFile (listingPath postName listingName))
+
+renderListings :: FilePath -> IO [(FilePath, RouteTree)]
+renderListings postName = do
+  T.readFile (postPath postName) <&> getListingPaths <&> fmap (renderListing postName)
+
+mkBlogEntry :: Html -> FilePath -> IO (FilePath, RouteTree)
+mkBlogEntry nav path = do
+  listings <- renderListings path
+  pure (path, Dir $ M.fromList
+    [ ("index.xhtml", File $ renderBlog path nav)
+    , ("listings", Dir $ M.fromList listings)
+    ])
 
 highlightStyle :: Style
 Right highlightStyle = parseTheme $ LB.fromStrict $(embedFile "highlight.json")
@@ -154,5 +181,8 @@ mkBlogRoute = do
 mkBlogs :: Html -> IO [(FilePath, RouteTree)]
 mkBlogs nav = do
   fs <- posts
-  let blogDir = mkBlogEntry nav <$> fs
+  blogDir <- forM fs $ mkBlogEntry nav
   pure blogDir
+
+blogJs :: Servable
+blogJs = LB.readFile "blog.js"
