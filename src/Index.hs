@@ -66,11 +66,16 @@ techs = ClickSwitch "tech" (C.opacity 1.0) $ toClickSwitchOption <$>
          , do
              "I wrangle data with the best of them; streaming, indexed, (un)structured, realtime."
          )
-       , ( "minizinc-d.svg"
-         , "constraint optimisation"
+       , ( "rust-anim-d.svg"
+         , "rust"
          , do
-             "I write constraint satisfaction and optimisation programs."
+             "Rust is fast, safe and expressive. What more could you want?"
          )
+       -- , ( "minizinc-d.svg"
+       --   , "constraint optimisation"
+       --   , do
+       --       "I write constraint satisfaction and optimisation programs."
+       --   )
        ]
 
 toClickSwitchOption :: (T.Text, T.Text, Html) -> ClickSwitchOption
