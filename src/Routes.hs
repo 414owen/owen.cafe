@@ -23,6 +23,7 @@ import Index (indexRoute)
 import Base (baseTemplate)
 import Contact (contactRoute)
 import Graphics (graphicsRoute)
+import Advent (adventRoute)
 import Projects
 import RouteTree
 import Util
@@ -32,6 +33,7 @@ cafeRoutes =
   [ indexRoute
   , projectRoute
   , graphicsRoute
+  , adventRoute
   , ExternalRoute "github" "https://github.com/414owen/"
   , contactRoute
   ]
