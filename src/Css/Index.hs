@@ -9,7 +9,6 @@ import Css.Default
 
 indexStyle :: Css
 indexStyle = do
-  section # C.not ":first-child" ? marginTop px20
   "#techs" ? do
     display flex
     flexWrap CF.wrap

@@ -1,5 +1,5 @@
 module RouteTree where
-  
+
 import Clay (Css)
 import Data.Map (Map)
 import Data.Function

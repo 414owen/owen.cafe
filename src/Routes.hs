@@ -19,11 +19,12 @@ import Text.Blaze.XHtml5 as H
 import Text.Blaze.XHtml5.Attributes as A hiding (id)
 
 import Css.Default (defaultStyle)
+import Css.Criterion (criterionStyle)
 import Index (indexRoute)
 import Base (baseTemplate)
 import Contact (contactRoute)
 import Graphics (graphicsRoute)
-import Advent (adventRoute)
+import Advent (adventRoute, adventYears)
 import Projects
 import RouteTree
 import Util
@@ -41,13 +42,16 @@ cafeRoutes =
 toCurrent :: T.Text -> T.Text
 toCurrent t = "&#8594;&#160;&#160;" <> t
 
+toOther :: T.Text -> T.Text
+toOther = ("&#160;&#160;" <>)
+
 mkLink :: CafeRoute -> [T.Text] -> Html
 mkLink (ExternalRoute name url) _ =
-  l ! href (textValue url) $ text name
+  l ! href (textValue url) $ preEscapedText $ toOther name
 mkLink (CafeRoute path name _ _) current =
   let p = "/" <> T.intercalate "/" path in
     H.a ! href (textValue p) $ preEscapedText $
-      if current == path then toCurrent name else name
+      if current == path then toCurrent name else toOther name
 
 mkNavLinks :: [CafeRoute] -> [T.Text] -> Html
 mkNavLinks [] _ = mempty
@@ -98,9 +102,15 @@ routes = do
   images <- listDirectory "./img"
   pure $ traceShowId (Dir $ M.fromList
     [ ( "css"
-      , Dir $ M.singleton "default.css" $ File (servableCss defaultStyle)
+      , Dir $ M.fromList
+          [ ( "default.css", File (servableCss defaultStyle) )
+          , ( "criterion.css", File (servableCss criterionStyle) )
+          ]
       )
     , ( "img"
       , Dir $ M.fromList $ imageRoute <$> images
+      )
+    , ( "advent"
+      , adventYears $ mkNav ["advent"]
       )
     ]) <> mconcat (cafeRouteTree <$> cafeRoutes)

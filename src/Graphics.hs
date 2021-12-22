@@ -14,7 +14,7 @@ frame :: Html -> Html
 frame = iframe ! A.style "border: none"
 
 heading :: Html -> Html
-heading = h3
+heading = h2
 
 vid :: T.Text -> T.Text -> Html
 vid name url = do

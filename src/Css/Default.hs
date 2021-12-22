@@ -73,6 +73,8 @@ defaultStyle = do
   body ? do
     isNotMobile $ display flex
 
+  section # C.not ":first-child" ? marginTop px20
+
   star ?
     boxSizing borderBox
 
@@ -93,7 +95,7 @@ defaultStyle = do
          textDecoration none
 
     ".desk" & do
-      width (px 300)
+      width (px 350)
       isMobile hide
       textAlign end
 
@@ -164,7 +166,13 @@ defaultStyle = do
     display flex
     justifyContent center
 
+  h1 # ":first-child" ? marginTop nil
+  h1 ? do
+    fontSize $ px 30
+
   h2 # ":first-child" ? marginTop nil
+  h2 ? do
+    fontSize $ px 20
 
   a ? do
     color inherit
