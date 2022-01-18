@@ -30,3 +30,17 @@ criterionStyle = do
   ".top-overview" ? do
     display flex
     justifyContent spaceBetween
+
+  "chevron" ? do
+    position relative
+    display block
+    transitionProperty "transform"
+    transitionDuration $ ms 400
+    lineHeight $ em 1
+    fontSize $ pct 100
+
+  ".chevron.right" ? transform (scale (0-1) 1)
+
+  ".chevron::before" ? do
+    verticalAlign middle
+    content $ stringContent "<"

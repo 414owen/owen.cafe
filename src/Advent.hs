@@ -20,6 +20,9 @@ import qualified Icons as I
 adventPage :: Int -> Html
 adventPage year = do
   H.h1 $ H.text $ "Advent of Code " <> T.pack (show year) <> " Benchmarks"
+  H.a ! A.href "https://github.com/414owen/advent-of-code-2021" $ "See the code on GitHub"
+  H.br
+  H.br
   H.div ! A.class_ "no-print top-overview" $ do
     H.span $ do
       "sort by: "
