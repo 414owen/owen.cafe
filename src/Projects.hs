@@ -24,6 +24,11 @@ projects =
       <> "programming language.")
       (github "phage")
   , ListItem
+      "simfin"
+      (img ! src "/img/simfin.png")
+      "SimFin API wrapper for Haskell"
+      (github "simfin")
+  , ListItem
       "Lambda Repl"
       I.lambdaRepl
       "An online lambda calculus REPL, which shows evaluation step-by-step."
