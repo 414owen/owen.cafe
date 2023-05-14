@@ -7,3 +7,13 @@ text = "home"
 external = false
 path = "/projects"
 text = "projects"
+
+[[els]]
+external = false
+path = "/graphics"
+text = "graphics"
+
+[[els]]
+external = false
+path = "/advent-of-code"
+text = "advent of code"

@@ -1,16 +1,12 @@
+<div class="vsep"></div>
 <nav id="sidebar">
   <ul>
-    {{ range $.Site.Data.nav.els }}
-
-      <a href="{{ .path | relURL }}">
-
-        {{ if (eq (.Permalink | relURL) (.path | relURL)) }}
-        HERE
-        {{ end }}
-
-        {{ .text }}
-      </a>
-
-    {{ end }}
+    {{- range .Site.Menus.main }}
+      <li>
+        <a href="{{ .URL | relURL }}">
+          <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .KeyName }}</span>
+        </a>
+      </li>
+    {{- end }}
   </ul>
 </nav>

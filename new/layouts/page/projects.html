@@ -1,0 +1,11 @@
+{{ define "main" }}
+  
+  <ul>
+    {{ range $.Site.Data.projects.els }}
+      <li>
+        {{ .name }}
+      </li>
+    {{ end }}
+  </ul>
+
+{{ end }}
