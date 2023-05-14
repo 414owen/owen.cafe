@@ -1,12 +1,30 @@
 <div class="vsep"></div>
 <nav id="sidebar">
+{{/*
   <ul>
+    {{ range $.Site.Data.nav.els }}
+
+      <li {{ if (eq (.Permalink | relURL) (.path | relURL)) }} class="active" {{ end }}>
+        <a href="{{ .path | relURL }}">
+          <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .text }}</span>
+        </a>
+      </li>
+
+    {{ end }}
+
+
+  </ul>
+  */}}
+
+  <ul>
+    {{- $page := .}}
     {{- range .Site.Menus.main }}
-      <li>
-        <a href="{{ .URL | relURL }}">
-          <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .KeyName }}</span>
+      <li {{ if $page.IsMenuCurrent .Menu . }} class="active" {{ end }}>
+        <a href="{{ .URL }}">
+          <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .Name | safeHTML }}</span>
         </a>
       </li>
     {{- end }}
   </ul>
+
 </nav>
