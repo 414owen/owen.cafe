@@ -1,0 +1,11 @@
+name = "owen.cafe"
+license = "MIT"
+licenselink = "https://github.com/414owen/owen.cafe/blob/master/LICENSE"
+description = "owen.cafe's theme"
+homepage = "https://github.com/414owen/owen.cafe/"
+features = ["blog"]
+min_version = "0.20"
+
+[author]
+  name = "Owen Shepherd"
+  homepage = "https://github.com/414owen"

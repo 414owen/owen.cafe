@@ -1,0 +1,9 @@
+[[els]]
+external = false
+path = "/"
+text = "home"
+
+[[els]]
+external = false
+path = "/projects"
+text = "projects"

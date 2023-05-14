@@ -1,0 +1,16 @@
+<nav id="sidebar">
+  <ul>
+    {{ range $.Site.Data.nav.els }}
+
+      <a href="{{ .path | relURL }}">
+
+        {{ if (eq (.Permalink | relURL) (.path | relURL)) }}
+        HERE
+        {{ end }}
+
+        {{ .text }}
+      </a>
+
+    {{ end }}
+  </ul>
+</nav>
