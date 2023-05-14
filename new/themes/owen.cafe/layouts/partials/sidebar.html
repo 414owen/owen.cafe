@@ -1,20 +1,5 @@
 <div class="vsep"></div>
 <nav id="sidebar">
-{{/*
-  <ul>
-    {{ range $.Site.Data.nav.els }}
-
-      <li {{ if (eq (.Permalink | relURL) (.path | relURL)) }} class="active" {{ end }}>
-        <a href="{{ .path | relURL }}">
-          <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .text }}</span>
-        </a>
-      </li>
-
-    {{ end }}
-
-
-  </ul>
-  */}}
 
   <ul>
     {{- $page := .}}

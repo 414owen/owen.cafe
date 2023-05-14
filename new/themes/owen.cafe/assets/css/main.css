@@ -71,6 +71,10 @@ main {
   padding: {{ $.Site.Data.style.padding }};
 }
 
+.fancy-list {
+  
+}
+
 .vsep {
   background: linear-gradient(rgba(0,0,0,0.0) 0%,#ffffff 50%,rgba(0,0,0,0.0) 100%);
   display: inline-block;
