@@ -82,6 +82,10 @@ main {
   display: block;
 }
 
+.fancy-list > li > .hsep {
+  transition: background 0.3s linear 0.0s;
+}
+
 .fancy-list > li > :not(.hsep) {
   padding: {{ div .padding 2 }}{{ .padding_unit }};
 }
@@ -100,9 +104,18 @@ main {
   font-weight: bold;
 }
 
+.fancy-list > li:hover > .hsep,
+.fancy-list > li:hover + li > .hsep {
+  background-color : #777777;
+}
+
 .media {
   display: flex;
   align-items: center;
+}
+
+.media > .content {
+  width: 100%;
 }
 
 .media > :first-child {
@@ -115,6 +128,12 @@ main {
   height: 80px;
   max-width: 100px;
   padding-right: 20px;
+}
+
+.url {
+  float: right;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .vsep {

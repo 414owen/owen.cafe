@@ -24,16 +24,19 @@
           </a>
         {{ end }}
       {{ end }}
-        <div>
-          {{with .github}}
-          <a href="">
+        <div class="content">
+          {{ with .github }}
+          <a href="{{ $url }}">
           {{end}}
-          {{with .website}}
-          <a href="{{.}}">
-          {{end}}
-            <div class="name">{{ .name }}</div>
+          {{ with .website }}
+          <a href="{{ $url }}">
+          {{ end }}
+            {{ if isset . "website" }}
+              <span class="url">({{ .website }})</span>
+            {{ end }}
+            <span class="name">{{ .name }}</span>
           </a>
-          <div>{{.desc}}</div>
+          <div>{{ .desc }}</div>
         </div>
       {{ if isset . "img" }}
       </div>
