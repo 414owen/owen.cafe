@@ -1,0 +1,26 @@
+<ul class="fancy-list">
+  {{ range . }}
+    <li>
+      <div class="hsep"></div>
+      {{ if isset . "img" }}
+      <div class="media">
+        <img src="img/{{.img}}-d.svg" alt="{{.name}}"/>
+      {{ end }}
+        <div>
+          {{with .github}}
+          <a href="https://github.com/414owen/{{.}}">
+          {{end}}
+          {{with .website}}
+          <a href="{{.}}">
+          {{end}}
+            <div class="name">{{ .name }}</div>
+          </a>
+          <div>{{.desc}}</div>
+        </div>
+      {{ if isset . "img" }}
+      </div>
+      {{ end }}
+      <div class="hsep"></div>
+    </li>
+  {{ end }}
+</ul>

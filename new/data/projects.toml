@@ -2,6 +2,7 @@
 name = "Phage"
 desc = "A dynamic, functional, homoiconic, interpreted programming language"
 github = "phage"
+img = "phage"
 
 [[els]]
 name = "SimFin"
