@@ -2,39 +2,46 @@
 name = "Phage"
 desc = "A dynamic, functional, homoiconic, interpreted programming language"
 github = "phage"
-img = "phage"
+img = "phage-anim"
 
 [[els]]
 name = "SimFin"
 desc = "SimFin API wrapper for Haskell"
 github = "simfin"
+img = "simfin"
 
 [[els]]
 name = "Lambda Repl"
 desc = "An online lambda calculus REPL, which shows evaluation step-by-step"
 website = "https://lambda.how/"
+img = "lambda-anim"
 
 [[els]]
 name = "Select Dot Pink"
 desc = "A game of CSS selectors"
 website = "https://select.pink/"
+img = "pink-anim"
 
 [[els]]
 name = "Brownian Music"
 desc = "A music recommendation interface and physics sandbox"
 website = "https://brownian.app"
+img = "brownian"
 
 [[els]]
 name = "Brainfuck Interpreter"
 desc = "A tiny, clean Brainfuck interpreter in Haskell"
 github = "brainfuck-hs"
+img = "brainfuck-anim"
 
 [[els]]
 name = "Turtle-SVG"
 desc = "An interpreter for a minimal turtle-graphics instruction set that outputs SVG"
 github = "turtle-svg"
+img = "turtle"
 
 [[els]]
 name = "Hexplode"
 desc = "A clone of J. Ansell's 1982 BBC Micro game"
 website = "https://hexplo.de"
+img = "hexplode-anim"
