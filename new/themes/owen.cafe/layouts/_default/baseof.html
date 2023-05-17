@@ -25,13 +25,13 @@ fingerprint }}
   {{- end }}
 </head>
 <body>
-  <div id="content">
-    {{ partial "header" . }}
-    <main>
-    {{ block "main" . }}{{ end }}
-    </main>
-    {{ partial "sidebar" . }}
-    {{ partial "footer" . }}
-  </div>
+  {{ partial "header" . }}
+  <main>
+    <div id="content">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </main>
+  {{ partial "sidebar" . }}
+  {{ partial "footer" . }}
 </body>
 </html>

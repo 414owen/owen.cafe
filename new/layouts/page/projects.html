@@ -3,7 +3,21 @@
   <ul class="fancy-list">
     {{ range $.Site.Data.projects.els }}
       <li>
-        {{ .name }}
+        <div class="hsep"></div>
+        <div class="media">
+          <div>
+            {{with .github}}
+            <a href="https://github.com/414owen/{{.}}">
+            {{end}}
+            {{with .website}}
+            <a href="{{.}}">
+            {{end}}
+              <div class="name">{{ .name }}</div>
+            </a>
+            <div>{{.desc}}</div>
+          </div>
+        </div>
+        <div class="hsep"></div>
       </li>
     {{ end }}
   </ul>

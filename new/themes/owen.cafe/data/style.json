@@ -1,3 +1,4 @@
 {
-  "padding": "50px"
+  "padding": 50,
+  "padding_unit": "px"
 }
