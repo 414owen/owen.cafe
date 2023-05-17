@@ -7,9 +7,22 @@
       <div class="hsep"></div>
       {{ if isset . "img" }}
       <div class="media">
-        <a target="_blank" rel="noopener" href="{{$url}}">
-          <img src="/img/{{.img}}-d.svg" alt="{{.name}}"/>
-        </a>
+        {{ if isset . "interactive" }}
+          <div>
+        {{ else }}
+          <a target="_blank" rel="noopener" href="{{$url}}">
+        {{ end }}
+          {{ $img := printf "/img/%s-d.svg" .img }}
+          {{ if isset . "interactive" }}
+            <object type="image/svg+xml" data="{{ $img }}">{{.name}}</object>
+          {{ else }}
+            <img src="/img/{{.img}}-d.svg" alt="{{.name}}"/>
+          {{ end }}
+        {{ if isset . "interactive" }}
+          </div>
+        {{ else }}
+          </a>
+        {{ end }}
       {{ end }}
         <div>
           {{with .github}}

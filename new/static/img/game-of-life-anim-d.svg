@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 165">
+  <g stroke-width="0">
+    <animateTransform attributeName="transform"
+                      attributeType="XML"
+                      type="translate"
+                      from="33 33"
+                      to="66 66"
+                      dur="2s"
+                      repeatCount="indefinite" />
+    <g fill="#eee">
+      <rect x="0" y="0" width="33" height="33" />
+      <rect x="0" y="33" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="1;1;0;0" />
+        </rect>
+      <rect x="33" y="0" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="1;1;1;0" />
+        </rect>
+      <rect x="66" y="33" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="1;0;0;0" />
+      </rect>
+      <rect x="33" y="66" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="0;1;0;0" />
+      </rect>
+      <rect x="0" y="66" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="1;0;1;0" />
+      </rect>
+      <rect x="-33" y="33" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="0;1;1;1" />
+      </rect>
+      <rect x="-33" y="0" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="0;0;1;1" />
+      </rect>
+      <rect x="0" y="-33" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="0;0;0;1" />
+      </rect>
+      <rect x="33" y="33" width="33" height="33">
+        <animate
+          attributeName="opacity"
+          repeatCount="indefinite"
+          dur="2s"
+          calcMode="discrete"
+          values="0;0;0;1" />
+      </rect>
+    </g>
+    <g id="vert" stroke="#eee" stroke-width="1">
+      <line x1="-66" x2="-66" y1="-66" y2="132" />
+      <line x1="-33" x2="-33" y1="-66" y2="132" />
+      <line x1="0"   x2="0"   y1="-66" y2="132" />
+      <line x1="33"  x2="33"  y1="-66" y2="132" />
+      <line x1="66"  x2="66"  y1="-66" y2="132" />
+      <line x1="99"  x2="99"  y1="-66" y2="132" />
+    </g>
+    <use href="#vert" transform="rotate(90) translate(-0 -66)" />
+  </g>
+</svg>
