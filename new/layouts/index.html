@@ -1,3 +1,10 @@
 {{ define "main" }}
-  Hello from the home page
+  <h2>I am</h2>
+  <br/>
+  <div>I'm Owen</div>
+  <br/>
+  <br/>
+  <h2>I like</h2>
+  <br/>
+  {{ partial "showcase.html" $.Site.Data.interests.els }}
 {{ end }}

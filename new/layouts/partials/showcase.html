@@ -1,0 +1,24 @@
+<div id="showcase">
+  <input type="radio" name="showcase" aria-hidden="true" checked="true" id="showcase-none"></input>
+  {{ range . }}
+    <input type="radio" name="showcase" aria-hidden="true" id="{{ .name | urlize }}"></input>
+  {{ end }}
+  <ul class="items">
+    {{ range . }}
+      <li data-item="{{ .name | urlize }}">
+        <img src="/img/{{ .img }}-d.svg"/>
+        {{ .name }}
+        <label for="showcase-none" aria-hidden="true"></label>
+        <label for="{{ .name | urlize }}" aria-hidden="true"></label>
+      </li>
+    {{ end }}
+  </ul>
+  {{ range . }}
+    <div class="desc" data-item="{{ .name | urlize }}">
+      <img src="/img/{{ .img }}-d.svg"/>
+      <div class="text">
+        {{ .desc | markdownify }}
+      </div>
+    </div>
+  {{ end }}
+</div>
