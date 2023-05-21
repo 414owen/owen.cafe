@@ -3,5 +3,13 @@ languageCode = 'en'
 title = 'owen.cafe'
 theme = 'owen.cafe'
 
+[menu]
+[[menu.main]]
+  name = 'Github'
+  url = 'https://github.com/414owen/'
+  weight = 10
+  [menu.main.params]
+    rel = 'external'
+
 [markup.goldmark.renderer]
 unsafe = true

@@ -5,7 +5,7 @@
     {{- $page := .}}
     {{- range .Site.Menus.main }}
       <li {{ if $page.IsMenuCurrent .Menu . }} class="active" {{ end }}>
-        <a href="{{ .URL }}">
+        <a href="{{ .URL }}" {{ with .Params.rel }}{{ if (eq . "external") }}target="_blank" rel="noopener"{{ end }}{{ end }}>
           <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .Name | safeHTML }}</span>
         </a>
       </li>
