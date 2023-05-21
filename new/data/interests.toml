@@ -1,16 +1,16 @@
 [[els]]
 name = "haskell"
-desc = "Haskell is an advanced, purely functional programming language. [homepage](https://www.haskell.org/) [my haskell projects](https://github.com/414owen?tab=repositories&q=&type=source&language=haskell)"
+desc = "Haskell is an advanced, purely functional programming language - [homepage](https://www.haskell.org/) [my haskell projects](https://github.com/414owen?tab=repositories&q=&type=source&language=haskell)"
 img = "haskell-anim"
 
 [[els]]
 name = "nix"
-desc = "Nix is a purely functional package manager, and a powerful language for expressing reproducible environments and builds. [homepage](https://nixos.org/)"
+desc = "Nix is a purely functional package manager, and a powerful language for expressing reproducible environments and builds - [homepage](https://nixos.org/)"
 img = "nix"
 
 [[els]]
 name = "svg"
-desc = "I create animated Scalable Vector Graphics. [my codepen account](https://codepen.io/shephero)"
+desc = "I create animated Scalable Vector Graphics - [my codepen account](https://codepen.io/shephero)"
 img = "svg"
 
 [[els]]

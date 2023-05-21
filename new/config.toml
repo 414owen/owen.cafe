@@ -2,3 +2,6 @@ baseURL = 'https://owen.cafe/'
 languageCode = 'en'
 title = 'owen.cafe'
 theme = 'owen.cafe'
+
+[markup.goldmark.renderer]
+unsafe = true
