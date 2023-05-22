@@ -2,6 +2,7 @@ baseURL = 'https://owen.cafe/'
 languageCode = 'en'
 title = 'owen.cafe'
 theme = 'owen.cafe'
+relativeURLs = true
 
 [menu]
 [[menu.main]]
