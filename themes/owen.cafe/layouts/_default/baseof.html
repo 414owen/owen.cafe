@@ -15,8 +15,7 @@
   {{ end }}
 
   {{ $styles := resources.Get "css/main.css" | resources.ExecuteAsTemplate "style.main.css" . | 
-minify | 
-fingerprint }}
+minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}"/>
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}"/>{{ end }}
