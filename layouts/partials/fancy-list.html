@@ -1,8 +1,6 @@
 <ul class="fancy-list">
   {{ range . }}
-  {{ $url :=
-    cond (isset . "github") (printf "https://github.com/414owen/%s" .github)
-      .website }}
+  {{ $url := cond (isset . "github") (printf "https://github.com/414owen/%s" .github) .website }}
     <li>
       <div class="hsep"></div>
       {{ if isset . "img" }}
