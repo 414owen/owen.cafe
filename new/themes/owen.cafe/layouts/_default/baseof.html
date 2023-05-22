@@ -25,13 +25,30 @@ fingerprint }}
   {{- end }}
 </head>
 <body>
+  <input id="hb" autocomplete="off" type="checkbox" aria-hidden="true"/>
+  <label for="hb" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 10 10" stroke="none" stroke-width=".6" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+      <defs>
+        <animate fill="freeze" dur="0.3s" attributeName="d" begin="hamsta.begin" xlink:href="#hamx" values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7"/>
+        <animate fill="freeze" dur="0.3s" attributeName="d" begin="hamrev.begin" xlink:href="#hamx" values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7"/>
+        <animate dur="0.01s" attributeName="width" fill="freeze" begin="click" xlink:href="#hamover" id="hamsta" values="10;0"/>
+        <animate dur="0.01s" attributeName="width" begin="click" xlink:href="#hamunder" id="hamrev"/>
+        <animate dur="0.01s" attributeName="width" fill="freeze" begin="hamrev.begin" xlink:href="#hamover" values="0;10"/>
+      </defs>
+      <path id="hamx" d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" stroke="#eee"/>
+      <rect width="10" height="10" id="hamunder"/>
+      <rect width="10" height="10" id="hamover"/>
+    </svg>
+  </label>
   {{ partial "header" . }}
-  <main>
-    <div id="content">
-      {{ block "main" . }}{{ end }}
-    </div>
-  </main>
-  {{ partial "sidebar" . }}
+  <div id="page-split">
+    <main>
+      <div id="content">
+        {{ block "main" . }}{{ end }}
+      </div>
+    </main>
+    {{ partial "sidebar" . }}
+  </div>
   {{ partial "footer" . }}
 </body>
 </html>
