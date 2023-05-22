@@ -2,7 +2,6 @@
 title: "Graphics"
 date: 2023-05-21T19:38:47+02:00
 layout: "embeds"
-draft: true
 menu: ["main"]
 weight: 3
 ---

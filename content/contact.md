@@ -1,7 +1,6 @@
 ---
 title: "Contact"
 date: 2023-05-22T21:09:57+02:00
-draft: true
 layout: "blank"
 menu: ["main"]
 weight: 5

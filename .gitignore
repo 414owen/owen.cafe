@@ -1,4 +1,2 @@
-result
-.direnv.d
-.direnv
-.terraform.tfstate
+.hugo_build.lock
+public
