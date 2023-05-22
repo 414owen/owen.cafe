@@ -14,8 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' style='background:%23{{ $.Site.Data.style.colors.highlight }}'></svg>"/>
   {{ end }}
 
-  {{ $styles := resources.Get "css/main.css" | resources.ExecuteAsTemplate "style.main.css" . | 
-minify | fingerprint }}
+  {{ $styles := resources.Get "css/main.css" | resources.ExecuteAsTemplate "style.main.css" . |  minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}"/>
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}"/>{{ end }}
