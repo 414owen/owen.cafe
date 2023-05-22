@@ -8,8 +8,6 @@ theme = 'owen.cafe'
   name = 'Github'
   url = 'https://github.com/414owen/'
   weight = 4
-  [menu.main.params]
-    rel = 'external'
 
 [markup.goldmark.renderer]
 unsafe = true

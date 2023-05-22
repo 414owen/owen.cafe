@@ -2,14 +2,15 @@
 <nav id="sidebar">
 
   <ul>
-    {{- $page := .}}
-    {{- range .Site.Menus.main }}
+    {{ $page := .}}
+    {{ range .Site.Menus.main }}
+      {{ $isrel := hasPrefix .URL "https" }}
       <li {{ if $page.IsMenuCurrent .Menu . }} class="active" {{ end }}>
-        <a href="{{ .URL }}" {{ with .Params.rel }}{{ if (eq . "external") }}target="_blank" rel="noopener"{{ end }}{{ end }}>
+        <a href="{{ .URL }}" {{ if $isrel }}target="_blank" rel="noopener"{{ end }}>
           <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .Name | safeHTML }}</span>
         </a>
       </li>
-    {{- end }}
+    {{ end }}
   </ul>
 
 </nav>
