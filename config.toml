@@ -9,5 +9,10 @@ theme = 'owen.cafe'
   url = 'https://github.com/414owen/'
   weight = 4
 
+[[menu.main]]
+  name = 'CV'
+  url = '/cv.pdf'
+  weight = 6
+
 [markup.goldmark.renderer]
 unsafe = true
