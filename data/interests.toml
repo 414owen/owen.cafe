@@ -27,3 +27,8 @@ img = "lambda-anim"
 name = "C"
 desc = "C is the language to beat for speed, minimalism and universality - [my C projects](https://github.com/414owen?tab=repositories&q=&type=source&language=C)"
 img = "c"
+
+[[els]]
+name = "Rust"
+desc = "Rust is a strongly typed, fast, and safe systems language - [my rust projects](https://github.com/414owen?tab=repositories&q=&type=source&language=rust)"
+img = "rust-anim"
