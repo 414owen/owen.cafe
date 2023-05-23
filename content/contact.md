@@ -2,6 +2,7 @@
 title: "Contact"
 date: 2023-05-22T21:09:57+02:00
 layout: "blank"
+summary: "Owen's contact page"
 menu: ["main"]
 weight: 5
 ---

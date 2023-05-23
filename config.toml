@@ -16,3 +16,6 @@ theme = 'owen.cafe'
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[params]
+Description = "Owen's personal website and portfolio"
