@@ -6,7 +6,7 @@
   <ul class="items">
     {{ range . }}
       <li data-item="{{ .name | urlize }}">
-        <img src="/img/{{ .img }}-d.svg"/>
+        <img src="/img/{{ .img }}-d.svg" alt="logo for {{ .name }}"/>
         {{ .name }}
         <label for="showcase-none" aria-hidden="true"></label>
         <label for="{{ .name | urlize }}" aria-hidden="true"></label>

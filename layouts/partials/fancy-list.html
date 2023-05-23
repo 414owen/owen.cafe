@@ -12,7 +12,7 @@
         {{ end }}
           {{ $img := printf "/img/%s-d.svg" .img }}
           {{ if isset . "interactive" }}
-            <object type="image/svg+xml" data="{{ $img }}">{{.name}}</object>
+            <object type="image/svg+xml" data="{{ $img }}" aria-label="logo for {{.name}}">{{.name}}</object>
           {{ else }}
             <img src="/img/{{.img}}-d.svg" alt="{{.name}}"/>
           {{ end }}
