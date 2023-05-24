@@ -18,7 +18,6 @@
 
   {{ $styles := resources.Get "css/main.css" | resources.ExecuteAsTemplate "style.main.css" . |  minify |  fingerprint }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}"/>
-  {{ with .Site.Params.description }}<meta name="description" content="{{ . }}"/>{{ end }}
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}"/>{{ end }}
   {{ with .OutputFormats.Get "RSS" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
