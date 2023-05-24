@@ -1,7 +1,7 @@
 <div id="showcase">
-  <input type="radio" name="showcase" aria-hidden="true" checked="true" id="showcase-none"></input>
+  <input type="radio" name="showcase" aria-hidden="true" checked id="showcase-none"/>
   {{ range . }}
-    <input type="radio" name="showcase" aria-hidden="true" id="{{ .name | urlize }}"></input>
+    <input type="radio" name="showcase" aria-hidden="true" id="{{ .name | urlize }}"/>
   {{ end }}
   <ul class="items">
     {{ range . }}
