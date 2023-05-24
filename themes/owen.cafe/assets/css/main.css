@@ -179,7 +179,6 @@ main {
   width: fit-content;
   justify-content: flex-end;
   padding: 20px 30px;
-  opacity: 0.3;
   width: 110px;
   position: relative;
   transition: opacity 0.3s;
@@ -225,6 +224,14 @@ main {
   height: 150px;
 }
 
+#showcase > input:checked ~ .items > li {
+  opacity: 0.3;
+}
+
+#showcase > #showcase-none:checked ~ .items > li {
+  opacity: 1;
+}
+
 {{ range $.Site.Data.interests.els }}
 
 #showcase > input[id={{ .name | urlize }}]:checked ~ .items > [data-item={{ .name | urlize }}] {
@@ -240,10 +247,6 @@ main {
 }
 
 {{ end }}
-
-#showcase > #showcase-none:checked ~ .items > li {
-  opacity: 1;
-}
 
 .aspect {
   position: relative;
