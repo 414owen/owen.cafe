@@ -8,7 +8,8 @@
   <title>{{ .Title }}</title>
 
   {{/* Lambda */}}
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'><text x='50%' y='0.03' text-anchor='middle' fill='%23{{ $.Site.Data.style.colors.highlight }}' font-family='monospace' font-size='1.3' dominant-baseline='hanging'>λ</text></svg>"/>
+  {{ $favicon := resources.Get "favicon.svg" | resources.ExecuteAsTemplate "favicon.svg" . }}
+  <link rel="icon" href="{{ $favicon.RelPermalink }}"/>
 
   {{/* Square */}}
   {{ if false }}

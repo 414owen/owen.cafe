@@ -1,1 +1,1 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'><text x='50%' y='0.03' text-anchor='middle' fill='%234488ee' font-family='monospace' font-size='1.3' dominant-baseline='hanging'>λ</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"><text x="50%" y="0.03" text-anchor="middle" fill="#{{ $.Site.Data.style.colors.highlight }}" font-family="monospace" font-size="1.3" dominant-baseline="hanging">λ</text></svg>
