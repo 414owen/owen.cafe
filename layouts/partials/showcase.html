@@ -15,7 +15,7 @@
   </ul>
   {{ range . }}
     <div class="desc" data-item="{{ .name | urlize }}">
-      <img src="/img/{{ .img }}-d.svg"/>
+      <img src="/img/{{ .img }}-d.svg" alt="logo for {{ .name }}"/>
       <div class="text">
         {{ .desc | markdownify }}
       </div>
