@@ -17,5 +17,8 @@ theme = 'owen.cafe'
 [markup.goldmark.renderer]
 unsafe = true
 
+[markup.highlight]
+noClasses = false
+
 [params]
 Description = "Owen's personal website and portfolio"
