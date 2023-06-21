@@ -437,9 +437,9 @@ $ lscpu
     Thread(s) per core:  2
     Core(s) per socket:  6
     Socket(s):           1
-$ clang --version                                                                                                                      clang_16 gcc gdb linuxPackages.perf
+$ clang --version
 clang version 16.0.1
-$ gcc --version                                                                                                                        clang_16 gcc gdb linuxPackages.perf
+$ gcc --version
 gcc (GCC) 12.2.0
 ```
 
