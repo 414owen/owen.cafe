@@ -415,7 +415,7 @@ ret:    ret
 **Overall speedup:**: 6.33x 📈
 
 Well, that's slower than using `cmov`s. I guess there are no points for using
-less registers, or for using older 8-bit operations instead of 64-bit ones...
+less registers, or for using 8-bit operations instead of 32-bit ones...
 
 ## Other attempts
 
