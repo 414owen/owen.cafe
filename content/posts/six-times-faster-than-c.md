@@ -113,7 +113,7 @@ So, let's rearrange this loop a little.
 ```asm
 run_switches:
                   xor    eax, eax
-loop:   /-------> movsx  ecx, BYTE PTR [rdi]
+loop:   /-------> movsx  ecx, byte ptr [rdi]
         |         inc    rdi
         |         cmp    ecx, 'p'
         |  /----- je     p
@@ -165,10 +165,10 @@ BasicBlock™, for people in compiler land), at the top of the loop?
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-                  xor    eax,eax
+                  xor    eax, eax
         /-------- jmp    loop
 s:      |  /----> inc    eax
-loop:   >--|----> movsx  ecx, BYTE PTR [rdi]
+loop:   >--|----> movsx  ecx, byte ptr [rdi]
         |  |      inc    rdi
         |  |      cmp    ecx, 'p'
         |  |  /-- je     p
@@ -229,17 +229,17 @@ that to fall through into `s:`.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-                  xor    eax,eax
+                  xor    eax, eax
         /-------- jmp    loop
 p:      |     /-> sub    eax, 2
 s:      |  /--|-> inc    eax
-loop:   >--|--|-> movsx  ecx,BYTE PTR [rdi]
+loop:   >--|--|-> movsx  ecx, byte ptr [rdi]
         |  |  |   inc    rdi
         |  |  |   cmp    ecx, 'p'
         |  |  \-- je     p
         |  |      cmp    ecx, 's'
         |  \----- je     s
-        |         test   ecx,ecx
+        |         test   ecx, ecx
         \-------- jne    loop
                   ret
 ```
