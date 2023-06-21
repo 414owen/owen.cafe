@@ -55,7 +55,7 @@ loop:                             # while (true) {
       je      ret                 #     return
       add     rdi, 1              #   input++
       cmp     ecx, 'p'            #   if (c == 'p')
-      je      p                   #     goto L1
+      je      p                   #     goto p
       cmp     ecx, 's'            #   if (c == 's')
       jne     loop                #     continue
       add     eax, 1              #   res++
