@@ -52,14 +52,14 @@ loop:                             # while (true) {
       movsx   ecx, byte ptr [rdi] #   c = *input
       test    ecx, ecx            #   if (c == '\0')
       je      ret                 #     return
-      add     rdi, 0x1            #   input++
+      add     rdi, 1              #   input++
       cmp     ecx, 'p'            #   if (c == 'p')
       je      p                   #     goto L1
       cmp     ecx, 's'            #   if (c == 's')
       jne     loop                #     continue
-      add     eax, 0x1            #   res++
+      add     eax, 1              #   res++
       jmp     loop                #   continue
-p:    add     eax, -0x1           #   res--
+p:    add     eax, -1             #   res--
       jmp     loop                # }
 ret:  ret
 ```
@@ -70,19 +70,19 @@ ret:  ret
 # objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps just-switch-gcc.c.o
 
 run_switches:
-                xor    eax,eax
+                xor    eax, eax
 loop:
-      /-------> movsx  ecx,BYTE PTR [rdi]
-      |         test   ecx,ecx
+      /-------> movsx  ecx, byte ptr [rdi]
+      |         test   ecx, ecx
       |  /----- je     ret
-      |  |      add    rdi,0x1
-      |  |      cmp    ecx, 'p
+      |  |      add    rdi, 1
+      |  |      cmp    ecx, 'p'
       |  |  /-- je     p
-      |  |  |   cmp    ecx, 's
+      |  |  |   cmp    ecx, 's'
       +--|--|-- jne    loop
-      |  |  |   add    eax,0x1
+      |  |  |   add    eax, 1
       +--|--|-- jmp    loop
-p:    |  |  \-> add    eax,0xffffffff
+p:    |  |  \-> add    eax, -1
       \--|----- jmp    loop
 ret:     \----> ret
 ```
@@ -296,14 +296,14 @@ make the branch predictor fast? I don't know, so let's just not use it.
 
 run_switches:
                xor    eax, eax
-               mov    r8d, 0x1
+               mov    r8d, 1
                mov    edx, -1
 loop: 
         /----> movsx  ecx, byte ptr [rdi]
         |      test   ecx, ecx
         |  /-- je     ret
         |  |   inc    rdi
-        |  |   mov    esi, 0x0
+        |  |   mov    esi, 0
         |  |   cmp    ecx, 'p'
         |  |   cmove  esi, edx
         |  |   cmp    ecx, 's'
@@ -376,7 +376,7 @@ loop:
         |      test   ecx, ecx
         |  /-- je     ret
         |  |   inc    rdi
-        |  |   mov    esi, 0x0
+        |  |   mov    esi, 0
         |  |   cmp    ecx, 's'
         |  |   sete   sil
         |  |   cmp    ecx, 'p'
