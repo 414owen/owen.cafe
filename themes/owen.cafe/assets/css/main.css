@@ -1,14 +1,13 @@
 {{ with $.Site.Data.style }}
 
 html {
-  box-sizing: border-box;
   font-size: 13px;
   background: #111;
   font-family: monospace, sans-serif;
 }
 
 *, *:before, *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 body, h1, h2, h3, h4, h5, h6, p {
@@ -58,22 +57,19 @@ a {
 }
 
 #sidebar {
-  display: flex;
-  padding: {{ .padding }}{{ .padding_unit }};
+  min-width: fit-content;
+  overflow-y: scroll;
   font-size: 20px;
 }
 
 #sidebar ul {
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+  padding: {{ .padding }}{{ .padding_unit }};
   list-style: none;
 }
 
 #sidebar li {
-  display: inline-block;
+  display: block;
   white-space: nowrap;
 }
 
