@@ -438,6 +438,10 @@ $ lscpu
     Thread(s) per core:  2
     Core(s) per socket:  6
     Socket(s):           1
+$ clang --version                                                                                                                      clang_16 gcc gdb linuxPackages.perf
+clang version 16.0.1
+$ gcc --version                                                                                                                        clang_16 gcc gdb linuxPackages.perf
+gcc (GCC) 12.2.0
 ```
 
 The benchmark runs the function over a list of one million characters (random
