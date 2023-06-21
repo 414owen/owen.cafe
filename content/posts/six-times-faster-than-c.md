@@ -3,7 +3,7 @@ title: "Six times faster than C"
 date: 2023-06-19T21:51:17+02:00
 ---
 
-Sometimes humans can spot optimization opportunities that a compiler ~can't~
+Sometimes humans can spot optimization opportunities that a compiler ~~can't~~
 doesn't. In this post, we start with a loop generated from C code by clang, and
 tweak it in various ways, measuring the speedup.
 
