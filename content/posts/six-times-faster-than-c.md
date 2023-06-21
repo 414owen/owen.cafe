@@ -42,28 +42,26 @@ table or a search.
 This is what clang spat out (padding noops removed, and annotated manually):
 
 {{< tabs groupId="asmc" >}}
-{{% tab name="labels & pseudocode" %}}
+{{% tab name="pseudocode" %}}
 ```asm
 # llvm-objdump -d  --symbolize-operands --no-addresses --x86-asm-syntax=intel --no-show-raw-insn
 
 run_switches:
-    xor     eax, eax            # res = 0
-L2:                             # while (true) {
-    movsx   ecx, byte ptr [rdi] #   c = *input
-    test    ecx, ecx            #   if (c == '\0')
-    je      L0                  #     return
-    add     rdi, 0x1            #   input++
-    cmp     ecx, 'p'            #   if (c == 'p')
-    je      L1                  #     goto L1
-    cmp     ecx, 's'            #   if (c == 's')
-    jne     L2                  #     continue
-    add     eax, 0x1            #   res++
-    jmp     L2                  #   continue
-L1:
-    add     eax, -0x1           #   res--
-    jmp     L2                  # }
-L0:
-    ret
+      xor     eax, eax            # res = 0
+loop:                             # while (true) {
+      movsx   ecx, byte ptr [rdi] #   c = *input
+      test    ecx, ecx            #   if (c == '\0')
+      je      ret                 #     return
+      add     rdi, 0x1            #   input++
+      cmp     ecx, 'p'            #   if (c == 'p')
+      je      p                   #     goto L1
+      cmp     ecx, 's'            #   if (c == 's')
+      jne     loop                #     continue
+      add     eax, 0x1            #   res++
+      jmp     loop                #   continue
+p:    add     eax, -0x1           #   res--
+      jmp     loop                # }
+ret:  ret
 ```
 {{% /tab %}}
 
@@ -72,20 +70,21 @@ L0:
 # objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps just-switch-gcc.c.o
 
 run_switches:
-          xor    eax,eax
-/-------> movsx  ecx,BYTE PTR [rdi]
-|         test   ecx,ecx
-|  /----- je     <run_switches+0x2f>
-|  |      add    rdi,0x1
-|  |      cmp    ecx, 'p
-|  |  /-- je     <run_switches+0x2a>
-|  |  |   cmp    ecx, 's
-+--|--|-- jne    <run_switches+0x10>
-|  |  |   add    eax,0x1
-+--|--|-- jmp    <run_switches+0x10>
-|  |  \-> add    eax,0xffffffff
-\--|----- jmp    <run_switches+0x10>
-   \----> ret
+                xor    eax,eax
+loop:
+      /-------> movsx  ecx,BYTE PTR [rdi]
+      |         test   ecx,ecx
+      |  /----- je     ret
+      |  |      add    rdi,0x1
+      |  |      cmp    ecx, 'p
+      |  |  /-- je     p
+      |  |  |   cmp    ecx, 's
+      +--|--|-- jne    loop
+      |  |  |   add    eax,0x1
+      +--|--|-- jmp    loop
+p:    |  |  \-> add    eax,0xffffffff
+      \--|----- jmp    loop
+ret:     \----> ret
 ```
 {{% /tab %}}
 {{< /tabs >}}
