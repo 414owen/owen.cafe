@@ -20,7 +20,29 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-html, a {
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.3rem;
+}
+
+time {
+  width: 100%;
+  display: block;
+  text-align: right;
+}
+
+h1 {
+  margin-bottom: {{ div .padding 2 }}{{ .padding_unit }};
+}
+
+h2 {
+  margin: {{ div .padding 2 }}{{ .padding_unit }} 0;
+}
+
+html, a, button {
   color: #eee;
 }
 
@@ -339,6 +361,65 @@ main {
   #hb:checked ~ #page-split > main {
     display: none;
   }
+}
+
+pre, .tabs {
+  margin: {{ div .padding 2 }}{{ .padding_unit }} 0;
+}
+
+p {
+  margin-top: 8px;
+}
+
+.tab-content > * {
+  display: none;
+}
+
+code {
+  background: #191724;
+  color: #eb6f92;
+}
+
+.tab-nav > label, button {
+  background: #191724;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.tab-nav > label:hover, button:hover {
+  background: #2c283f;
+}
+
+{{ range $num := (seq 5) }}
+  .tabs > input:nth-child({{ $num }}):checked ~ .tab-content > :nth-child({{ $num }}) {
+    display: block;
+  }
+  .tabs > input:nth-child({{ $num }}):checked ~ .tab-nav > :nth-child({{ $num }}) {
+    background: #35314d;
+  }
+{{ end }}
+
+.tab-nav {
+  display: flex;
+}
+
+.tab-nav > label {
+  margin-left: 6px;
+  border-radius: 4px 4px 0 0;
+}
+
+.tab-nav > label:first-child {
+  margin-left: 0;
+}
+
+.tab-content > .highlight > pre {
+  margin: 0;
+}
+
+pre {
+  padding: 10px;
+  overflow: scroll;
 }
 
 {{ end }}

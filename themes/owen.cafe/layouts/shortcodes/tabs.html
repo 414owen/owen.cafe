@@ -1,0 +1,13 @@
+{{ with .Inner }}{{/* don't do anything, just call it */}}{{ end }}
+{{ $groupId := .Get "groupId" }}
+<div class="tabs">
+    {{ range $idx, $tab := .Scratch.Get "tabs" }}<input id="tab-{{ $groupId }}-{{ $idx }}" name="{{ $groupId }}" type="radio" hidden{{ if (eq $idx 0) }} checked{{ end }}>{{ end }}
+    <div class="tab-nav">
+    {{ range $idx, $tab := .Scratch.Get "tabs" }}<label for="tab-{{ $groupId }}-{{ $idx }}">{{ .name }}</label>{{ end }}
+    </div>
+    <div class="tab-content">
+        {{ range $idx, $tab := .Scratch.Get "tabs" }}
+        {{ .content }}
+        {{ end }}
+    </div>
+</div>
