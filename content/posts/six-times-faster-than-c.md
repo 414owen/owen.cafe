@@ -313,7 +313,7 @@ loop:
 ret:       \-> ret
 ```
 {{% /tab %}}
-{{% tab name="with pseudocode" %}}
+{{% tab name="pseudocode" %}}
 ```asm
 # rdi: char *input
 # eax: ouput
@@ -386,7 +386,7 @@ loop:
 ret:       \-> ret
 ```
 {{% /tab %}}
-{{% tab name="with pseudocode" %}}
+{{% tab name="pseudocode" %}}
 ```asm
 run_switches:
         xor   eax, eax             # res = 0
