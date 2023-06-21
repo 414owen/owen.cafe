@@ -355,9 +355,9 @@ The rules are: by default use zero, if we're on an 's', use 1, and if we're on a
 
 Right, nice flex, but... Is it fast?
 
-**Runtime:** 0.49s 🐆
+**Runtime:** 0.48s 🐆
 
-**Overall speedup:**: 6.59x 📈
+**Overall speedup:**: 6.73x 📈
 
 Yes it's pretty damn fast.
 
@@ -415,5 +415,33 @@ ret:    ret
 
 **Overall speedup:**: 6.33x 📈
 
-Well, that's slower than using CMOVs. I guess there are no points for using
+Well, that's slower than using `cmov`s. I guess there are no points for using
 less registers, or for using older 8-bit operations instead of 64-bit ones...
+
+## Other attempts
+
+I tried unrolling the loop of our best version. This slowed down the code.
+
+I tried aligning the start of the loop to a 16-byte boundary (pro tip, you
+can add `.align <bytes>` before a label, and GNU assembler will insert `nop`
+instructions for you). This also slowed down the code.
+
+## Benchmarking setup
+
+```sh
+$ uname -sr
+Linux 6.1.33
+$ lscpu
+...
+  Model name:            AMD Ryzen 5 5625U with Radeon Graphics
+    CPU family:          25
+    Thread(s) per core:  2
+    Core(s) per socket:  6
+    Socket(s):           1
+```
+
+The benchmark runs the function over a list of one million characters (random
+'p's and 's's) one thousand times.
+
+For each version, the benchmark was run several times, and the best result
+chosen.
