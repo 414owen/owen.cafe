@@ -3,13 +3,14 @@ title: "Six times faster than C"
 date: 2023-06-19T21:51:17+02:00
 ---
 
-This blog post started as a post about lexers. This involved quite a few
-switch statements on characters, and eventually I disassembled a tiny
-program to see what was going on.
+Sometimes humans can spot optimization opportunities that a compiler ~can't~
+doesn't. In this post, we start with a loop generated from C code by clang, and
+tweak it in various ways, measuring the speedup.
 
 ## The Function
 
-The program looks like this:
+We'll start with a function that loops through a string, and increments or
+decrements a number, depending on the characters it sees.
 
 ```c
 int run_switches(char *input) {
@@ -35,9 +36,9 @@ int run_switches(char *input) {
 It increments on seeing an 's' (for successor) and decrements on seeing a
 'p' (for predecessor).
 
-It's a small enough function that gcc and/or clang should be able to optimize
-it pretty well. Maybe optimally? I wrote this to see whether gcc produced a jump
-table or a search.
+It's a small enough function that gcc and/or clang should be able to optimize it
+pretty well. Maybe optimally? I initially wrote this to see whether gcc produced
+a jump table or a search.
 
 This is what clang spat out (padding noops removed, and annotated manually):
 
@@ -442,6 +443,9 @@ clang version 16.0.1
 $ gcc --version
 gcc (GCC) 12.2.0
 ```
+
+The C versions were compiled with `-march=native`, so that the C compiler knew
+to produce code that was fast on **my specific** CPU, not some generic x86_64.
 
 The benchmark runs the function over a list of one million characters (random
 'p's and 's's) one thousand times.
