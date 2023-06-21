@@ -96,7 +96,7 @@ GCC spat out a little more code, that ran a little faster (not much).
 
 This code is pretty straightforward, it has three conditional branch
 instructions (je, je, jne), leading to four possible blocks, '\0', 's', 'p', and
-a block for every other character.
+a block for any other character.
 
 ## Rearranging branches
 
@@ -208,7 +208,7 @@ sweet.
 
 You'll notice that we now have to jump into the loop from the function start,
 to avoid running the 's' block. This is a pretty good tradeoff though, jumping
-intot the loop from the function start happens once, whereas we encounter many
+into the loop from the function start happens once, whereas we encounter many
 's' characters.
 
 But is it fast?
