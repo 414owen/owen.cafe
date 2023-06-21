@@ -346,8 +346,8 @@ ret:    ret
 Wow that removed a lot of arrows from the control flow graph...
 
 Instead of branching/jumping conditionally, we're using a different value
-for the arithmetic depending on the current character, using CMOV, or...
-✨✨**conditional move**✨✨.
+for the addition depending on the current character, using `cmove`, or...
+✨✨**conditional move on equality**✨✨.
 
 The rules are: by default use zero, if we're on an 's', use 1, and if we're on a
 'p', use -1. Then **always** add.
