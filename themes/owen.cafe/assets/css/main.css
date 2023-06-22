@@ -85,7 +85,7 @@ a {
 }
 
 #sidebar li:not(:first-child) {
-  padding-top: {{ .padding }}{{ .padding_unit }};
+  padding-top: {{ mul (div .padding 4) 3 }}{{ .padding_unit }};
 }
 
 main {
