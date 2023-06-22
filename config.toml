@@ -6,7 +6,7 @@ theme = 'owen.cafe'
 [menu]
 [[menu.main]]
   name = 'Posts'
-  url = '/posts'
+  pageref = '/posts'
   weight = 2
 
 [[menu.main]]
