@@ -9,10 +9,10 @@ theme = 'owen.cafe'
   pageref = '/posts'
   weight = 2
 
-[[menu.main]]
-  name = 'RSS'
-  url = '/index.xml'
-  weight = 3
+# [[menu.main]]
+#   name = 'RSS'
+#   url = '/index.xml'
+#   weight = 3
 
 [[menu.main]]
   name = 'Github'
