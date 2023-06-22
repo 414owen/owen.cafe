@@ -1,11 +1,13 @@
 ---
-title: "Six times faster than C"
+title: "Six times faster than C (part one)"
 date: 2023-06-19T21:51:17+02:00
 ---
 
 Sometimes humans can spot optimization opportunities that a compiler ~~can't~~
 doesn't. In this post, we start with a loop generated from C code by clang, and
 tweak it in various ways, measuring the speedup.
+
+Code listings for this post can be found on [GitHub](https://github.com/414owen/blog-code/tree/master/01-six-times-faster-than-c).
 
 ## The Function
 
