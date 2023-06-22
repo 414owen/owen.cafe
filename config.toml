@@ -10,14 +10,19 @@ theme = 'owen.cafe'
   weight = 2
 
 [[menu.main]]
+  name = 'RSS'
+  url = '/index.xml'
+  weight = 3
+
+[[menu.main]]
   name = 'Github'
   url = 'https://github.com/414owen/'
-  weight = 5
+  weight = 6
 
 [[menu.main]]
   name = 'CV'
   url = '/cv.pdf'
-  weight = 7
+  weight = 8
 
 [markup.goldmark.renderer]
 unsafe = true

@@ -3,7 +3,7 @@
   <ul>
     {{ $page := .}}
     {{ range .Site.Menus.main }}
-      {{ $isrel := hasPrefix .URL "https" }}
+      {{ $isrel := or (hasPrefix .URL "https") (strings.Contains .URL ".") }}
       <li{{ if $page.IsMenuCurrent .Menu . }} class="active" {{ end }}>
         <a href="{{ .URL }}" {{ if $isrel }}target="_blank" rel="noopener"{{ end }}>
           <span class="nav-arrow">&#8594;&#160;&#160;</span><span class="name">{{ .Name | safeHTML }}</span>
