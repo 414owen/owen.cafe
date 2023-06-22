@@ -33,12 +33,11 @@ time {
   text-align: right;
 }
 
-h1 {
-  margin-bottom: {{ div .padding 2 }}{{ .padding_unit }};
-}
-
+h1 + *,
+h2 + :not(time),
+h2 + time + *,
 h2 {
-  margin: {{ div .padding 2 }}{{ .padding_unit }} 0;
+  margin-top: {{ div .padding 2 }}{{ .padding_unit }};
 }
 
 html, a, button {
