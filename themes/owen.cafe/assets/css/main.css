@@ -58,7 +58,7 @@ a {
 #sidebar {
   min-width: fit-content;
   overflow-y: scroll;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 #sidebar ul {
