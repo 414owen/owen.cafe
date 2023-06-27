@@ -57,7 +57,7 @@ a {
 
 #sidebar {
   min-width: fit-content;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-size: 22px;
 }
 
@@ -414,7 +414,7 @@ code {
 
 pre {
   padding: 10px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 {{ end }}
