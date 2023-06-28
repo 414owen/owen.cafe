@@ -7,6 +7,8 @@ Sometimes humans can spot optimization opportunities that a compiler ~~can't~~
 doesn't. In this post, we start with a loop generated from C code by clang, and
 tweak it in various ways, measuring the speedup.
 
+<!--more-->
+
 Code listings for this post can be found on [GitHub](https://github.com/414owen/blog-code/tree/master/01-six-times-faster-than-c).
 
 ## The Function
