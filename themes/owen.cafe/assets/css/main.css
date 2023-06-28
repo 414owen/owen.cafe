@@ -27,15 +27,10 @@ h2 {
   font-size: 2.3rem;
 }
 
-time {
-  width: 100%;
-  display: block;
-  text-align: right;
-}
-
-h1 + *,
-h2 + :not(time),
-h2 + time + *,
+h1 + .time-tags,
+h1 + .time-tags + *,
+h2 + .time-tags,
+h2 + .time-tags + *,
 h2 {
   margin-top: {{ div .padding 2 }}{{ .padding_unit }};
 }
@@ -341,7 +336,6 @@ main {
     animation-duration: 0.3s;
     position: absolute;
     top: 0;
-    background: #111;
     width: 100%;
   }
 
@@ -371,27 +365,28 @@ p {
 }
 
 code {
-  background: #191724;
-  color: #eb6f92;
+  background: {{ .purple_bg }};
+  color: {{ .red_fg }};
 }
 
 .tab-nav > label, button {
-  background: #191724;
+  background: {{ .purple_bg }};
   border: none;
   padding: 10px;
   cursor: pointer;
 }
 
 .tab-nav > label:hover, button:hover {
-  background: #2c283f;
+  background: {{ .purple_bg_bright }};
 }
 
+{{ $purple_bg_active := .purple_bg_active }}
 {{ range $num := (seq 5) }}
   .tabs > input:nth-child({{ $num }}):checked ~ .tab-content > :nth-child({{ $num }}) {
     display: block;
   }
   .tabs > input:nth-child({{ $num }}):checked ~ .tab-nav > :nth-child({{ $num }}) {
-    background: #35314d;
+    background: {{ $purple_bg_active }};
   }
 {{ end }}
 
@@ -415,6 +410,22 @@ code {
 pre {
   padding: 10px;
   overflow: auto;
+}
+
+h2 + time + .tags {
+  margin-top: 1em;
+}
+
+.time-tags {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tags > a {
+  background: {{ .purple_bg_hover }};
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 {{ end }}

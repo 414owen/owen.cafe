@@ -1,4 +1,8 @@
 {
   "padding": 50,
-  "padding_unit": "px"
+  "padding_unit": "px",
+  "purple_bg": "#191724",
+  "purple_bg_hover": "#2c283f",
+  "purple_bg_active": "#35314d",
+  "red_fg": "#eb6f92"
 }

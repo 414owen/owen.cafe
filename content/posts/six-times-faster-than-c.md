@@ -1,6 +1,11 @@
 ---
 title: "Six times faster than C (part one)"
 date: 2023-06-19T21:51:17+02:00
+tags:
+- C
+- performance
+- x86
+- assembly
 ---
 
 Sometimes humans can spot optimization opportunities that a compiler ~~can't~~

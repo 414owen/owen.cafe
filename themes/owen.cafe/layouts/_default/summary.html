@@ -1,9 +1,6 @@
 <article>
   <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  <time datetime="{{ .Date.Format "2006-01-02T15:04:05" }}">{{ .Date.Format "02.01.2006 15:04" }}</time>
-  {{ range .Params.tags }}
-  <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
-  {{ end }}
+  {{ partial "time-and-tags" . }}
   <div>
     {{ .Summary }}
     {{ if .Truncated }}
