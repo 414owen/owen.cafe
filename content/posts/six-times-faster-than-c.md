@@ -382,18 +382,18 @@ run_switches:
                xor    eax, eax
                mov    edx, -1
 loop:
-        /----> movsx  ecx, byte ptr [rdi]
-        |      test   ecx, ecx
-        |  /-- je     ret
-        |  |   inc    rdi
-        |  |   mov    esi, 0
-        |  |   cmp    ecx, 's'
-        |  |   sete   sil
-        |  |   cmp    ecx, 'p'
-        |  |   cmove  esi, edx
-        |  |   add    eax, esi
-        \--|-- jmp    loop
-ret:       \-> ret
+         ╭───> movsx  ecx, byte ptr [rdi]
+         │     test   ecx, ecx
+         │ ╭── je     ret
+         │ │   inc    rdi
+         │ │   mov    esi, 0
+         │ │   cmp    ecx, 's'
+         │ │   sete   sil
+         │ │   cmp    ecx, 'p'
+         │ │   cmove  esi, edx
+         │ │   add    eax, esi
+         ╰─│── jmp    loop
+ret:       ╰─> ret
 ```
 {{% /tab %}}
 {{% tab name="pseudocode" %}}
