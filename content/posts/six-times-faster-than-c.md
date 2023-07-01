@@ -54,7 +54,7 @@ This is what clang spat out (padding noops removed, and annotated manually):
 {{< tabs groupId="asmc" >}}
 {{% tab name="pseudocode" %}}
 ```asm
-# llvm-objdump -d  --symbolize-operands --no-addresses --x86-asm-syntax=intel --no-show-raw-insn
+# llvm-objdump -d  --symbolize-operands --no-addresses --x86-asm-syntax=intel --no-show-raw-insn loop-1-clang.c.o
 
 run_switches:
       xor     eax, eax            # res = 0
@@ -77,7 +77,7 @@ ret:  ret
 
 {{% tab name="arrows" %}}
 ```asm
-# objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps just-switch-gcc.c.o
+# objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps loop-1-clang.c.o
 
 run_switches:
               xor    eax, eax
