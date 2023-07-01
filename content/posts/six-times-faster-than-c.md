@@ -101,6 +101,8 @@ ret:    ╰──➤ ret
 
 **Runtime:** 3.23s 🐌
 
+**Bitrate**: 295.26MiB/s
+
 GCC spat out a little more code, that ran a little faster (not much).
 
 This code is pretty straightforward, it has three conditional branch
@@ -165,6 +167,8 @@ Great, now we branch earlier on seeing a 'p' or an 's', than on the rare '\0'.
 
 **Speedup:**: 1.04x 📈
 
+**Bitrate**: 307.64MiB/s
+
 ## Rearranging blocks
 
 So both of our common cases ('p' and 's') jump back to the top of the loop,
@@ -226,6 +230,8 @@ But is it fast?
 
 **Overall speedup:**: 1.08x 📈
 
+**Bitrate**: 320.02MiB/s
+
 ## Replacing jumps with arithmetic
 
 Conditional jumps [are bad](https://en.wikipedia.org/wiki/Branch_predictor), but
@@ -280,6 +286,8 @@ us. Is it faster though?
 **Runtime:** 2.87s 🦌
 
 **Overall speedup:**: 1.12x 📈
+
+**Bitrate**: 332.29MiB/s
 
 Fun fact, we've been comparing our performance to clang 16's output this whole
 time, but GCC 12 actually produced faster (but more) code. GCC's code runs in
@@ -368,6 +376,8 @@ Right, nice flex, but... Is it fast?
 
 **Overall speedup:**: 6.73x 📈
 
+**Bitrate**: 1.94GiB/s
+
 Yes it's pretty damn fast.
 
 ## Freeing up a register
@@ -423,6 +433,8 @@ ret:    ret
 **Runtime:** 0.51s 🦁
 
 **Overall speedup:**: 6.33x 📈
+
+**Bitrate**: 1.83GiB/s
 
 Well, that's slower than using `cmov`s. I guess there are no points for using
 less registers, or for using 8-bit operations instead of 32-bit ones...
