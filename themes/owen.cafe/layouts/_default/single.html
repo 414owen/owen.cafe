@@ -3,7 +3,7 @@
     <h1>{{ .Title }}</h1>
     {{ partial "time-and-tags" . }}
     <div>
-      {{ .Content | replaceRE "(<h[1-6] id=\"(.+)\".*>)(.*)(</h([1-6])>)" `<a class="h${5}-anchor" href="#${2}">${1}#&nbsp;${3}${4}</a>` | safeHTML }}
+      {{ .Content | replaceRE "(<h[1-6] id=\"(.+)\".*>)(.*)(</h([1-6])>)" `${1}<a class="h${5}-anchor" href="#${2}"><span class="anchor">#&nbsp;</span>${3}</a>${4}` | safeHTML }}
     </div>
     {{ with .Site.DisqusShortname }}
     <div>
