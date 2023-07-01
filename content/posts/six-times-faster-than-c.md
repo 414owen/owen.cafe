@@ -80,7 +80,7 @@ ret:  ret
 # objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps just-switch-gcc.c.o
 
 run_switches:
-             xor    eax, eax
+              xor    eax, eax
 loop:
       ╭────➤ movsx  ecx, byte ptr [rdi]
       │      test   ecx, ecx
@@ -124,20 +124,20 @@ So, let's rearrange this loop a little.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-              xor    eax, eax
-loop:  ╭────➤ movsx  ecx, byte ptr [rdi]
-       │      inc    rdi
-       │      cmp    ecx, 'p'
-       │ ╭─── je     p
-       │ │    cmp    ecx, 's'
-       │ │ ╭─ je     s
-       │ │ │  test   ecx, ecx
-       ├─│─│─ jne    loop
-       │ │ │  ret
-p:     │ ╰─│➤ dec    eax
-       ├───│─ jmp    loop
-s:     │   ╰➤ inc    eax
-       ╰───── jmp    loop
+               xor    eax, eax
+loop:  ╭─────➤ movsx  ecx, byte ptr [rdi]
+       │       inc    rdi
+       │       cmp    ecx, 'p'
+       │ ╭──── je     p
+       │ │     cmp    ecx, 's'
+       │ │ ╭── je     s
+       │ │ │   test   ecx, ecx
+       ├─│─│── jne    loop
+       │ │ │   ret
+p:     │ ╰─│─➤ dec    eax
+       ├───│── jmp    loop
+s:     │   ╰─➤ inc    eax
+       ╰────── jmp    loop
 ```
 {{% /tab %}}
 {{% tab name="raw" %}}
@@ -245,19 +245,19 @@ that to fall through into `s:`.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-              xor    eax, eax
-       ╭───── jmp    loop
-p:     │   ╭➤ sub    eax, 2
-s:     │ ╭─│➤ inc    eax
-loop:  ├─│─│➤ movsx  ecx, byte ptr [rdi]
-       │ │ │  inc    rdi
-       │ │ │  cmp    ecx, 'p'
-       │ │ ╰─ je     p
-       │ │    cmp    ecx, 's'
-       │ ╰─── je     s
-       │      test   ecx, ecx
-       ╰───── jne    loop
-              ret
+               xor    eax, eax
+       ╭────── jmp    loop
+p:     │   ╭─➤ sub    eax, 2
+s:     │ ╭─│─➤ inc    eax
+loop:  ├─│─│─➤ movsx  ecx, byte ptr [rdi]
+       │ │ │   inc    rdi
+       │ │ │   cmp    ecx, 'p'
+       │ │ ╰── je     p
+       │ │     cmp    ecx, 's'
+       │ ╰──── je     s
+       │       test   ecx, ecx
+       ╰────── jne    loop
+               ret
 ```
 {{% /tab %}}
 {{% tab name="raw" %}}
