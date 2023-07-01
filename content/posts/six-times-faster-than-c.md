@@ -80,21 +80,21 @@ ret:  ret
 # objdump -Mintel -d --no-addresses --no-show-raw-insn --visualize-jumps just-switch-gcc.c.o
 
 run_switches:
-                xor    eax, eax
+             xor    eax, eax
 loop:
-      /-------> movsx  ecx, byte ptr [rdi]
-      |         test   ecx, ecx
-      |  /----- je     ret
-      |  |      add    rdi, 1
-      |  |      cmp    ecx, 'p'
-      |  |  /-- je     p
-      |  |  |   cmp    ecx, 's'
-      +--|--|-- jne    loop
-      |  |  |   add    eax, 1
-      +--|--|-- jmp    loop
-p:    |  |  \-> add    eax, -1
-      \--|----- jmp    loop
-ret:     \----> ret
+      ╭────➤ movsx  ecx, byte ptr [rdi]
+      │      test   ecx, ecx
+      │ ╭─── je     ret
+      │ │    add    rdi, 1
+      │ │    cmp    ecx, 'p'
+      │ │ ╭─ je     p
+      │ │ │  cmp    ecx, 's'
+      ├─│─│─ jne    loop
+      │ │ │  add    eax, 1
+      ├─│─│─ jmp    loop
+p:    │ │ ╰➤ add    eax, -1
+      ╰─│─── jmp    loop
+ret:    ╰──➤ ret
 ```
 {{% /tab %}}
 {{< /tabs >}}
@@ -122,20 +122,20 @@ So, let's rearrange this loop a little.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-                  xor    eax, eax
-loop:   /-------> movsx  ecx, byte ptr [rdi]
-        |         inc    rdi
-        |         cmp    ecx, 'p'
-        |  /----- je     p
-        |  |      cmp    ecx, 's'
-        |  |  /-- je     s
-        |  |  |   test   ecx, ecx
-        +--|--|-- jne    loop
-        |  |  |   ret
-p:      |  \--|-> dec    eax
-        +-----|-- jmp    loop
-s:      |     \-> inc    eax
-        \-------- jmp    loop
+              xor    eax, eax
+loop:  ╭────➤ movsx  ecx, byte ptr [rdi]
+       │      inc    rdi
+       │      cmp    ecx, 'p'
+       │ ╭─── je     p
+       │ │    cmp    ecx, 's'
+       │ │ ╭─ je     s
+       │ │ │  test   ecx, ecx
+       ├─│─│─ jne    loop
+       │ │ │  ret
+p:     │ ╰─│➤ dec    eax
+       ├───│─ jmp    loop
+s:     │   ╰➤ inc    eax
+       ╰───── jmp    loop
 ```
 {{% /tab %}}
 {{% tab name="raw" %}}
@@ -175,20 +175,20 @@ BasicBlock™, for people in compiler land), at the top of the loop?
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-                  xor    eax, eax
-        /-------- jmp    loop
-s:      |  /----> inc    eax
-loop:   >--|----> movsx  ecx, byte ptr [rdi]
-        |  |      inc    rdi
-        |  |      cmp    ecx, 'p'
-        |  |  /-- je     p
-        |  |  |   cmp    ecx, 's'
-        |  \--|-- je     s
-        |     |   test   ecx, ecx
-        +-----|-- jne    loop
-        |     |   ret
-p:      |     \-> dec    eax
-        \-------- jmp    loop
+              xor    eax, eax
+       ╭───── jmp    loop
+s:     │ ╭──➤ inc    eax
+loop:  ├─│──➤ movsx  ecx, byte ptr [rdi]
+       │ │    inc    rdi
+       │ │    cmp    ecx, 'p'
+       │ │ ╭─ je     p
+       │ │ │  cmp    ecx, 's'
+       │ ╰─│─ je     s
+       │   │  test   ecx, ecx
+       ├───│─ jne    loop
+       │   │  ret
+p:     │   ╰➤ dec    eax
+       ╰───── jmp    loop
 ```
 {{% /tab %}}
 {{% tab name="raw" %}}
@@ -239,19 +239,19 @@ that to fall through into `s:`.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-                  xor    eax, eax
-        /-------- jmp    loop
-p:      |     /-> sub    eax, 2
-s:      |  /--|-> inc    eax
-loop:   >--|--|-> movsx  ecx, byte ptr [rdi]
-        |  |  |   inc    rdi
-        |  |  |   cmp    ecx, 'p'
-        |  |  \-- je     p
-        |  |      cmp    ecx, 's'
-        |  \----- je     s
-        |         test   ecx, ecx
-        \-------- jne    loop
-                  ret
+              xor    eax, eax
+       ╭───── jmp    loop
+p:     │   ╭➤ sub    eax, 2
+s:     │ ╭─│➤ inc    eax
+loop:  ├─│─│➤ movsx  ecx, byte ptr [rdi]
+       │ │ │  inc    rdi
+       │ │ │  cmp    ecx, 'p'
+       │ │ ╰─ je     p
+       │ │    cmp    ecx, 's'
+       │ ╰─── je     s
+       │      test   ecx, ecx
+       ╰───── jne    loop
+              ret
 ```
 {{% /tab %}}
 {{% tab name="raw" %}}
@@ -305,22 +305,22 @@ make the branch predictor fast? I don't know, so let's just not use it.
 # esi: n
 
 run_switches:
-               xor    eax, eax
-               mov    r8d, 1
-               mov    edx, -1
+            xor    eax, eax
+            mov    r8d, 1
+            mov    edx, -1
 loop: 
-        /----> movsx  ecx, byte ptr [rdi]
-        |      test   ecx, ecx
-        |  /-- je     ret
-        |  |   inc    rdi
-        |  |   mov    esi, 0
-        |  |   cmp    ecx, 'p'
-        |  |   cmove  esi, edx
-        |  |   cmp    ecx, 's'
-        |  |   cmove  esi, r8d
-        |  |   add    eax, esi
-        \--|-- jmp    loop
-ret:       \-> ret
+       ╭──➤ movsx  ecx, byte ptr [rdi]
+       │    test   ecx, ecx
+       │ ╭─ je     ret
+       │ │  inc    rdi
+       │ │  mov    esi, 0
+       │ │  cmp    ecx, 'p'
+       │ │  cmove  esi, edx
+       │ │  cmp    ecx, 's'
+       │ │  cmove  esi, r8d
+       │ │  add    eax, esi
+       ╰─│─ jmp    loop
+ret:     ╰➤ ret
 ```
 {{% /tab %}}
 {{% tab name="pseudocode" %}}
@@ -379,21 +379,21 @@ It's called `sete`. Let's use that, and remove our use of r8d.
 {{% tab name="arrows" %}}
 ```asm
 run_switches:
-               xor    eax, eax
-               mov    edx, -1
+             xor    eax, eax
+             mov    edx, -1
 loop:
-         ╭───> movsx  ecx, byte ptr [rdi]
-         │     test   ecx, ecx
-         │ ╭── je     ret
-         │ │   inc    rdi
-         │ │   mov    esi, 0
-         │ │   cmp    ecx, 's'
-         │ │   sete   sil
-         │ │   cmp    ecx, 'p'
-         │ │   cmove  esi, edx
-         │ │   add    eax, esi
-         ╰─│── jmp    loop
-ret:       ╰─> ret
+        ╭──➤ movsx  ecx, byte ptr [rdi]
+        │    test   ecx, ecx
+        │ ╭─ je     ret
+        │ │  inc    rdi
+        │ │  mov    esi, 0
+        │ │  cmp    ecx, 's'
+        │ │  sete   sil
+        │ │  cmp    ecx, 'p'
+        │ │  cmove  esi, edx
+        │ │  add    eax, esi
+        ╰─│─ jmp    loop
+ret:      ╰➤ ret
 ```
 {{% /tab %}}
 {{% tab name="pseudocode" %}}
