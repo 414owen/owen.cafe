@@ -14,6 +14,10 @@ tweak it in various ways, measuring the speedup.
 
 <!--more-->
 
+**Disclaimer**: *I'm not an optimization expert, by any means, in fact my
+expertise is in high-level, purely-functional languages, where one
+doesn't usually think about **how** a program is executed.*
+
 Code listings for this post can be found on [GitHub](https://github.com/414owen/blog-code/tree/master/01-six-times-faster-than-c).
 
 ## The Function
@@ -54,7 +58,7 @@ This is what clang spat out (padding noops removed, and annotated manually):
 {{< tabs groupId="asmc" >}}
 {{% tab name="pseudocode" %}}
 ```asm
-# llvm-objdump -d  --symbolize-operands --no-addresses --x86-asm-syntax=intel --no-show-raw-insn loop-1-clang.c.o
+# llvm-objdump -d --symbolize-operands --no-addresses --x86-asm-syntax=intel --no-show-raw-insn loop-1-clang.c.o
 
 run_switches:
       xor     eax, eax            # res = 0
