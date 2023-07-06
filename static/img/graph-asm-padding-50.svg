@@ -1,1 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 480"><defs><path id="a" fill="none" stroke="#eee" d="M52.89 18.01v419.24h521.93"/></defs><g fill="none"><path stroke="#eee" d="M157.28 437.25V444m104.38-6.75V444m104.39-6.75V444m104.38-6.75V444M52.89 128.99h-6.75m6.75 61.65h-6.75m6.75 61.65h-6.75m6.75 61.65h-6.75m6.75 61.66h-6.75m6.75 61.65h-6.75m6.75 0V444m0-376.67h-6.75m528.68 369.92V444"/><path stroke="#d6d7d9" stroke-dasharray="2 4" d="M157.28 437.25V18.01m104.38 419.24V18.01m104.39 419.24V45.01m0-18v-9m104.38 419.24V45.01m0-18v-9M52.89 128.99h521.93M52.89 190.64h521.93M52.89 252.29h521.93M52.89 313.94h521.93M52.89 375.6h521.93M52.89 437.25h521.93m-521.93 0V18.01m0 49.32h521.93m0 369.92V18.01"/><g fill="#eee" font-family="Arial" font-size="12" text-anchor="end"><text transform="translate(37.75 132.89)"><tspan>0.5</tspan></text><text transform="translate(37.75 194.54)"><tspan>0.4</tspan></text><text transform="translate(37.75 256.19)"><tspan>0.3</tspan></text><text transform="translate(37.75 317.84)"><tspan>0.2</tspan></text><text transform="translate(37.75 379.5)"><tspan>0.1</tspan></text><text transform="translate(37.75 441.15)"><tspan>0</tspan></text><text transform="translate(37.75 71.23)"><tspan>0.6</tspan></text><g text-anchor="middle"><text transform="translate(157.28 465.9)"><tspan>10</tspan></text><text transform="translate(261.66 465.9)"><tspan>20</tspan></text><text transform="translate(366.05 465.9)"><tspan>30</tspan></text><text transform="translate(470.43 465.9)"><tspan>40</tspan></text><text transform="translate(52.89 465.9)"><tspan>0</tspan></text><text transform="translate(574.82 465.9)"><tspan>50</tspan></text></g></g></g><use xlink:href="#a"/><text fill="#eee" stroke-width="3" font-family="Arial" font-size="12" text-anchor="end" transform="translate(507.09 39.91)">&apos;padding-v-runtime&apos;</text><path fill="none" stroke="#57d" stroke-width="3" d="M515.48 36.01h42.56M52.89 283.12h41.75l10.44-135.64h114.83l10.44-6.16 10.43 6.16h10.44l10.44 135.64h62.63l10.44-6.17 10.44 6.17h52.19l10.44-6.17h10.44l10.44 12.33 10.44-6.16h114.82l10.44-6.17h10.44"/><use xlink:href="#a"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 584.35 471.4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" font-family="Arial" >
+ <defs>
+  <path id="a" d="m52.89 18.01v419.24h521.93" fill="none" stroke="#ddd" stroke-width="2"/>
+ </defs>
+ <g transform="translate(3.3272 -18.01)" fill="none">
+  <path d="m157.28 437.25v6.75m104.38-6.75v6.75m104.39-6.75v6.75m104.38-6.75v6.75m-417.54-315.01h-6.75m6.75 61.65h-6.75m6.75 61.65h-6.75m6.75 61.65h-6.75m6.75 61.66h-6.75m6.75 61.65h-6.75m6.75 0v6.75m0-376.67h-6.75m528.68 369.92v6.75" stroke="#eee"/>
+  <path d="m157.28 437.25v-419.24m104.38 419.24v-419.24m104.39 419.24v-392.24m0-18v-9m104.38 419.24v-392.24m0-18v-9m-417.54 110.98h521.93m-521.93 61.65h521.93m-521.93 61.65h521.93m-521.93 61.65h521.93m-521.93 61.66h521.93m-521.93 61.65h521.93m-521.93 0v-419.24m0 49.32h521.93m0 369.92v-419.24" stroke="#d6d7d9" stroke-dasharray="2, 4"/>
+  <g fill="#eee" font-size="12px" text-anchor="end">
+   <text transform="translate(37.75,132.89)"><tspan>0.5</tspan></text>
+   <text transform="translate(37.75,194.54)"><tspan>0.4</tspan></text>
+   <text transform="translate(37.75,256.19)"><tspan>0.3</tspan></text>
+   <text transform="translate(37.75,317.84)"><tspan>0.2</tspan></text>
+   <text transform="translate(37.75,379.5)"><tspan>0.1</tspan></text>
+   <text transform="translate(37.75,441.15)"><tspan>0</tspan></text>
+   <text transform="translate(37.75,71.23)"><tspan>0.6</tspan></text>
+   <g text-anchor="middle">
+    <text transform="translate(157.28,465.9)"><tspan>10</tspan></text>
+    <text transform="translate(261.66,465.9)"><tspan>20</tspan></text>
+    <text transform="translate(366.05,465.9)"><tspan>30</tspan></text>
+    <text transform="translate(470.43,465.9)"><tspan>40</tspan></text>
+    <text transform="translate(52.89,465.9)"><tspan>0</tspan></text>
+    <text transform="translate(574.82,465.9)"><tspan>50</tspan></text>
+    <text transform="translate(290,485.9)"><tspan>added padding (bytes)</tspan></text>
+    <text transform="translate(10,235) rotate(-90)"><tspan>runtime (seconds)</tspan></text>
+   </g>
+  </g>
+ </g>
+ <text x="510.41721" y="21.900005" fill="#eeeeee" font-size="12px" stroke-width="3" text-anchor="end">'padding-v-runtime'</text>
+ <path d="m518.81 18h42.56m-505.15 247.11h41.75l10.44-135.64h114.83l10.44-6.16 10.43 6.16h10.44l10.44 135.64h62.63l10.44-6.17 10.44 6.17h52.19l10.44-6.17h10.44l10.44 12.33 10.44-6.16h114.82l10.44-6.17h10.44" fill="none" stroke="#57d" stroke-width="3"/>
+ <use transform="translate(3.3272 -18.01)" xlink:href="#a"/>
+</svg>
