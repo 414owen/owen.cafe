@@ -445,4 +445,18 @@ h2 + time + .tags {
   font-size: 14px;
 }
 
+#content img {
+  margin: {{ div .padding 2 }}{{ .padding_unit }} auto;
+}
+
+.pix img {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.gb img {
+  min-width: 320px;
+}
+
 {{ end }}

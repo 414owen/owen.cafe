@@ -1,5 +1,5 @@
 ---
-title: "Six times faster than C (part one)"
+title: "{n} times faster than C - part one"
 date: 2023-06-19T21:51:17+02:00
 tags:
 - C
