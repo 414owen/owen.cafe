@@ -20,9 +20,7 @@ doesn't usually think about **how** a program is executed.*
 Our first version was able to process 295.26MiB/s, and our best version
 reached 1.94GiB/s.
 
--- TODO check link matches title
-
-The code listings for this post can be found on [Github](https://github.com/414owen/blog-code/tree/master/02-twice-as-fast-as-asm).
+The code listings for this post can be found on [Github](https://github.com/414owen/blog-code/tree/master/02-the-same-speed-as-c).
 
 So, let's start with the first C version:
 
@@ -304,7 +302,7 @@ Well that did the trick, so is it faster?
 
 **Clang Bitrate**: 3.72GiB/s
 
-Nope. It's exactly the same. Okay, so what's the difference between:
+Nope. It's exactly the same. Okay, so what's the difference between these (tabs):
 
 {{< tabs groupId="arr-lookup-2-diff" >}}
 {{% tab name="gcc asm" %}}
@@ -354,7 +352,7 @@ uint8_t c = *input++;
 to
 
 ```c
-uint32_t c = *input++;
+uint64_t c = *input++;
 ```
 
 Thus removing all identification of this as an 8-bit value that needs zero-
@@ -481,9 +479,9 @@ have, if you have registers to spare. Let's ignore this for now.
 
 ## Fixing GCC's code
 
-What we really want to know is why GCC's inner loop, which looks so similar to clang's,
-is almost twice as slow. To this end, I've copy-pasted GCC's code into an
-assembly program [here](https://github.com/414owen/blog-code/blob/master/02-twice-as-fast-as-asm/loop-6.x64.s),
+What we really want to know is why GCC's inner loop is almost twice as slow as clang's
+even though they look so similar. To this end, I've copy-pasted GCC's code into an
+assembly program [here](https://github.com/414owen/blog-code/blob/master/02-the-same-speed-as-c/loop-6.x64.s),
 and made the changes necessary to get it working.
 
 If we run the benchmark with our dissassembled version, it should take the same amount
@@ -513,7 +511,7 @@ Let's find the difference in output.
 
 There! a slightly different encoding of `lea`.
 
-I'm not entirely sure what the difference is, as both versions seem to have
+I'm not entirely sure what causes this, as both versions seem to have
 the array stored in the `.rodata` section of the binary. If someone knows the
 difference between these two encodings, please email me.
 
@@ -578,4 +576,14 @@ Our entire function does actually fit within one cache line, and indeed setting
 granular control you can get without dropping down to assembly.
 Maybe someone knows a better way though?
 
-## 
+## Benchmarking setup
+
+See [part one](/posts/six-times-faster-than-c).
+
+## Conclusion
+
+* Tight, aligned loops that fit in a cache line go absolutely lightning fast.
+* Tight loops spread across two cache lines may be ~2x slower than their aligned counterparts.
+* GCC doesn't seem to align code very aggressively, by default.
+* When writing GNU assembly, `.align <bytes>` is your friend.
+* You can write two whole blog posts about a tiny loop.
