@@ -477,3 +477,12 @@ The benchmark runs the function over a list of one million characters (random
 
 For each version, the benchmark was run several times, and the best result
 chosen.
+
+## Conclusion
+
+You can (sometimes) get a 6x speedup by hand-coding your tight C loop in
+assembly, and optimizing using techniques that compilers don't seem to have
+automated away yet.
+
+Of course, this post isn't the end. If this still isn't fast enough for you,
+you can read [part two]({{< relref "the-same-speed-as-c" >}}).
