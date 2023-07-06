@@ -8,7 +8,7 @@ tags:
 - assembly
 ---
 
-In the [last post](/posts/six-times-faster-than-c/), we wrote a tiny C program, compiled it, disassembled it,
+In the [last post]({{< relref "six-times-faster-than-c" >}}), we wrote a tiny C program, compiled it, disassembled it,
 then tweaked that assembly to make it six times faster. Now we're going to beat it.
 
 <!--more-->
@@ -578,7 +578,7 @@ Maybe someone knows a better way though?
 
 ## Benchmarking setup
 
-See [part one](/posts/six-times-faster-than-c).
+See [part one]({{<relref "six-times-faster-than-c" >}}).
 
 ## Conclusion
 
