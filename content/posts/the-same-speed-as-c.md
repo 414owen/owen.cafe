@@ -104,7 +104,7 @@ ret:    ╰──➤ ret
 ## Dropping cases
 
 The way we've expressed this problem is the pretty logical top-down way.
-We're looping over out input, one character at a time, and performing a
+We're looping over our input, one character at a time, and performing a
 [case analysis](https://en.wikipedia.org/wiki/Proof_by_exhaustion) over
 the possible variants (or switching over the characters, if you prefer).
 
@@ -518,7 +518,7 @@ difference between these two encodings, please email me.
 So, as the only tangible difference is before the hotpath, I'm guessing we're
 seeing a difference in alignment affect our performance.
 
-Sure enough, if we add five innocent noops before out tight loop, we're back to
+Sure enough, if we add five innocent noops before our tight loop, we're back to
 gcc's performance.
 
 Let's do one better, and graph added padding vs runtime.
