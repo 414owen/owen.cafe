@@ -582,6 +582,7 @@ See [part one]({{<relref "six-times-faster-than-c" >}}).
 
 ## Conclusion
 
+* There's probably no point optimizing the non-hotpath.
 * Tight, aligned loops that fit in a cache line go absolutely lightning fast.
 * Tight loops spread across two cache lines may be ~2x slower than their aligned counterparts.
 * GCC doesn't seem to align code very aggressively, by default.
