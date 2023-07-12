@@ -176,23 +176,18 @@ and (max-width : 750px) {
   .comment { max-width: 1130px; overflow: hidden }
 }
 
-/*
-     FILE ARCHIVED ON 05:44:45 Jul 07, 2023 AND RETRIEVED FROM THE
-     INTERNET ARCHIVE ON 23:28:56 Jul 11, 2023.
-     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+@keyframes blink-live{
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
 
-     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
-     SECTION 108(a)(3)).
-*/
-/*
-playback timings (ms):
-  captures_list: 64.537
-  exclusion.robots: 0.294
-  exclusion.robots.policy: 0.278
-  cdx.remote: 0.1
-  esindex: 0.014
-  LoadShardBlock: 37.666 (3)
-  PetaboxLoader3.datanode: 75.013 (5)
-  load_resource: 273.051 (2)
-  PetaboxLoader3.resolve: 169.636 (2)
-*/
+#owen-backup-banner {
+    animation: blink-live 0.3s 3;
+  position: sticky;
+  top: 0;
+  background: #111;
+  color: #eee;
+  margin-bottom: 12px;
+  padding: 4px;
+}
