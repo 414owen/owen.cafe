@@ -523,13 +523,13 @@ gcc's performance.
 
 Let's do one better, and graph added padding vs runtime.
 
-![padding-graph-50](/img/graph-asm-padding-50.svg)
+{{< figure src="/img/graph-asm-padding-50.svg" alt="Graph of padding vs runtime" >}}
 
 So starting at five noops (one byte each), we get a ~2x slowdown, and subsequent
 noops maintain that slowdown, until 20 noops, where we speed back up. Is this
 a repeating pattern?
 
-![padding-graph-1000](/img/graph-asm-padding-1000.svg)
+{{< figure src="/img/graph-asm-padding-1000.svg" alt="Graph of padding vs runtime" >}}
 
 ...Yes it's definitely a repeating pattern. What's the period? I hope it's a nice power of two...
 
@@ -552,7 +552,7 @@ CFLAGS=-falign-jumps=<n> make bench-c-4-gcc
 ```
 
 For various values of `n`, but nothing happened.
-{{< figure src="/img/align-jumps-effectiveness.png" alt="Pokemon alignment not very effective meme" class="pix gb" >}}
+{{< figure src="/img/align-jumps-effectiveness.png" alt="Pokemon alignment not very effective meme" class="pix gb smallimg" >}}
 
 The reason seems to be that, as well as being a branch target, the top of our
 loop is fallen into from the code above.

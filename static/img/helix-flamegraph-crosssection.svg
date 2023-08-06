@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg onload="init(evt)" version="1.1" viewBox="0 0 967.5 522.2" xmlns="http://www.w3.org/2000/svg" xmlns:fg="http://github.com/jonhoo/inferno">
+ <style><![CDATA[text{font-family:"Verdana";font-size:12px;fill:#000}#subtitle,#title{text-anchor:middle}#title{font-size:17px}#search.show,#search:hover{opacity:1}#subtitle{font-color:#a0a0a0}#frames>:hover{stroke:#000;stroke-width:.5;cursor:pointer}.parent{opacity:.5}]]></style>
+ <text x="848.8" y="-285.9" opacity=".1">Search</text>
+ <g transform="translate(8.8 -309.9)">
+ </g>
+ <g transform="matrix(1.8761 0 0 1.8761 -258.67 -1218.3)">
+  <rect x="15.4%" y="741" width=".5%" height="15" fill="#e51727" fg:w="45" fg:x="1290"/>
+  <rect x="15.3%" y="837" width=".9%" height="15" fill="#f32f33" fg:w="78" fg:x="1284"/>
+  <rect x="15.3%" y="821" width=".9%" height="15" fill="#f1b728" fg:w="78" fg:x="1284"/>
+  <rect x="15.3%" y="805" width=".9%" height="15" fill="#e7d920" fg:w="78" fg:x="1284"/>
+  <rect x="15.3%" y="789" width=".9%" height="15" fill="#e53d26" fg:w="78" fg:x="1284"/>
+  <rect x="15.3%" y="773" width=".9%" height="15" fill="#e1d205" fg:w="78" fg:x="1284"/>
+  <rect x="15.4%" y="757" width=".9%" height="15" fill="#e74f2d" fg:w="72" fg:x="1290"/>
+  <rect x="15.3%" y="901" width="1%" height="15" fill="#f16b01" fg:w="80" fg:x="1284"/>
+  <rect x="15.3%" y="885" width="1%" height="15" fill="#e5530d" fg:w="80" fg:x="1284"/>
+  <rect x="15.3%" y="869" width="1%" height="15" fill="#f15b28" fg:w="80" fg:x="1284"/>
+  <rect x="15.3%" y="853" width="1%" height="15" fill="#e1032d" fg:w="80" fg:x="1284"/>
+  <rect x="16.8%" y="677" width=".6%" height="15" fill="#fcd327" fg:w="47" fg:x="1407"/>
+  <rect x="16.8%" y="661" width=".5%" height="15" fill="#df0624" fg:w="42" fg:x="1412"/>
+  <rect x="16.6%" y="693" width=".8%" height="15" fill="#daa711" fg:w="67" fg:x="1394"/>
+  <rect x="16.4%" y="757" width="2.1%" height="15" fill="#e48d11" fg:w="178" fg:x="1375"/>
+  <text x="16.700001%" y="767.5">..</text>
+  <rect x="16.4%" y="741" width="2.1%" height="15" fill="#f79d01" fg:w="178" fg:x="1375"/>
+  <text x="16.700001%" y="751.5">..</text>
+  <rect x="16.4%" y="725" width="2.1%" height="15" fill="#f9e105" fg:w="178" fg:x="1375"/>
+  <text x="16.700001%" y="735.5">..</text>
+  <rect x="16.6%" y="709" width="1.9%" height="15" fill="#f2370d" fg:w="160" fg:x="1393"/>
+  <text x="16.9%" y="719.5">..</text>
+  <rect x="17.5%" y="693" width="1%" height="15" fill="#e63132" fg:w="87" fg:x="1466"/>
+  <rect x="17.7%" y="677" width=".8%" height="15" fill="#f16f26" fg:w="71" fg:x="1482"/>
+  <rect x="17.8%" y="661" width=".7%" height="15" fill="#fc9b04" fg:w="57" fg:x="1496"/>
+  <rect x="18.5%" y="709" width=".5%" height="15" fill="#ec1a09" fg:w="39" fg:x="1556"/>
+  <rect x="18.5%" y="693" width=".5%" height="15" fill="#dda535" fg:w="39" fg:x="1556"/>
+  <rect x="18.5%" y="677" width=".5%" height="15" fill="#d66e11" fg:w="39" fg:x="1556"/>
+  <rect x="18.5%" y="661" width=".5%" height="15" fill="#edc50c" fg:w="39" fg:x="1556"/>
+  <rect x="19.2%" y="693" width=".4%" height="15" fill="#e5ac0f" fg:w="32" fg:x="1614"/>
+  <rect x="19.3%" y="677" width=".4%" height="15" fill="#e6e023" fg:w="31" fg:x="1615"/>
+  <rect x="19.3%" y="661" width=".4%" height="15" fill="#fb8d06" fg:w="31" fg:x="1615"/>
+  <rect x="18.5%" y="757" width="2.9%" height="15" fill="#f9ac2a" fg:w="244" fg:x="1553"/>
+  <text x="18.799999%" y="767.5">..r</text>
+  <rect x="18.5%" y="741" width="2.9%" height="15" fill="#d88b17" fg:w="244" fg:x="1553"/>
+  <text x="18.799999%" y="751.5">..r</text>
+  <rect x="18.5%" y="725" width="2.9%" height="15" fill="#cfa614" fg:w="241" fg:x="1556"/>
+  <text x="18.9%" y="735.5">..r</text>
+  <rect x="19.2%" y="709" width="2.3%" height="15" fill="#d2d116" fg:w="189" fg:x="1608"/>
+  <text x="19.5%" y="719.5">..</text>
+  <rect x="19.6%" y="693" width="1.8%" height="15" fill="#e87614" fg:w="150" fg:x="1647"/>
+  <rect x="20%" y="677" width="1.4%" height="15" fill="#ee712a" fg:w="120" fg:x="1677"/>
+  <rect x="20.2%" y="661" width="1.2%" height="15" fill="#e72a05" fg:w="103" fg:x="1694"/>
+  <rect x="21.6%" y="693" width=".5%" height="15" fill="#da3a31" fg:w="42" fg:x="1808"/>
+  <rect x="21.7%" y="677" width=".4%" height="15" fill="#dbb30e" fg:w="33" fg:x="1817"/>
+  <rect x="22.1%" y="661" width="1%" height="15" fill="#e76a0c" fg:w="87" fg:x="1854"/>
+  <rect x="21.5%" y="709" width="2.6%" height="15" fill="#d7cb11" fg:w="214" fg:x="1800"/>
+  <text x="21.799999%" y="719.5">..</text>
+  <rect x="22.1%" y="693" width="2%" height="15" fill="#e97031" fg:w="164" fg:x="1850"/>
+  <text x="22.4%" y="703.5">..</text>
+  <rect x="22.1%" y="677" width="1.9%" height="15" fill="#f1821a" fg:w="163" fg:x="1851"/>
+  <text x="22.4%" y="687.5">..</text>
+  <rect x="23.1%" y="661" width=".9%" height="15" fill="#fcdf13" fg:w="73" fg:x="1941"/>
+  <rect x="24.1%" y="709" width=".4%" height="15" fill="#df8924" fg:w="32" fg:x="2021"/>
+  <rect x="24.5%" y="693" width=".5%" height="15" fill="#e7b501" fg:w="43" fg:x="2057"/>
+  <rect x="24.5%" y="709" width="1%" height="15" fill="#ebe419" fg:w="88" fg:x="2053"/>
+  <rect x="25%" y="693" width=".5%" height="15" fill="#f09c14" fg:w="41" fg:x="2100"/>
+  <rect x="25%" y="677" width=".5%" height="15" fill="#e00814" fg:w="41" fg:x="2100"/>
+  <rect x="25.6%" y="661" width=".4%" height="15" fill="#fd630d" fg:w="31" fg:x="2147"/>
+  <rect x="25.6%" y="677" width=".5%" height="15" fill="#ec192e" fg:w="41" fg:x="2147"/>
+  <rect x="25.6%" y="693" width=".5%" height="15" fill="#e59c20" fg:w="43" fg:x="2147"/>
+  <rect x="25.6%" y="709" width=".8%" height="15" fill="#d07b03" fg:w="68" fg:x="2147"/>
+  <rect x="26.4%" y="677" width="1%" height="15" fill="#f3260c" fg:w="88" fg:x="2217"/>
+  <rect x="26.4%" y="661" width="1%" height="15" fill="#d08b10" fg:w="87" fg:x="2218"/>
+  <rect x="27.5%" y="661" width=".9%" height="15" fill="#f1332a" fg:w="72" fg:x="2309"/>
+  <rect x="27.5%" y="677" width="1.8%" height="15" fill="#ebdb0d" fg:w="154" fg:x="2305"/>
+  <text x="27.799999%" y="687.5">..</text>
+  <rect x="28.4%" y="661" width=".9%" height="15" fill="#da3b24" fg:w="78" fg:x="2381"/>
+  <rect x="26.4%" y="693" width="2.9%" height="15" fill="#cd580b" fg:w="246" fg:x="2215"/>
+  <text x="26.700003%" y="703.5">..e</text>
+  <rect x="29.5%" y="661" width=".7%" height="15" fill="#d67911" fg:w="57" fg:x="2477"/>
+  <rect x="29.5%" y="677" width=".8%" height="15" fill="#f09526" fg:w="63" fg:x="2476"/>
+  <rect x="30.3%" y="661" width=".6%" height="15" fill="#e26605" fg:w="54" fg:x="2544"/>
+  <rect x="30.3%" y="677" width=".7%" height="15" fill="#d5c80e" fg:w="60" fg:x="2539"/>
+  <rect x="31%" y="661" width="1.2%" height="15" fill="#e9bc2b" fg:w="104" fg:x="2602"/>
+  <rect x="31%" y="677" width="2.3%" height="15" fill="#f24e21" fg:w="192" fg:x="2600"/>
+  <text x="31.299999%" y="687.5">..</text>
+  <rect x="32.3%" y="661" width="1%" height="15" fill="#eb3c03" fg:w="86" fg:x="2706"/>
+  <rect x="21.4%" y="725" width="11.9%" height="15" fill="#fbc72f" fg:w="996" fg:x="1797"/>
+  <text x="21.700001%" y="735.5">..ic::layout_start</text>
+  <rect x="26.4%" y="709" width="6.9%" height="15" fill="#e4da2c" fg:w="578" fg:x="2215"/>
+  <text x="26.700003%" y="719.5">..operator</text>
+  <rect x="29.3%" y="693" width="4%" height="15" fill="#dc4406" fg:w="332" fg:x="2461"/>
+  <text x="29.700003%" y="703.5">..ke</text>
+  <rect x="33.4%" y="709" width=".4%" height="15" fill="#d3191b" fg:w="32" fg:x="2803"/>
+  <rect x="33.3%" y="725" width=".5%" height="15" fill="#e3a011" fg:w="45" fg:x="2793"/>
+  <rect x="33.9%" y="709" width=".8%" height="15" fill="#fa9530" fg:w="68" fg:x="2841"/>
+  <rect x="34.7%" y="693" width=".4%" height="15" fill="#e7a22a" fg:w="34" fg:x="2911"/>
+  <rect x="35.1%" y="693" width=".7%" height="15" fill="#df500f" fg:w="59" fg:x="2945"/>
+  <rect x="33.8%" y="725" width="2.1%" height="15" fill="#e18121" fg:w="180" fg:x="2838"/>
+  <text x="34.099998%" y="735.5">..</text>
+  <rect x="34.7%" y="709" width="1.3%" height="15" fill="#ed310d" fg:w="109" fg:x="2909"/>
+  <rect x="36.5%" y="677" width=".8%" height="15" fill="#f90f2f" fg:w="68" fg:x="3061"/>
+  <rect x="36.5%" y="661" width=".8%" height="15" fill="#d1e317" fg:w="68" fg:x="3061"/>
+  <rect x="36.1%" y="709" width="1.3%" height="15" fill="#ce5f01" fg:w="106" fg:x="3032"/>
+  <rect x="36.2%" y="693" width="1.2%" height="15" fill="#ed3405" fg:w="103" fg:x="3035"/>
+  <rect x="37.4%" y="677" width="1.3%" height="15" fill="#de8201" fg:w="111" fg:x="3139"/>
+  <rect x="37.4%" y="661" width="1.3%" height="15" fill="#eca62c" fg:w="109" fg:x="3141"/>
+  <rect x="36%" y="725" width="9%" height="15" fill="#eb8b1c" fg:w="753" fg:x="3018"/>
+  <text x="36.299999%" y="735.5">..:operator+</text>
+  <rect x="37.4%" y="709" width="7.5%" height="15" fill="#d99007" fg:w="633" fg:x="3138"/>
+  <text x="37.700001%" y="719.5">..anager</text>
+  <rect x="37.4%" y="693" width="7.5%" height="15" fill="#e33704" fg:w="633" fg:x="3138"/>
+  <text x="37.700001%" y="703.5">..function</text>
+  <rect x="38.7%" y="677" width="6.2%" height="15" fill="#fc5236" fg:w="521" fg:x="3250"/>
+  <text x="39.099998%" y="687.5">..nager</text>
+  <rect x="38.9%" y="661" width="6%" height="15" fill="#f5ac04" fg:w="505" fg:x="3266"/>
+  <text x="39.299999%" y="671.5">..nction</text>
+  <rect x="45.2%" y="709" width=".5%" height="15" fill="#da5a06" fg:w="46" fg:x="3791"/>
+  <rect x="45.2%" y="693" width=".5%" height="15" fill="#d2bf05" fg:w="45" fg:x="3792"/>
+  <rect x="45.2%" y="677" width=".5%" height="15" fill="#e18b13" fg:w="45" fg:x="3792"/>
+  <rect x="45.2%" y="661" width=".5%" height="15" fill="#d20121" fg:w="44" fg:x="3793"/>
+  <rect x="45%" y="725" width=".8%" height="15" fill="#f5881b" fg:w="68" fg:x="3771"/>
+  <rect x="46%" y="693" width=".7%" height="15" fill="#e87233" fg:w="56" fg:x="3862"/>
+  <rect x="46.1%" y="677" width=".6%" height="15" fill="#de5f03" fg:w="53" fg:x="3865"/>
+  <rect x="46.1%" y="661" width=".6%" height="15" fill="#f0411d" fg:w="53" fg:x="3865"/>
+  <rect x="45.8%" y="709" width="1%" height="15" fill="#f57015" fg:w="81" fg:x="3841"/>
+  <rect x="46.8%" y="693" width=".6%" height="15" fill="#e55935" fg:w="51" fg:x="3925"/>
+  <rect x="46.8%" y="677" width=".5%" height="15" fill="#d27c0e" fg:w="46" fg:x="3930"/>
+  <rect x="46.9%" y="661" width=".5%" height="15" fill="#ecd506" fg:w="43" fg:x="3933"/>
+  <rect x="47.8%" y="677" width=".4%" height="15" fill="#d81201" fg:w="35" fg:x="4008"/>
+  <rect x="46.8%" y="709" width="2.9%" height="15" fill="#ee4927" fg:w="247" fg:x="3922"/>
+  <text x="47.099998%" y="719.5">..r</text>
+  <rect x="47.8%" y="693" width="1.9%" height="15" fill="#fc7309" fg:w="162" fg:x="4007"/>
+  <text x="48.099998%" y="703.5">..</text>
+  <rect x="48.2%" y="677" width="1.5%" height="15" fill="#eeca04" fg:w="126" fg:x="4043"/>
+  <rect x="48.4%" y="661" width="1.3%" height="15" fill="#fc992c" fg:w="106" fg:x="4063"/>
+  <rect x="49.9%" y="661" width=".5%" height="15" fill="#fad82d" fg:w="41" fg:x="4182"/>
+  <rect x="21.4%" y="741" width="32.8%" height="15" fill="#ddb30b" fg:w="2751" fg:x="1797"/>
+  <text x="21.700001%" y="751.5">logic::immediate</text>
+  <rect x="45.8%" y="725" width="8.5%" height="15" fill="#e0aa30" fg:w="709" fg:x="3839"/>
+  <text x="46.099998%" y="735.5">..manager</text>
+  <rect x="49.7%" y="709" width="4.5%" height="15" fill="#df7505" fg:w="379" fg:x="4169"/>
+  <text x="50%" y="719.5">..tion</text>
+  <rect x="49.7%" y="693" width="4.5%" height="15" fill="#d13414" fg:w="379" fg:x="4169"/>
+  <text x="50%" y="703.5">..ger</text>
+  <rect x="49.7%" y="677" width="4.5%" height="15" fill="#d11329" fg:w="378" fg:x="4170"/>
+  <text x="50%" y="687.5">..tion</text>
+  <rect x="50.3%" y="661" width="3.9%" height="15" fill="#d2b10c" fg:w="325" fg:x="4223"/>
+  <text x="50.700005%" y="671.5">..er</text>
+  <rect x="54.2%" y="725" width="1%" height="15" fill="#dbab11" fg:w="84" fg:x="4549"/>
+  <rect x="55.7%" y="709" width=".4%" height="15" fill="#d6b434" fg:w="31" fg:x="4670"/>
+  <rect x="55.2%" y="725" width="1.1%" height="15" fill="#e2632b" fg:w="95" fg:x="4633"/>
+  <rect x="56.4%" y="709" width="1%" height="15" fill="#e36d07" fg:w="84" fg:x="4728"/>
+  <rect x="57.4%" y="709" width=".4%" height="15" fill="#f93536" fg:w="32" fg:x="4813"/>
+  <rect x="56.4%" y="725" width="2.5%" height="15" fill="#fa2f24" fg:w="212" fg:x="4728"/>
+  <text x="56.700005%" y="735.5">..</text>
+  <rect x="58.2%" y="709" width=".7%" height="15" fill="#fc7004" fg:w="55" fg:x="4885"/>
+  <rect x="58.2%" y="693" width=".7%" height="15" fill="#dd4f33" fg:w="55" fg:x="4885"/>
+  <rect x="59.4%" y="677" width=".4%" height="15" fill="#d23313" fg:w="33" fg:x="4981"/>
+  <rect x="58.9%" y="725" width="3.5%" height="15" fill="#f29a1d" fg:w="295" fg:x="4941"/>
+  <text x="59.200001%" y="735.5">..r+</text>
+  <rect x="59.2%" y="709" width="3.3%" height="15" fill="#d2411f" fg:w="273" fg:x="4963"/>
+  <text x="59.500004%" y="719.5">..r</text>
+  <rect x="59.2%" y="693" width="3.3%" height="15" fill="#f40932" fg:w="273" fg:x="4963"/>
+  <text x="59.500004%" y="703.5">..on</text>
+  <rect x="59.8%" y="677" width="2.6%" height="15" fill="#d78d26" fg:w="219" fg:x="5017"/>
+  <text x="60.100002%" y="687.5">..r</text>
+  <rect x="59.8%" y="661" width="2.6%" height="15" fill="#f18106" fg:w="219" fg:x="5017"/>
+  <text x="60.100002%" y="671.5">..n</text>
+  <rect x="63%" y="693" width=".4%" height="15" fill="#d34036" fg:w="31" fg:x="5284"/>
+  <rect x="62.6%" y="725" width="2.3%" height="15" fill="#e83a00" fg:w="191" fg:x="5250"/>
+  <text x="62.900002%" y="735.5">..</text>
+  <rect x="63%" y="709" width="1.9%" height="15" fill="#dd440d" fg:w="159" fg:x="5282"/>
+  <text x="63.300003%" y="719.5">..</text>
+  <rect x="63.6%" y="693" width="1.2%" height="15" fill="#e7c20b" fg:w="104" fg:x="5337"/>
+  <rect x="64.3%" y="677" width=".5%" height="15" fill="#eb3329" fg:w="45" fg:x="5396"/>
+  <rect x="16.3%" y="773" width="48.9%" height="15" fill="#f43512" fg:w="4104" fg:x="1364"/>
+  <text x="16.6%" y="783.5">..ult (State&amp;)&gt; (unsigned int)&gt;) const::{lambda(State&amp;)#1}&gt;::_M_invoke</text>
+  <rect x="21.4%" y="757" width="43.8%" height="15" fill="#fece30" fg:w="3671" fg:x="1797"/>
+  <text x="21.700001%" y="767.5">..t), std::function&lt;Result (State&amp;)&gt; (*)(unsigned int)&gt;::_M_invoke</text>
+  <rect x="54.2%" y="741" width="11%" height="15" fill="#ecb617" fg:w="920" fg:x="4548"/>
+  <text x="54.5%" y="751.5">logic::newline</text>
+  <rect x="16.3%" y="789" width="49%" height="15" fill="#d04f09" fg:w="4108" fg:x="1364"/>
+  <text x="16.6%" y="799.5">..)&gt;, std::function&lt;Result (State&amp;)&gt;)::{lambda(State&amp;)#1}&gt;::_M_invoke</text>
+  <rect x="16.3%" y="837" width="49.1%" height="15" fill="#d47119" fg:w="4118" fg:x="1364"/>
+  <text x="16.6%" y="847.5">eval::eval</text>
+  <rect x="16.3%" y="821" width="49.1%" height="15" fill="#f7252b" fg:w="4118" fg:x="1364"/>
+  <text x="16.6%" y="831.5">..)&gt;, std::function&lt;Result (State&amp;)&gt;)::{lambda(State&amp;)#1}&gt;::_M_invoke</text>
+  <rect x="16.3%" y="805" width="49.1%" height="15" fill="#e23608" fg:w="4118" fg:x="1364"/>
+  <text x="16.6%" y="815.5">..)&gt;, std::function&lt;Result (State&amp;)&gt;)::{lambda(State&amp;)#1}&gt;::_M_invoke</text>
+  <rect x="16.3%" y="901" width="49.4%" height="15" fill="#e6b732" fg:w="4141" fg:x="1364"/>
+  <text x="16.6%" y="911.5">helix_core::syntax::LanguageLayer::update</text>
+  <rect x="16.3%" y="885" width="49.4%" height="15" fill="#e13009" fg:w="4141" fg:x="1364"/>
+  <text x="16.6%" y="895.5">helix_core::syntax::LanguageLayer::parse</text>
+  <rect x="16.3%" y="869" width="49.4%" height="15" fill="#fe2c04" fg:w="4141" fg:x="1364"/>
+  <text x="16.6%" y="879.5">ts_parser_parse</text>
+  <rect x="16.3%" y="853" width="49.4%" height="15" fill="#fc8025" fg:w="4141" fg:x="1364"/>
+  <text x="16.6%" y="863.5">tree_sitter_haskell_external_scanner_scan</text>
+ </g>
+ <g transform="translate(8.8 -309.9)">
+ </g>
+ <path d="m27.669 405.33 145.83-24.375" fill="#eee" fill-opacity=".93726" stop-color="#000000" stroke-width="2.9745"/>
+ <path d="m224.63 376.57a11.387 13.663 0 0 1-9e-5 0.053" fill="none" stop-color="#000000" stroke="#000" stroke-width="2.9745"/>
+ <ellipse cx="279.15" cy="393.88" rx="261.1" ry="28.804" fill="none" stop-color="#000000" stroke="#000001" stroke-width="8"/>
+ <path d="m522.26 404.77 76.675 49.22" fill-opacity=".98431" stop-color="#000000" stroke="#000" stroke-width="8"/>
+ <text x="611.43286" y="481.69183" fill="#000000" fill-opacity=".98431" font-family="Overpass" font-size="74.667px" stop-color="#000000" stroke="#000000" stroke-width="4" xml:space="preserve"><tspan x="611.43286" y="481.69183" fill="#000000" fill-opacity=".98431" font-size="74.667px" stroke="#000000">1</tspan></text>
+</svg>

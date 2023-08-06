@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:fg="http://github.com/jonhoo/inferno" aria-owns="svg1" viewBox="0 -150 541.3 242.3">
+  <rect width="103.9%" height="242.3" y="-150" fill="url(#svg1-background)" color="#000"/>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="10" fg:x="1870" width="24.4%" height="15" y="533" fill="#e86015"/>
+    <text x=".6%" y="543.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="10" fg:x="1870" width="24.4%" height="15" y="517" fill="#e41b27"/>
+    <text x=".6%" y="527.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">operator new</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="10" fg:x="1870" width="24.4%" height="15" y="501" fill="#d3b634"/>
+    <text x=".6%" y="511.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">__GI___libc_malloc</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="10" fg:x="1870" width="24.4%" height="15" y="485" fill="#eab226"/>
+    <text x=".6%" y="495.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">_int_malloc</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="2" fg:x="1880" width="4.9%" height="15" x="24.4%" y="469" fill="#dd6f03"/>
+    <text x="25%" y="479.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..c</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="3" fg:x="1880" width="7.3%" height="15" x="24.4%" y="485" fill="#e4af15"/>
+    <text x="25%" y="495.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..ew</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1882" width="2.4%" height="15" x="29.3%" y="469" fill="#e4ae2b"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1883" width="2.4%" height="15" x="31.7%" y="469" fill="#d3bf00"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1883" width="2.4%" height="15" x="31.7%" y="453" fill="#fd7503"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1885" width="2.4%" height="15" x="36.6%" y="405" fill="#f17f13"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1885" width="2.4%" height="15" x="36.6%" y="389" fill="#da670c"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1886" width="29.3%" height="15" x="39%" y="373" fill="#ecd62b"/>
+    <text x="39.6%" y="383.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">operator new</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1886" width="29.3%" height="15" x="39%" y="357" fill="#f49013"/>
+    <text x="39.6%" y="367.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">__GI___libc_malloc</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1886" width="29.3%" height="15" x="39%" y="341" fill="#f6bc0a"/>
+    <text x="39.6%" y="351.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">_int_malloc</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="16" fg:x="1883" width="39%" height="15" x="31.7%" y="485" fill="#d4c121"/>
+    <text x="32.3%" y="495.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..State&amp;)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="15" fg:x="1884" width="36.6%" height="15" x="34.1%" y="469" fill="#f1331d"/>
+    <text x="34.8%" y="479.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..l (unsigned int)&gt;::function</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="15" fg:x="1884" width="36.6%" height="15" x="34.1%" y="453" fill="#d33a13"/>
+    <text x="34.8%" y="463.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..d int)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="15" fg:x="1884" width="36.6%" height="15" x="34.1%" y="437" fill="#e56f1a"/>
+    <text x="34.8%" y="447.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..l (unsigned int)&gt;::function</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="14" fg:x="1885" width="34.1%" height="15" x="36.6%" y="421" fill="#d57328"/>
+    <text x="37.2%" y="431.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">.. int)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="13" fg:x="1886" width="31.7%" height="15" x="39%" y="405" fill="#d1382c"/>
+    <text x="39.6%" y="415.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..signed int)&gt;::function</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="13" fg:x="1886" width="31.7%" height="15" x="39%" y="389" fill="#e66c20"/>
+    <text x="39.6%" y="399.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..nt)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="1" fg:x="1898" width="2.4%" height="15" x="68.3%" y="373" fill="#d8a51f"/>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="41" fg:x="1870" width="100%" height="15" y="549" fill="#ec2e28"/>
+    <text x=".6%" y="559.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">std::function&lt;Result (State&amp;)&gt;::function</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="31" fg:x="1880" width="75.6%" height="15" x="24.4%" y="533" fill="#f7ca32"/>
+    <text x="25%" y="543.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..Result (State&amp;)&gt;)::{lambda(State&amp;)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="31" fg:x="1880" width="75.6%" height="15" x="24.4%" y="517" fill="#d16314"/>
+    <text x="25%" y="527.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">std::function&lt;Result (State&amp;)&gt;::function</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="31" fg:x="1880" width="75.6%" height="15" x="24.4%" y="501" fill="#fc1b22"/>
+    <text x="25%" y="511.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..on&lt;void (State&amp;)&gt;)::{lambda(State&amp;)#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1899" width="29.3%" height="15" x="70.7%" y="485" fill="#d7ce17"/>
+    <text x="71.3%" y="495.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">..#1}&gt;::_M_manager</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1899" width="29.3%" height="15" x="70.7%" y="469" fill="#d48724"/>
+    <text x="71.3%" y="479.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">operator new</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="12" fg:x="1899" width="29.3%" height="15" x="70.7%" y="453" fill="#f0bd01"/>
+    <text x="71.3%" y="463.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">__GI___libc_malloc</text>
+  </g>
+  <g color="#000" transform="translate(10 -482.6)">
+    <rect fg:w="9" fg:x="1902" width="22%" height="15" x="78%" y="437" fill="#f23814"/>
+    <text x="78.7%" y="447.5" font-family="Verdana" font-size="12" font-stretch="100%" font-weight="400" text-decoration="rgb(0, 0, 0)" word-spacing="0">_int_malloc</text>
+  </g>
+</svg>
