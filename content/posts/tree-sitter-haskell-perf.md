@@ -238,7 +238,7 @@ allocation itself has never shown up on one of my profiles[^3].
 ### Is std::function slow?
 
 I read that it can avoid the allocations in some
-cases, like when it's passed in a normal const function pointer.
+cases, like when it's given a normal top-level function pointer.
 
 It probably also depends on usage. I would hope that it's the construction of
 `std::function`s that was allocating, not the invocation.
