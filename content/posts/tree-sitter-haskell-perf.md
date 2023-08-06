@@ -231,9 +231,9 @@ than to a general-purpose allocator (like `malloc`).
 The definition of Haskell's `allocate()` seems to be [here](https://gitlab.haskell.org/ghc/ghc/-/blob/master/rts/sm/Storage.c#L1088),
 and looking at the hotpath, it would appear to be quite fast.
 
-This is somewhat guesswork, but, while I have worked on Haskell codebases
-where garbage collection was taking upto 10% of the runtime[^2], allocation
-itself has never shown up on one of my profiles[^3].
+This is somewhat anecdotal evidence, but, while I have worked on Haskell
+codebases where garbage collection was taking upto 10% of the runtime[^2],
+allocation itself has never shown up on one of my profiles[^3].
 
 ### Is std::function slow?
 
@@ -268,4 +268,5 @@ this is probably the right way to go.
 [^2]: This is not normal, usually I observe 2-3%
 
 [^3]: Although I'd probably have to run through `perf` for this to show up,
-which I never do, as the actual haskell code doesn't show up in `perf`.
+and I usually use the debugging information provided by the RTS, instead of
+profiling the RTS itself.
