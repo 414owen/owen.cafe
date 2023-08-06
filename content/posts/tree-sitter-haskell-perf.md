@@ -1,5 +1,5 @@
 ---
-title: "Speeding up tree-sitter-haskell by 50x"
+title: "Speeding up tree-sitter-haskell 50x"
 date: 2023-08-05T19:48:15+02:00
 tags:
 - performance
