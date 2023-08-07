@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg onload="init(evt)" version="1.1" viewBox="0 0 967.5 522.2" xmlns="http://www.w3.org/2000/svg" xmlns:fg="http://github.com/jonhoo/inferno">
  <style><![CDATA[text{font-family:"Verdana";font-size:12px;fill:#000}#subtitle,#title{text-anchor:middle}#title{font-size:17px}#search.show,#search:hover{opacity:1}#subtitle{font-color:#a0a0a0}#frames>:hover{stroke:#000;stroke-width:.5;cursor:pointer}.parent{opacity:.5}]]></style>
- <text x="848.8" y="-285.9" opacity=".1">Search</text>
- <g transform="translate(8.8 -309.9)">
- </g>
  <g transform="matrix(1.8761 0 0 1.8761 -258.67 -1218.3)">
   <rect x="15.4%" y="741" width=".5%" height="15" fill="#e51727" fg:w="45" fg:x="1290"/>
   <rect x="15.3%" y="837" width=".9%" height="15" fill="#f32f33" fg:w="78" fg:x="1284"/>
@@ -195,11 +192,7 @@
   <rect x="16.3%" y="853" width="49.4%" height="15" fill="#fc8025" fg:w="4141" fg:x="1364"/>
   <text x="16.6%" y="863.5">tree_sitter_haskell_external_scanner_scan</text>
  </g>
- <g transform="translate(8.8 -309.9)">
- </g>
  <path d="m27.669 405.33 145.83-24.375" fill="#eee" fill-opacity=".93726" stop-color="#000000" stroke-width="2.9745"/>
  <path d="m224.63 376.57a11.387 13.663 0 0 1-9e-5 0.053" fill="none" stop-color="#000000" stroke="#000" stroke-width="2.9745"/>
  <ellipse cx="279.15" cy="393.88" rx="261.1" ry="28.804" fill="none" stop-color="#000000" stroke="#000001" stroke-width="8"/>
- <path d="m522.26 404.77 76.675 49.22" fill-opacity=".98431" stop-color="#000000" stroke="#000" stroke-width="8"/>
- <text x="611.43286" y="481.69183" fill="#000000" fill-opacity=".98431" font-family="Overpass" font-size="74.667px" stop-color="#000000" stroke="#000000" stroke-width="4" xml:space="preserve"><tspan x="611.43286" y="481.69183" fill="#000000" fill-opacity=".98431" font-size="74.667px" stroke="#000000">1</tspan></text>
 </svg>
