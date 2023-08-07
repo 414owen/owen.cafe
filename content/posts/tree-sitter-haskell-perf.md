@@ -8,10 +8,12 @@ tags:
 - lexing
 ---
 
-A while ago I sped up the tree-sitter haskell lexer by 50x. I'm going
-to go through the process of discovering and fixing the worst bottleneck.
+A while ago I sped up tree-sitter-haskell by 50x. I'm going to go through the
+process of discovering and fixing the worst bottleneck.
 
 <!--more-->
+
+This post probably won't help you speed up other tree-sitter grammars.
 
 ## How it started
 
@@ -25,7 +27,7 @@ I seriously urge you to consider giving helix a try. Why? Because
 
 Helix uses tree-sitter to implement syntax highlighting.
 
-## What is Tree-Sitter
+## What is Tree-sitter
 
 [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) is a library for
 generating incremental parsers. An incremental parser is one which can reuse
@@ -68,7 +70,7 @@ Scanning, or tokenizing, or lexing, means breaking the buffer up into discrete
 tokens. I'll use the term lexer for this.
 
 In [tree-sitter-haskell](https://github.com/tree-sitter/tree-sitter-haskell/issues/41),
-this was [a C++ function](https://github.com/tree-sitter/tree-sitter-haskell/blob/2e6acc02e3f92213576209bf31ddea971b0f45ee/src/scanner.cc#L1619).
+the lexer was [a C++ function](https://github.com/tree-sitter/tree-sitter-haskell/blob/2e6acc02e3f92213576209bf31ddea971b0f45ee/src/scanner.cc#L1619).
 
 If we zoom into where this time was taken, we get to some leaf nodes:
 
