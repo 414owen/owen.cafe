@@ -218,7 +218,7 @@ by default, because it used `C++14` features, and so wouldn't compile on macOS.
 To fix this I [downgraded the codebase's requirement to C++03](https://github.com/tree-sitter/tree-sitter-haskell/pull/58),
 but in for a penny, in for a pound, why not just [ditch C++ and go straight to C](https://github.com/tree-sitter/tree-sitter-haskell/pull/62)?
 
-This brings the `haskell-language-server` benchmark speedup to `52.8x`.
+This makes wasm builds easier, and brought the `haskell-language-server` benchmark speedup to `52.8x`.
 
 ## Loose ends
 
