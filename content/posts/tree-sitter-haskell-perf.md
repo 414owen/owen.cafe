@@ -119,7 +119,7 @@ list of characters, and returns either a parse error, or the result
 (`a`), and the input characters that weren't consumed".
 
 This was more or less how the lexer worked, albeit with some tweaks,
-such as the parsers taking and mutating a mutable state.
+such as the parsers taking and mutating a state reference.
 
 ## Dropping parser combinators
 
@@ -172,7 +172,7 @@ so which version you would get depends on whether you wrote
 `import_kw + binding` or `binding + import_kw`.
 
 Luckily, most keywords aren't dealt with in the lexer, but in the
-actual parser.
+actual parser (note the *lowercase* `p`).
 
 ---
 
