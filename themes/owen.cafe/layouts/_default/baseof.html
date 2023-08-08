@@ -25,6 +25,8 @@
   {{ with .OutputFormats.Get "RSS" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
   {{- end }}
+    <link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Owen.Cafe's blog RSS Feed" />
+    <link rel="alternate" type="application/atom+xml" href="/posts/index.xml" title="Owen.Cafe's blog RSS Feed" />
 </head>
 <body>
   <h1 hidden="hidden">{{ .Title }}</h1>
