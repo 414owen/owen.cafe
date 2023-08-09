@@ -15,6 +15,12 @@ process of discovering and fixing the worst bottleneck.
 
 This post probably won't help you speed up other tree-sitter grammars.
 
+---
+
+A huge thank-you to everyone who contributes to tree-sitter-haskell, especially
+the current maintainer, Torsten Schmits. Haskell has a lot of syntax, and
+tree-sitter-haskell is a hugely impressive project.
+
 ## How it started
 
 At some point in 2021 I switched to the [helix](https://github.com/helix-editor/helix/)
@@ -264,6 +270,7 @@ this is probably the right way to go.
 
 * Flamegraphs will lead you to the low-hanging fruit.
 * Some abstractions work better in different languages.
+
 
 [^1]: But also objectively
 
