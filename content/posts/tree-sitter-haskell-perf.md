@@ -157,14 +157,14 @@ try the second parser.
 ---
 
 It's probably worth noting that this is quite an unusual design for
-a lexer. For instance, if you define two tokens with regex:
+a lexer. For instance, if you were to define two tokens with regex:
 
 ```js
 import_kw = /import/;
 binding = /[a-zA-Z][a-zA-Z0-9]*/;
 ```
 
-And gave it the string `important`, most lexer generators would
+And give it the string `important`, most lexer generators would
 generate code that parses a binding with the value `"important"`,
 not the `import` keyword, followed by the binding `"ant"`.
 
