@@ -493,4 +493,15 @@ figure > img {
   width: 100%;
 }
 
+#rsslink > img {
+  width: 100px;
+}
+
+#rsslink {
+  margin-top: {{ div .padding 2 }}{{ .padding_unit }};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 {{ end }}
