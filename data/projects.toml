@@ -1,12 +1,18 @@
 [[els]]
+name = "Piq"
+desc = "Piq is a statically-typed, type-inferred, compiled programming language, written entirely in C99"
+github = "piq"
+img = "piq"
+
+[[els]]
 name = "Phage"
-desc = "A dynamic, functional, homoiconic, interpreted programming language"
+desc = "A dynamic, functional, homoiconic, interpreted programming language, written in Haskell"
 github = "phage"
 img = "phage-anim"
 
 [[els]]
 name = "SimFin"
-desc = "SimFin API wrapper for Haskell"
+desc = "SimFin (financial data) API wrapper for Haskell"
 github = "simfin"
 img = "simfin"
 
