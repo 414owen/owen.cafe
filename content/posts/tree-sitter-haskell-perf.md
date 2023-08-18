@@ -237,7 +237,7 @@ collected languages, allocation performance can be more similar to an
 [arena allocator](https://en.wikipedia.org/wiki/Region-based_memory_management)
 than to a general-purpose allocator (like `malloc`).
 
-The definition of Haskell's `allocate()` seems to be [here](https://gitlab.haskell.org/ghc/ghc/-/blob/master/rts/sm/Storage.c#L1088),
+The definition of Haskell's `allocate()` seems to be [here](https://gitlab.haskell.org/ghc/ghc/-/blob/3b373838e08e2e2b43fab9f0a008fb60325d31e0/rts/sm/Storage.c#L1088),
 and looking at the hotpath, it would appear to be quite fast.
 
 This is somewhat anecdotal evidence, but, while I have worked on Haskell
