@@ -71,7 +71,7 @@ loop:                             # while (true) {
       add     rdi, 1              #   input++
       cmp     ecx, 'p'            #   if (c == 'p')
       je      p                   #     goto p
-      cmp     ecx, 's'            #   if (c == 's')
+      cmp     ecx, 's'            #   if (c != 's')
       jne     loop                #     continue
       add     eax, 1              #   res++
       jmp     loop                #   continue
@@ -88,19 +88,19 @@ ret:  ret
 run_switches:
               xor    eax, eax
 loop:
-      ╭────➤ movsx  ecx, byte ptr [rdi]
-      │      test   ecx, ecx
-      │ ╭─── je     ret
-      │ │    add    rdi, 1
-      │ │    cmp    ecx, 'p'
-      │ │ ╭─ je     p
-      │ │ │  cmp    ecx, 's'
-      ├─│─│─ jne    loop
-      │ │ │  add    eax, 1
-      ├─│─│─ jmp    loop
-p:    │ │ ╰➤ add    eax, -1
-      ╰─│─── jmp    loop
-ret:    ╰──➤ ret
+       ╭────➤ movsx  ecx, byte ptr [rdi]
+       │      test   ecx, ecx
+       │ ╭─── je     ret
+       │ │    add    rdi, 1
+       │ │    cmp    ecx, 'p'
+       │ │ ╭─ je     p
+       │ │ │  cmp    ecx, 's'
+       ├─│─│─ jne    loop
+       │ │ │  add    eax, 1
+       ├─│─│─ jmp    loop
+p:     │ │ ╰➤ add    eax, -1
+       ╰─│─── jmp    loop
+ret:     ╰──➤ ret
 ```
 {{% /tab %}}
 {{< /tabs >}}
