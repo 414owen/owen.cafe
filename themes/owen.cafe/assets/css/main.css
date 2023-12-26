@@ -494,14 +494,20 @@ figure > img {
 }
 
 #rsslink > img {
-  width: 100px;
+  height: 1em;
 }
 
-#rsslink {
-  margin-top: {{ div .padding 2 }}{{ .padding_unit }};
+.heading-with-icons > h1 {
+  margin-right: 0.4em;
+}
+
+.heading-with-icons {
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.heading-image {
+  font-size: 2rem;
 }
 
 {{ end }}

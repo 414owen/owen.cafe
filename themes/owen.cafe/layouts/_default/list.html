@@ -1,7 +1,11 @@
 {{ define "main" }}
   {{ if or .Title .Content }}
   <div>
+    <div class="heading-with-icons">
     {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+    <a id="rsslink" class="heading-image" href="/posts/index.xml"><img src="/img/rss.svg" alt="rss feed"></a>
+    </div>
+
     {{ with .Content }}<div>{{ . }}</div>{{ end }}
   </div>
   {{ end }}
@@ -10,5 +14,4 @@
     {{ .Render "summary" }}
   {{ end }}
   {{ partial "pagination.html" . }}
-  <a id="rsslink" href="/posts/index.xml"><img src="/img/rss.svg" alt="rss feed">RSS feed</a>
 {{ end }}
