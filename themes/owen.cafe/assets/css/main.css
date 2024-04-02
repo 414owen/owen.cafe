@@ -428,9 +428,10 @@ code {
   margin: 0;
 }
 
-pre {
+pre > code {
   padding: 10px;
   overflow: auto;
+  display: block;
 }
 
 h2 + time + .tags {
