@@ -58,3 +58,9 @@ name = "Hexplode"
 desc = "A clone of J. Ansell's 1982 BBC Micro game"
 website = "https://hexplo.de"
 img = "hexplode-anim"
+
+[[els]]
+name = "Pandoc Builder Monadic"
+desc = "A DSL for creating pandoc ASTs with do-notation"
+github = "pandoc-builder-monadic"
+img = "pandoc-monadic"

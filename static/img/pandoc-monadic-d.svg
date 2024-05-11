@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 36.7 28.6">
+ <defs><path id="a" d="M88.85 109.34c13.58-2.98 17.88-2.63 32.3.28"/></defs>
+ <g fill-opacity=".98" stroke="#eee" stroke-width="2.12" font-family="Sans" font-size="19.76" transform="translate(-86.3 -77.54)">
+  <text x="91.67" y="92.42">PD</text>
+  <text transform="translate(-.75 -3.06)"><textPath xlink:href="#a">&gt;&gt;=</textPath></text>
+ </g>
+</svg>
