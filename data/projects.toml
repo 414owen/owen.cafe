@@ -64,3 +64,10 @@ name = "Pandoc Builder Monadic"
 desc = "A DSL for creating pandoc ASTs with do-notation"
 github = "pandoc-builder-monadic"
 img = "pandoc-monadic"
+
+[[els]]
+name = "RESP"
+desc = "A pure-haskell, incremental parser for redis' RESP3 encoding"
+github = "resp"
+img = "resp"
+
