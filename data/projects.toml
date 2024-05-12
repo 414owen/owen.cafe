@@ -71,3 +71,9 @@ desc = "A pure-haskell, incremental parser for redis' RESP3 encoding"
 github = "resp"
 img = "resp"
 
+[[els]]
+name = "unansi"
+desc = "Strip out ANSI control sequences"
+github = "unansi"
+img = "unansi"
+
