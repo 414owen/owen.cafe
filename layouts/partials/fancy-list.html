@@ -8,7 +8,15 @@
         {{ if isset . "interactive" }}
           <div>
         {{ else }}
+          {{ with .github }}
+          <a target="_blank" rel="noopener" href="{{ $url }}">
+          {{ end }}
+          {{ with .local }}
+          <a href="./{{ . }}">
+          {{ end }}
+          {{ with .website }}
           <a target="_blank" rel="noopener" href="{{$url}}">
+          {{ end }}
         {{ end }}
           {{ $img := printf "/img/%s-d.svg" .img }}
           {{ if isset . "interactive" }}
@@ -24,10 +32,13 @@
       {{ end }}
         <div class="content">
           {{ with .github }}
-          <a href="{{ $url }}">
-          {{end}}
+          <a target="_blank" rel="noopener" href="{{ $url }}">
+          {{ end }}
+          {{ with .local }}
+          <a href="./{{ . }}">
+          {{ end }}
           {{ with .website }}
-          <a href="{{ $url }}">
+          <a target="_blank" rel="noopener" href="{{ $url }}">
           {{ end }}
             {{ if isset . "website" }}
               <span class="url">({{ .website }})</span>

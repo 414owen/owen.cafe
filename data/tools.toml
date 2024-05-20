@@ -1,0 +1,5 @@
+[[els]]
+name = "GHC Symbol Demangler"
+desc = "Makes object symbols produced by your favourite compiler legible"
+local = "demangle-ghc"
+img = "haskell"

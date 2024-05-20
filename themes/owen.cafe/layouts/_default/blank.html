@@ -1,0 +1,6 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <div>
+    {{ .Content | replaceRE "(<h[1-6] id=\"(.+)\".*>)(.*)(</h([1-6])>)" `${1}<a class="h${5}-anchor" href="#${2}"><span class="anchor">#&nbsp;</span>${3}</a>${4}` | safeHTML }}
+  </div>
+{{ end }}
