@@ -524,11 +524,15 @@ select {
   grid-row: 2;
 }
 
-.tool-input {
+.tool-input-container {
   background: #453a62;
 }
 
-.tool-output {
+.tool-output-container:has(.error) {
+  background: #c33;
+}
+
+.tool-output-container {
   background: #5e5086;
 }
 
@@ -545,33 +549,32 @@ select {
   height: 100%;
 }
 
-.io-tool pre, .io-tool textarea {
-  outline: none;
-  background: transparent;
-  border: none;
-  color: #eee;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  resize: none;
-  width: 100%;
+.tool-input-container, .tool-output-container {
+  overflow: auto;
+  padding: 10px;
 }
 
 .tool-input, .tool-output {
-  border: 0;
+  background: transparent;
+  border: none;
+  color: #eee;
   font-size: 16px;
   height: 100%;
-  overflow: auto;
-  padding: 10px;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  resize: none;
   width: 100%;
+  word-break: break-all;
 }
 
 .io-tool {
   align-items: center;
   display: grid;
+  row-gap: 4%;
   flex-direction: row;
   grid-template-columns: 400px auto;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 48% 48%;
   height: 400px;
   margin-bottom: 24px;
   margin-top: 24px;

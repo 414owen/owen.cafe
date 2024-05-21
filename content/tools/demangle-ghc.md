@@ -10,17 +10,11 @@ This tool demangles symbol names produced by GHC, as per [this spec](https://git
 This can be useful if you're inspecting haskell object files, etc.
 
 <div class="demangle-ghc io-tool">
-  <div class="io-left">
-    <div class="tool-input-container">
-      <div class="tool-input">
-        <textarea id="ghc-input">multizmexceptzm2zi0zi0zminplace_ControlziApplicativeziMultiExcept_zdtczqSuccess3_bytes</textarea>
-      </div>
-    </div>
-    <div class="tool-output-container">
-      <div class="tool-output">
-        <pre id="ghc-output" class="tool-output"></pre>
-      </div>
-    </div>
+  <div class="tool-input-container">
+    <textarea id="ghc-input" class="tool-input">multizmexceptzm2zi0zi0zminplace_ControlziApplicativeziMultiExcept_zdtczqSuccess3_bytes</textarea>
+  </div>
+  <div class="tool-output-container">
+    <div id="ghc-output" class="tool-output"></div>
   </div>
   <div class="tool-arrow" style="font-size: 140px">&#10552;</div>
 </div>
