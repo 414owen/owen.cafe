@@ -25,7 +25,7 @@ Examples: <select id="demangle-ghc-examples">
   <option value="base_GHCziBase_ZCzb_con_info">non :| empty</option>
   <option value="ghczmprim_GHCziTupleziPrim_Z10T_con_info">Big ( tuple )</option>
   <option value="ghczmprim_GHCziTupleziPrim_Z10H_con_info">Big (# tuple #)</option>
-  <option value="abcdefghijklmnopqrstuvwxyzz\nABCDEFGHIJKLMNOPQRSTUVWXYZZ\nz03bbU z03a0U\nza zb zc zd ze zg zh zi zl zm zn zp zq zr zs zt zu zv\nZL ZR ZM ZN ZC\nZ0T Z3T\nZ1H Z3H\nZ9H">Kitchen sink</option>
+  <option value="abcdefghijklmnopqrstuvwxyzz\nABCDEFGHIJKLMNOPQRSTUVWXYZZ\nz03bbU z03a0U\nz127Uz1e17Uz13dUz139Uz153Uz1e88Uz1feUz17fUz1e39Uz111U\nza zb zc zd ze zg zh zi zl zm zn zp zq zr zs zt zu zv\nZL ZR ZM ZN ZC\nZ0T Z3T\nZ1H Z3H\nZ9H">Kitchen sink</option>
 </select>
 
 I find a good way of getting some test data is by using something like this:
