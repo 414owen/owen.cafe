@@ -513,27 +513,19 @@ select {
 }
 
 .tool-input-container {
+  background: #453a62;
   padding-bottom: 10px;
-  grid-column: 1;
   grid-row: 1;
 }
 
 .tool-output-container {
+  background: #5e5086;
   padding-top: 10px;
-  grid-column: 1;
   grid-row: 2;
-}
-
-.tool-input-container {
-  background: #453a62;
 }
 
 .tool-output-container:has(.error) {
   background: #c33;
-}
-
-.tool-output-container {
-  background: #5e5086;
 }
 
 .tool-arrow {
@@ -542,6 +534,7 @@ select {
 }
 
 .tool-input-container, .tool-output-container {
+  grid-column: 1;
   height: 100%;
 }
 
@@ -566,6 +559,7 @@ select {
   resize: none;
   width: 100%;
   word-break: break-all;
+  white-space: pre-wrap;
 }
 
 .io-tool {
