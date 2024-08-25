@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <script type="module" crossorigin src="./assets/index-BFoIt-xw.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bn8QtviX.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="controls">
+        <input type="button" id="start" value="Start">
+        <input type="button" id="resume" value="Resume" style="visibility: hidden">
+        <input type="button" id="stop" value="Stop" style="visibility: hidden">
+      </div>
+      <div id="boards"></div>
+
+      <form id="inputs">
+
+        <div>
+          <label for="radius">Cell radius:</label><input type="range" step="0.5" id="radius" min="0.5" max="10" value="3" />
+        </div>
+
+        <div>
+          <label for="speed">Speed:</label><input type="range" step="0.04" id="speed" min="0.1" max="1" value="0.5" />
+        </div>
+
+        <div>
+          <label for="seed">Seed:</label><input id="seed" pattern="([0-9]*[.])?[0-9]+" value="0.1839724487122828" /><button id="random-seed">Random</button>
+        </div>
+
+        <div>
+          <label for="number-of-cells">Number of cells:</label><input type="number" id="number-of-cells" value="18" />
+        </div>
+
+        <div>
+          <label for="grid-size">Grid size:</label><input type="number" id="grid-size" value="32" />
+        </div>
+
+        <div>
+          <label for="root-note">Root note:</label><select name="root note" id="root-note">
+          <option value="0">A</option>
+          <option value="1">A#</option>
+          <option value="2">B</option>
+          <option value="3">C</option>
+          <option value="4">C'</option>
+          <option value="5">D</option>
+          <option value="6">D#</option>
+          <option value="7" selected label="E">E</option>
+          <option value="8">F</option>
+          <option value="9">F#</option>
+          <option value="10">G</option>
+          <option value="11">G#</option>
+        </select></div>
+
+        <div>
+          <label for="root-note-octave">Root note octave:</label><input type="number" id="root-note-octave" value="2" />
+        </div>
+
+        <div>
+          <label for="notes">Scale:</label><input id="notes" pattern="\d+(( +|,)\d+)*" placeholder="tone/semitone sequence, eg 2,2,1,2,2,2,1" value="2,2,1,2,2,2,1" />
+        </div>
+
+        <div>
+          <label for="subdivisions">Number of notes:</label><input type="number" id="subdivisions" value="16" min="1" />
+        </div>
+
+        <div><input type="submit" id="apply" disabled value="Apply" /></div>
+      </form>
+
+      <hr />
+
+      <div>
+        <label for="preset">Preset:</label><select name="preset" id="preset" value="custom">
+        <option value='custom'>Custom</option>
+        <option value='{"gridSize":18,"key":2,"noteNumber":16,"numberOfCells":12,"octave":3,"radius":3,"scale":[2,1,2,2,1,2,2],"seed":0.8627778513368297,"speed":0.7}'>Simple</option>
+        <option value='{"gridSize":64,"key":7,"noteNumber":16,"numberOfCells":64,"octave":2,"radius":3,"scale":[2,2,1,2,2,2,1],"seed":0.41187525773091627,"speed":0.26}'>Complex</option>
+        <option value='{"gridSize":2,"key":0,"noteNumber":1,"numberOfCells":4,"octave":2,"radius":10,"scale":[21],"seed":0.3909288538228103,"speed":0.98}'>Four horsemen</option>
+        <option value='{"gridSize":64,"key":0,"noteNumber":40,"numberOfCells":100,"octave":2,"radius":2,"scale":[1,1,1,1,1,1,1,1,1,1,1,1],"seed":0.5564465356553207,"speed":0.9}'>Chaos</option>
+      </select></div>
+
+      <h2>Controls:</h2>
+
+      <div>spacebar: play/pause</div>
+
+    </div>
+  </body>
+</html>
