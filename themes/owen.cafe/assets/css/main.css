@@ -371,8 +371,20 @@ main {
   }
 }
 
+#content > article > :last-child > p:first-child::first-letter {
+  -webkit-initial-letter: 4;
+  initial-letter: 4;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  font-style: italic;
+}
+
 pre, .tabs {
   margin: {{ div .padding 2 }}{{ .padding_unit }} 0;
+}
+
+hr {
+  margin-top: 16px;
 }
 
 p {

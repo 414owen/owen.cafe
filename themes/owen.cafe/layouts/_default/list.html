@@ -1,11 +1,9 @@
 {{ define "main" }}
   {{ if or .Title .Content }}
-  <div>
-    <div class="heading-with-icons">
-    {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
-    <a id="rsslink" class="heading-image" href="/posts/index.xml"><img src="/img/rss.svg" alt="rss feed"></a>
-    </div>
-
+  <div class="heading-with-icons">
+  {{ with .Title }}<h1>{{ . }}
+  <a id="rsslink" class="heading-image" href="/posts/index.xml"><img src="/img/rss.svg" alt="rss feed"></a>
+  </h1>{{ end }}
     {{ with .Content }}<div>{{ . }}</div>{{ end }}
   </div>
   {{ end }}
