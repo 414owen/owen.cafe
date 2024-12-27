@@ -5,10 +5,5 @@
     <div>
       {{ .Content | replaceRE "(<h[1-6] id=\"(.+)\".*>)(.*)(</h([1-6])>)" `${1}<a class="h${5}-anchor" href="#${2}"><span class="anchor">#&nbsp;</span>${3}</a>${4}` | safeHTML }}
     </div>
-    {{ with .Site.DisqusShortname }}
-    <div>
-      {{ template "_internal/disqus.html" . }}
-    </div>
-    {{ end }}
   </article>
 {{ end }}

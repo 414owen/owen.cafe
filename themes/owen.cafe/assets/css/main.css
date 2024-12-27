@@ -21,8 +21,10 @@ h1 {
 }
 
 h2 {
-  font-size: 2.3rem;
+  font-size: 1.8rem;
 }
+
+h2
 
 .footnotes,
 h1 + *,
@@ -443,13 +445,10 @@ pre {
   overflow: auto;
 }
 
-h2 + time + .tags {
-  margin-top: 1em;
-}
-
 .time-tags {
   display: flex;
   justify-content: space-between;
+  margin-top: {{ div .padding 4 }}{{ .padding_unit }};
 }
 
 .tags > a {
