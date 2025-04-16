@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: *.php
 
 Sitemap: https://owen.cafe/sitemap.xml
