@@ -14,7 +14,7 @@ tweak it in various ways, measuring the speedup.
 
 <!--more-->
 
-📢 This post was on the front page of HN. You can join in the discussion [there](https://news.ycombinator.com/item?id=36618344).
+📢 This post was on the [front page of HN](https://news.ycombinator.com/front?day=2023-07-07). You can join in the discussion [there](https://news.ycombinator.com/item?id=36618344).
 
 **Disclaimer**: *I'm not an optimization expert, by any means, in fact my
 expertise is in high-level, purely-functional languages, where one
