@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "prefixItems": [
+    {"description": "Thank you for visiting a url I put in a code comment."},
+    {"description": "To reward your curiosity, here is a haiku, describing"},
+    {"description": "the delopment process."},
+    {"description": ""},
+    {"description": "Nested JSON maze,"},
+    {"description": "hours lost in tangled depths,"},
+    {"description": "clarity deferred."},
+    {"description": ""},
+    {"description": "Schemas spin like webs,"},
+    {"description": "ambiguous rules confound,"},
+    {"description": "yet code seeks meaning."}
+  ]
+}
