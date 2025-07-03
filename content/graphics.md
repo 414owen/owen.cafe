@@ -18,3 +18,7 @@ weight: 5
 ## Tree Declarator
 
 {{% iframe "Tree" "tree" %}}
+
+## Waves
+
+{{% iframe "Waves" "waves" %}}
