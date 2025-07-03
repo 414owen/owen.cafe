@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Spirangle animation">
+  <title>Spirangle</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; overflow: hidden }
+    body, svg { width: 100vw; height: 100vh; background: #111 }
+    line { stroke: #fff; stroke-width: 0.3 }
+  </style>
+</head>
+<body>
+  <noscript>Enable javascript to view</noscript>
+  <svg viewbox="0 0 100 100" id="canvas">
+  </svg>
+  <script>
+    let parent = document.getElementById("canvas");
+
+    let el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const k in attrs) {
+        res.setAttribute(k, attrs[k]);
+      }
+      for (child of children) {
+        res.appendChild(child);
+      }
+      return res;
+    };
+
+    let x1 = 50;
+    let len = 4;
+
+    for (let i = 0; i < 80; i++) {
+      const x2 = x1 + len;
+      let line = el("line", { x1: x1, y1: 50, x2: x2, y2: 50 });
+      let anim = el("animateTransform", {
+        attributeName: "transform",
+        type: "rotate",
+        from: `-120 ${x1} 50`,
+        to: `240 ${x1} 50`,
+        dur: "1200s",
+        repeatCount: "indefinite"
+      });
+      const g = el("g", {}, [line, anim]);
+      x1 = x2;
+      parent.appendChild(g);
+      parent = g;
+      len *= 1.04;
+    }
+  </script>
+</body>
+</html>

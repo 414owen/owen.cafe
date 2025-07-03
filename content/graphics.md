@@ -7,22 +7,14 @@ menu: ["main"]
 weight: 5
 ---
 
-## Tree Declarator
+## Spirangle
 
-{{% codepen "Tree Declarator" "zYOZoWN" %}}
+{{% iframe "Spirangle" "spirangle" %}}
 
 ## Warp Speed
 
-{{% codepen "Warp Speed" "QWLpGBW" %}}
+{{% iframe "Warp Speed" "warp" %}}
 
-## Gravitational Fireflies
+## Tree Declarator
 
-{{% codepen "Gravitational Fireflies" "jrqrWW" %}}
-
-## Declarative Spirangle
-
-{{% codepen "Declarative Spirangle" "rNByWvM" %}}
-
-## Fractal Trees
-
-{{% youtube "Fractal Trees" "7hOF8Ei-ys4" %}}
+{{% iframe "Tree" "tree" %}}

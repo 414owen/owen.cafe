@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Spirangle animation">
+  <title>Spirangle</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; overflow: hidden }
+    body, svg { width: 100vw; height: 100vh; background: #111 }
+    svg {
+      transform: scaleY(-1)
+    }
+    line { stroke: #fff; stroke-width: 0.3 }
+  </style>
+</head>
+<body>
+  <noscript>Enable javascript to view</noscript>
+  <svg viewbox="-50 0 100 100" id="canvas">
+  </svg>
+  <script>
+    let svg = document.getElementById("canvas");
+
+    let el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const k in attrs) {
+        res.setAttribute(k, attrs[k]);
+      }
+      for (child of children) {
+        res.appendChild(child);
+      }
+      return res;
+    };
+
+    let rand = () => Math.random();
+
+    const topology = {
+      trunk: {
+        length: 16,
+        width: 3,
+        children: [
+          {
+            spawnRate: 1,
+            position: 1,
+            angle: 45,
+            type: "branch"
+          }
+        ]
+      },
+      leaves: ([{ width }]) =>
+        range(
+          Math.floor(
+            (topology.trunk.width - width) /
+              topology.trunk.width *
+              rand() *
+              3
+          )
+        ).map(_ => ({
+          color: "#DC925F",
+          position: rand(),
+          size: rand() * 0.5 + 0.5
+        })),
+      branches: {
+        branch: ([{ length, width }]) => ({
+          width: width * 0.7,
+          length: length * 0.87,
+          children: [
+            {
+              spawnRate: 0.5,
+              position: 1,
+              angle: 20,
+              type: "branch"
+            },
+            {
+              spawnRate: 0.5,
+              position: 0.5,
+              angle: 45,
+              type: "branch"
+            }
+          ]
+        })
+      }
+    };
+
+    const clearEl = el => {
+      while (el.childNodes.length) {
+        el.childNodes[0].remove();
+      }
+    };
+
+    const mapEntries = (obj, fn) => {
+      const res = {};
+      entries(obj).forEach(([k, v], i) => {
+        [nk, nv] = fn([k, v], i);
+        res[nk] = nv;
+      });
+      return res;
+    };
+
+    const mapObj = (obj, fn) => mapEntries(obj, ([k, v], i) => [k, fn(v, i)]);
+
+    const range = n =>
+      Array(n)
+        .fill(0)
+        .map((_, i) => i);
+
+    const X = { x1: 0, x2: 0 };
+    const LIMIT = 6;
+
+    const resolveConfig = (obj, history) =>
+      mapObj(obj, v => (typeof v === "function" ? v(history) : v));
+
+    const layer = (
+      { children, length, width },
+      y,
+      angle,
+      history,
+      lim,
+      begin,
+      overall = 0
+    ) => {
+      history.unshift({ y, angle, length, width });
+      const animLen = length / (6 * Math.pow(lim, 1.5));
+      const nodes = [
+        el(
+          "line",
+          {
+            ...X,
+            y1: y,
+            y2: y,
+            "stroke-width": 0
+          },
+          [
+            el("animate", {
+              attributeName: "y2",
+              dur: `${animLen}s`,
+              fill: "freeze",
+              from: y,
+              to: y + length,
+              begin
+            }),
+            el("animate", {
+              attributeName: "stroke-width",
+              dur: `${animLen / 9}s`,
+              fill: "freeze",
+              from: 0,
+              to: width,
+              begin
+            })
+          ]
+        )
+      ];
+
+      topology.leaves(history).forEach(({ color, position, size }) => {
+        const mod = Math.floor(overall / 180) % 2 == 0;
+        nodes.push(
+          el(
+            "circle",
+            {
+              r: 0,
+              cx: (mod ? -1 : 1) * (size + width / 2),
+              cy: y + length * position,
+              fill: color
+            },
+            [
+              el("animate", {
+                attributeName: "r",
+                dur: `${animLen}s`,
+                fill: "freeze",
+                from: 0,
+                to: size,
+                begin: begin + animLen * position
+              })
+            ]
+          )
+        );
+      });
+      if (lim) {
+        children.forEach(({ position, angle: cangle, spawnRate, type }) => {
+          if (rand() < spawnRate) {
+            nodes.push(
+              layer(
+                topology.branches[type](history),
+                y + position * length,
+                cangle,
+                history,
+                lim - 1,
+                begin + animLen,
+                overall + cangle
+              )
+            );
+          }
+          if (rand() < spawnRate) {
+            nodes.push(
+              layer(
+                topology.branches[type](history),
+                y + position * length,
+                -cangle,
+                history,
+                lim - 1,
+                begin + animLen,
+                overall - cangle
+              )
+            );
+          }
+        });
+      }
+      history.shift();
+      return el("g", {
+        transform: `translate(0 ${y}) rotate(${angle}) translate(0 -${y})`
+      }, nodes);
+    };
+
+    const gen = () => {
+      clearEl(svg);
+      svg.appendChild(layer(topology.trunk, 0, 0, [], LIMIT, svg.getCurrentTime()));
+    };
+
+    window.setInterval(gen, 5000);
+    gen();
+  </script>
+</body>
+</html>

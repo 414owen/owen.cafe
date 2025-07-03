@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Warp speed animation">
+  <title>Warp speed</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; overflow: hidden }
+    body, svg { width: 100vw; height: 100vh; background: #111 }
+    line { stroke: #fff; stroke-width: 0.3 }
+  </style>
+</head>
+<body>
+  <noscript>Enable javascript to view</noscript>
+  <svg viewbox="10 10 80 80" id="canvas">
+  </svg>
+  <script>
+    let svg = document.getElementById("canvas");
+
+    let el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const k in attrs) {
+        res.setAttribute(k, attrs[k]);
+      }
+      for (child of children) {
+        res.appendChild(child);
+      }
+      return res;
+    };
+
+    const lineSize = 0.3;
+    const lineAmount = 50;
+    const lineSizeDeviation = 0.5;
+    const duration = 6;
+    const delayFraction = 0.5;
+
+    for (let i = 0; i < 100; i++) {
+      const r1 = Math.random();
+      const delay = Math.random() * delayFraction;
+      const r3 = Math.random();
+      const a = lineSize + r3 * lineSizeDeviation;
+      
+      const anim = el("animate", {
+        attributeName: "d",
+        dur: `${duration}s`,
+        keyTimes: `0;${delay};${delay + (1 - delay) / 2};1`,
+        repeatCount: "indefinite",
+        values: `M50 50L50 50L50 50;M50 50L50 50L50 50;M50 50L0 0L${a} 0;M0 0L0 0L0 0`
+      });
+      svg.appendChild(el("path", {
+        fill: "#fff",
+        transform: `rotate(${r1 * 360} 50 50)`
+      }, [anim]));
+    }
+
+    svg.appendChild(
+      el("defs", {}, [
+        el("radialGradient", {
+          id: "grad1"
+        }, [
+          el("stop", { offset: "30%", "stop-color": "#111" }),
+          el("stop", { offset: "95%", "stop-color": "rgba(17,17,17,0)" })
+        ])
+      ])
+    );
+
+    svg.appendChild(el("circle", {
+      cx: "50",
+      cy: "50",
+      r: "10",
+      fill: "url(#grad1)"
+    }));
+  </script>
+</body>
+</html>
