@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wave animation">
+  <title>Waves</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; overflow: hidden }
+    body, svg { width: 100vw; height: 100vh; background: #111 }
+    line { stroke: #fff; stroke-width: 0.3 }
+  </style>
+</head>
+<body>
+  <noscript>Enable javascript to view</noscript>
+  <svg viewbox="0 0 150 150" id="canvas">
+  </svg>
+  <script>
+    let svg = document.getElementById("canvas");
+
+    const W = 150;
+    const H = 150;
+
+    let el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const k in attrs) {
+        res.setAttribute(k, attrs[k]);
+      }
+      for (child of children) {
+        res.appendChild(child);
+      }
+      return res;
+    };
+
+    const NUM_ROWS = 10;
+    const NUM_ENTRIES = 10;
+    const WAVE_W = 3;
+    const WAVE_W_3_8 = WAVE_W * 3 / 8;
+    const WAVE_W_M3_8 = WAVE_W - WAVE_W_3_8;
+    const WAVE_H = 0.6;
+
+    const SEA_START = 100;
+    const SEA_END = 50;
+    const WAVES_PER_ROW = 10;
+
+    const ROWS = 20;
+    const FLAT_PATH = `M ${WAVE_W/2} 2 q 0 0 0 0 q 0 0 0 0 q 0 0 0 0 q 0 0 0 0`;
+    const WAVE_DUR = 10;
+
+    for (let j = 0; j < ROWS; j++) {
+      const Y = SEA_START - j * (SEA_START - SEA_END) / ROWS;
+      for (let i = 0; i < WAVES_PER_ROW; i++) {
+        const X = i * (W + WAVE_W) / WAVES_PER_ROW;
+        svg.appendChild(el("path", {
+          fill: "#fff",
+          transform: `translate(${X}, ${Y})`
+        }, [
+          el("animate", {
+            attributeName: "d",
+            dur: `${WAVE_DUR}s`,
+            fill: "freeze",
+            repeatCount: "indefinite",
+            calcMode: "spline",
+            keyTimes: "0;0.1;0.2;1",
+            keySplines: "0.4 0 0.5 1;0.4 0 0.5 1;0.4 0 0.5 1",
+            begin: `${Math.random() * WAVE_DUR}s`,
+            values: `${FLAT_PATH};M 0 ${WAVE_H} Q ${WAVE_W_3_8} ${WAVE_H} ${WAVE_W/2} 0 Q ${WAVE_W_M3_8} ${WAVE_H} ${WAVE_W} ${WAVE_H} Q ${WAVE_W_M3_8} ${WAVE_H} ${WAVE_W/2} ${WAVE_H/2} Q ${WAVE_W_3_8} ${WAVE_H} 0 ${WAVE_H};${FLAT_PATH};${FLAT_PATH}`,
+          })
+        ]));
+      }
+    }
+
+  </script>
+</body>
+</html>
