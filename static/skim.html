@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.8.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Animation of skimming stones">
+  <title>Skim</title>
+  <link rel="icon" href="/favicon.svg">
+  <style>
+    * { margin: 0; padding: 0; overflow: hidden }
+    body, svg { width: 100vw; height: 100vh; background: #111 }
+    circle { fill: rgba(0,0,0,0); stroke-width: 1.5 }
+  </style>
+</head>
+<body>
+  <noscript>Enable javascript to view</noscript>
+  <svg viewbox="0 0 100 100" id="canvas">
+  </svg>
+  <script>
+    const svg = document.getElementById("canvas");
+
+    const W = 100;
+    const H = 100;
+    const SKIP_ANIM_TIME = 2;
+
+
+    const el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      for (const k in attrs) {
+        res.setAttribute(k, attrs[k]);
+      }
+      for (child of children) {
+        res.appendChild(child);
+      }
+      return res;
+    };
+
+    const clearEl = el => {
+      while (el.childNodes.length) {
+        el.childNodes[0].remove();
+      }
+    };
+
+    const rand = () => Math.random();
+
+    const resetTime = el => {
+      el.setCurrentTime(0);
+      el
+    };
+
+    let fadeAnim = begin => el("animate", {
+      attributeName: "stroke",
+      from: "#eee",
+      to: `rgba(0,0,0,0)`,
+      dur: `${SKIP_ANIM_TIME}s`,
+      begin,
+      fill: "freeze",
+    });
+
+    let scaleAnim = begin => el("animateTransform", {
+      attributeName: "transform",
+      type: "scale",
+      from: "0.1 0.1",
+      to: "1 1",
+      dur: `${SKIP_ANIM_TIME}s`,
+      begin,
+      fill: "freeze",
+    });
+
+    let skim = () => {
+      clearEl(svg);
+
+      const NUM_HOPS = Math.floor(rand() * 18) + 7;
+
+      let dx = 0.5 + rand();
+      if (rand() < 0.5) { dx = -dx; }
+      let x = W / 2 + dx * 10;
+
+      const Y = H * 0.9;
+
+      // Distance away from start hop
+      let hop_dist = 0;
+      let dhop_dist = 10;
+      
+      let squash = 3;
+      let scale = 1;
+
+      let total_time = 0;
+      let begin = 0;
+      let dbegin = 0.4
+
+      for (let i = 0; i < NUM_HOPS; i++) {
+        const y = Y + -hop_dist;
+        const beg = `${begin}s`;
+        const circle = el("circle",
+          { stroke: "rgba(0,0,0,0)", cx: "0", cy: "0", r: "5" },
+          [ scaleAnim(beg), fadeAnim(beg)]
+        );
+        svg.appendChild(el("g", {
+          transform: `translate(${x}, ${y}) scale(${scale} ${scale/squash})`
+        }, [circle]));
+        scale *= 0.9;
+        hop_dist += dhop_dist;
+        dhop_dist *= 0.85;
+        x += dx;
+        dx *= 0.98;
+        total_time += begin;
+        begin += dbegin;
+        dbegin *= 0.9;
+        squash *= 1.03;
+      }
+
+      svg.setCurrentTime(0);
+
+      window.setTimeout(skim, begin * 1000 + SKIP_ANIM_TIME * 1000 * 1.2);
+    };
+    skim();
+  </script>
+</body>
+</html>

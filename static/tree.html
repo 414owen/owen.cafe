@@ -13,7 +13,7 @@
     svg {
       transform: scaleY(-1)
     }
-    line { stroke: #fff; stroke-width: 0.3 }
+    line { stroke: #eee; stroke-width: 0.3 }
   </style>
 </head>
 <body>
@@ -21,9 +21,9 @@
   <svg viewbox="-50 0 100 100" id="canvas">
   </svg>
   <script>
-    let svg = document.getElementById("canvas");
+    const svg = document.getElementById("canvas");
 
-    let el = (tag, attrs = {}, children = []) => {
+    const el = (tag, attrs = {}, children = []) => {
       const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
       for (const k in attrs) {
         res.setAttribute(k, attrs[k]);
@@ -34,7 +34,7 @@
       return res;
     };
 
-    let rand = () => Math.random();
+    const rand = () => Math.random();
 
     const topology = {
       trunk: {
