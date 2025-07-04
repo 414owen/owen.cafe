@@ -10,15 +10,18 @@
   <style>
     * { margin: 0; padding: 0; overflow: hidden }
     body, svg { width: 100vw; height: 100vh; background: #111 }
-    line { stroke: #fff; stroke-width: 0.3 }
+    line { stroke: #fff; stroke-width: 1 }
   </style>
 </head>
 <body>
   <noscript>Enable javascript to view</noscript>
-  <svg viewbox="0 0 100 100" id="canvas">
+  <svg viewbox="0 0 500 500" id="canvas">
   </svg>
   <script>
     let parent = document.getElementById("canvas");
+
+    let W = 500;
+    let H = 500;
 
     let el = (tag, attrs = {}, children = []) => {
       const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
@@ -31,17 +34,17 @@
       return res;
     };
 
-    let x1 = 50;
-    let len = 4;
+    let len = 20;
+    let x1 = len/2 + W/2;
 
     for (let i = 0; i < 80; i++) {
       const x2 = x1 + len;
-      let line = el("line", { x1: x1, y1: 50, x2: x2, y2: 50 });
+      let line = el("line", { x1: x1, y1: H/2, x2: x2, y2: W/2 });
       let anim = el("animateTransform", {
         attributeName: "transform",
         type: "rotate",
-        from: `-120 ${x1} 50`,
-        to: `240 ${x1} 50`,
+        from: `-120 ${x1} ${H/2}`,
+        to: `240 ${x1} ${W/2}`,
         dur: "1200s",
         repeatCount: "indefinite"
       });
