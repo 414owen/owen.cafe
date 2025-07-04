@@ -30,30 +30,44 @@
       return res;
     };
 
+    const clearEl = el => {
+      while (el.childNodes.length) {
+        el.childNodes[0].remove();
+      }
+    };
+
     const lineSize = 0.3;
     const lineAmount = 50;
     const lineSizeDeviation = 0.5;
     const duration = 6;
     const delayFraction = 0.5;
 
-    for (let i = 0; i < 100; i++) {
-      const r1 = Math.random();
-      const delay = Math.random() * delayFraction;
-      const r3 = Math.random();
-      const a = lineSize + r3 * lineSizeDeviation;
+    const g = el("g");
+    svg.appendChild(g);
+
+    const run = () => {
+      clearEl(g);
+      for (let i = 0; i < 100; i++) {
+        const r1 = Math.random();
+        const delay = Math.random() * delayFraction;
+        const r3 = Math.random();
+        const a = lineSize + r3 * lineSizeDeviation;
       
-      const anim = el("animate", {
-        attributeName: "d",
-        dur: `${duration}s`,
-        keyTimes: `0;${delay};${delay + (1 - delay) / 2};1`,
-        repeatCount: "indefinite",
-        values: `M50 50L50 50L50 50;M50 50L50 50L50 50;M50 50L0 0L${a} 0;M0 0L0 0L0 0`
-      });
-      svg.appendChild(el("path", {
-        fill: "#fff",
-        transform: `rotate(${r1 * 360} 50 50)`
-      }, [anim]));
-    }
+        const anim = el("animate", {
+          attributeName: "d",
+          dur: `${duration}s`,
+          keyTimes: `0;${delay};${delay + (1 - delay) / 2};1`,
+          values: `M50 50L50 50L50 50;M50 50L50 50L50 50;M50 50L0 0L${a} 0;M0 0L0 0L0 0`
+        });
+        g.appendChild(el("path", {
+          fill: "#fff",
+          transform: `rotate(${r1 * 360} 50 50)`
+        }, [anim]));
+      }
+      svg.setCurrentTime(0);
+    };
+    run();
+    window.setInterval(run, duration * 1000 * 1.1);
 
     svg.appendChild(
       el("defs", {}, [
