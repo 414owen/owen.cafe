@@ -19,7 +19,7 @@ weight: 5
 
 {{% iframe "Warp Speed" "warp" %}}
 
-## Tree Declarator
+## Tree
 
 {{% iframe "Tree" "tree" %}}
 
