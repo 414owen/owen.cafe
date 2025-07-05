@@ -83,12 +83,6 @@
       }
     };
 
-    const clearEl = el => {
-      while (el.childNodes.length) {
-        el.childNodes[0].remove();
-      }
-    };
-
     const mapEntries = (obj, fn) => {
       const res = {};
       entries(obj).forEach(([k, v], i) => {
@@ -213,7 +207,7 @@
     };
 
     const gen = () => {
-      clearEl(svg);
+      svg.innerHTML = "";
       svg.appendChild(layer(topology.trunk, 0, 0, [], LIMIT, svg.getCurrentTime()));
     };
 
