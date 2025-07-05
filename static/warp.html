@@ -9,7 +9,7 @@
   <style>
     * { margin: 0; padding: 0; overflow: hidden }
     body, svg { width: 100vw; height: 100vh; background: #111 }
-    line { stroke: #fff; stroke-width: 0.3 }
+    path { fill: #eee }
   </style>
 </head>
 <body>
@@ -17,13 +17,17 @@
   <svg viewbox="10 10 80 80" id="canvas">
   </svg>
   <script>
-    let svg = document.getElementById("canvas");
+    const svg = document.getElementById("canvas");
 
-    let el = (tag, attrs = {}, children = []) => {
-      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    const setAttrs = (el, attrs) => {
       for (const k in attrs) {
-        res.setAttribute(k, attrs[k]);
+        el.setAttribute(k, attrs[k]);
       }
+    }
+
+    const el = (tag, attrs = {}, children = []) => {
+      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      setAttrs(res, attrs);
       for (child of children) {
         res.appendChild(child);
       }
@@ -37,32 +41,36 @@
     };
 
     const lineSize = 0.3;
-    const lineAmount = 50;
+    const lineAmount = 100;
     const lineSizeDeviation = 0.5;
     const duration = 6;
     const delayFraction = 0.5;
 
-    const g = el("g");
-    svg.appendChild(g);
+    const anims = [];
+    const paths = [];
+
+    for (let i = 0; i < lineAmount; i++) {
+      const anim = el("animate", {
+        attributeName: "d",
+      });
+      anims.push(anim);
+      const path = el("path", {}, [anim]);
+      paths.push(path);
+      svg.appendChild(path)
+    }
 
     const run = () => {
-      clearEl(g);
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < lineAmount; i++) {
         const r1 = Math.random();
         const delay = Math.random() * delayFraction;
         const r3 = Math.random();
         const a = lineSize + r3 * lineSizeDeviation;
-      
-        const anim = el("animate", {
-          attributeName: "d",
+        setAttrs(anims[i], {
           dur: `${duration}s`,
           keyTimes: `0;${delay};${delay + (1 - delay) / 2};1`,
           values: `M50 50L50 50L50 50;M50 50L50 50L50 50;M50 50L0 0L${a} 0;M0 0L0 0L0 0`
         });
-        g.appendChild(el("path", {
-          fill: "#fff",
-          transform: `rotate(${r1 * 360} 50 50)`
-        }, [anim]));
+        paths[i].setAttribute("transform", `rotate(${r1 * 360} 50 50)`);
       }
       svg.setCurrentTime(0);
     };
