@@ -18,14 +18,20 @@
   </svg>
   <script>
     const svg = document.getElementById("canvas");
+    const NS = "http://www.w3.org/2000/svg";
 
     const W = 100;
     const H = 100;
-    const SKIP_ANIM_TIME = 2;
 
+    const SKIP_ANIM_TIME = 2;
+    const TIME_BETWEEN_HOPS = 0.4;
+    const TIME_BETWEEN_HOPS_MULT = 0.9;
+    const MIN_NUM_HOPS = 7;
+    const MAX_NUM_HOPS = 25;
+    const INITIAL_Y = H * 0.9;
 
     const el = (tag, attrs = {}, children = []) => {
-      const res = document.createElementNS("http://www.w3.org/2000/svg", tag);
+      const res = document.createElementNS(NS, tag);
       for (const k in attrs) {
         res.setAttribute(k, attrs[k]);
       }
@@ -35,18 +41,7 @@
       return res;
     };
 
-    const clearEl = el => {
-      while (el.childNodes.length) {
-        el.childNodes[0].remove();
-      }
-    };
-
     const rand = () => Math.random();
-
-    const resetTime = el => {
-      el.setCurrentTime(0);
-      el
-    };
 
     let fadeAnim = begin => el("animate", {
       attributeName: "stroke",
@@ -67,16 +62,38 @@
       fill: "freeze",
     });
 
-    let skim = () => {
-      clearEl(svg);
+    const fades = [];
+    const gs = [];
 
-      const NUM_HOPS = Math.floor(rand() * 18) + 7;
+    {
+      let begin = 0;
+      let dbegin = TIME_BETWEEN_HOPS;
+      for (let i = 0; i < MAX_NUM_HOPS; i++) {
+        const beg = `${begin}s`;
+        begin += dbegin;
+        dbegin *= TIME_BETWEEN_HOPS_MULT;
+        let fade = fadeAnim(beg);
+        let scale = scaleAnim(beg);
+        fades.push(fade);
+        const circle = el("circle",
+          { cx: "0", cy: "0", r: "5" },
+          [ scale, fade]
+        );
+        const g = el("g", { }, [circle]);
+        gs.push(g);
+        svg.appendChild(g);
+      }
+    }
+
+    let skim = () => {
+      const NUM_HOPS = Math.floor(rand() * (MAX_NUM_HOPS - MIN_NUM_HOPS)) + MIN_NUM_HOPS;
 
       let dx = 0.5 + rand();
       if (rand() < 0.5) { dx = -dx; }
       let x = W / 2 + dx * 10;
 
-      const Y = H * 0.9;
+      let begin = 0;
+      let dbegin = TIME_BETWEEN_HOPS;
 
       // Distance away from start hop
       let hop_dist = 0;
@@ -85,29 +102,25 @@
       let squash = 3;
       let scale = 1;
 
-      let total_time = 0;
-      let begin = 0;
-      let dbegin = 0.4
-
       for (let i = 0; i < NUM_HOPS; i++) {
-        const y = Y + -hop_dist;
-        const beg = `${begin}s`;
-        const circle = el("circle",
-          { stroke: "rgba(0,0,0,0)", cx: "0", cy: "0", r: "5" },
-          [ scaleAnim(beg), fadeAnim(beg)]
-        );
-        svg.appendChild(el("g", {
-          transform: `translate(${x}, ${y}) scale(${scale} ${scale/squash})`
-        }, [circle]));
+        const y = INITIAL_Y + -hop_dist;
         scale *= 0.9;
-        hop_dist += dhop_dist;
-        dhop_dist *= 0.85;
+
         x += dx;
         dx *= 0.98;
-        total_time += begin;
-        begin += dbegin;
-        dbegin *= 0.9;
+
+        gs[i].setAttribute("transform", `translate(${x}, ${y}) scale(${scale} ${scale/squash})`);
+        fades[i].setAttribute("from", "#eee");
+
+        hop_dist += dhop_dist;
+        dhop_dist *= 0.85;
         squash *= 1.03;
+        begin += dbegin;
+        dbegin *= TIME_BETWEEN_HOPS_MULT;
+      }
+
+      for (let i = NUM_HOPS; i < MAX_NUM_HOPS; i++) {
+        fades[i].setAttribute("from", "rgba(0,0,0,0)");
       }
 
       svg.setCurrentTime(0);
