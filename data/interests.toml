@@ -4,9 +4,14 @@ desc = "Haskell is an advanced, purely functional programming language - [homepa
 img = "haskell-anim"
 
 [[els]]
-name = "nix"
-desc = "Nix is a purely functional package manager, and a powerful language for expressing reproducible environments and builds - [homepage](https://nixos.org/)"
-img = "nix"
+name = "Rust"
+desc = "Rust is a strongly typed, fast, and safe systems language - [my rust projects](https://github.com/414owen?tab=repositories&q=&type=source&language=rust)"
+img = "rust-anim"
+
+[[els]]
+name = "C"
+desc = "C is the language to beat for speed, minimalism and universality - [my C projects](https://github.com/414owen?tab=repositories&q=&type=source&language=C)"
+img = "c"
 
 [[els]]
 name = "svg"
@@ -18,17 +23,13 @@ name = "shell"
 desc = "I abuse shell scripts, for example [creating, rasterizing and stiching together](https://github.com/414owen/turtle-svg/tree/master/scripts) thousands of svgs into a video."
 img = "shell-anim"
 
-[[els]]
-name = "lambda calculus"
-desc = "There's beauty in small algebras that can express all computation - [my lambda repl](https://github.com/414owen?tab=repositories&q=&type=source&language=haskell)"
-img = "lambda-anim"
+# [[els]]
+# name = "lambda calculus"
+# desc = "There's beauty in small algebras that can express all computation - [my lambda repl](https://github.com/414owen?tab=repositories&q=&type=source&language=haskell)"
+# img = "lambda-anim"
 
-[[els]]
-name = "C"
-desc = "C is the language to beat for speed, minimalism and universality - [my C projects](https://github.com/414owen?tab=repositories&q=&type=source&language=C)"
-img = "c"
+# [[els]]
+# name = "nix"
+# desc = "Nix is a purely functional package manager, and a powerful language for expressing reproducible environments and builds - [homepage](https://nixos.org/)"
+# img = "nix"
 
-[[els]]
-name = "Rust"
-desc = "Rust is a strongly typed, fast, and safe systems language - [my rust projects](https://github.com/414owen?tab=repositories&q=&type=source&language=rust)"
-img = "rust-anim"
