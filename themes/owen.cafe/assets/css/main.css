@@ -28,7 +28,10 @@ h2 {
   font-size: 1.8rem;
 }
 
-h2
+.post-list h2 {
+  font-size: 1.4rem;
+  margin-top: 3rem;
+}
 
 .footnotes,
 h1 + *,
@@ -387,7 +390,13 @@ main {
   }
 }
 
-pre, .tabs {
+details > pre {
+  margin: 0;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+pre, .graph, .tabs {
   margin: {{ div .padding 2 }}{{ .padding_unit }} 0;
 }
 
@@ -401,11 +410,17 @@ p {
 
 .tab-content > * {
   display: none;
+  margin-top: 0;
+}
+
+.chroma > code {
+  display: block;
 }
 
 code {
   background: {{ .purple_bg }};
   color: {{ .red_fg }};
+  width: max-content;
 }
 
 .tab-nav > label, button {
@@ -455,13 +470,13 @@ pre {
   display: flex;
   justify-content: space-between;
   margin-top: {{ div .padding 4 }}{{ .padding_unit }};
+  font-size: 0.7rem;
 }
 
 .tags > a {
   background: {{ .purple_bg_hover }};
   padding: 4px;
   border-radius: 4px;
-  font-size: 14px;
 }
 
 #content > article img {
@@ -590,6 +605,15 @@ select {
   margin-bottom: 24px;
   margin-top: 24px;
   max-height: 600%;
+}
+
+details {
+  cursor: pointer;
+}
+
+[alt=spinner] {
+  width: 38px;
+  image-rendering: pixelated;
 }
 
 {{ end }}
