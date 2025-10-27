@@ -3,7 +3,6 @@ title: "GHC symbol demangler"
 date: 2023-05-22T21:09:57+02:00
 layout: "blank"
 summary: "Owen's contact page"
-weight: 7
 ---
 
 This tool demangles symbol names produced by GHC, as per [this spec](https://gitlab.haskell.org/ghc/ghc/-/wikis/commentary/compiler/symbol-names).
