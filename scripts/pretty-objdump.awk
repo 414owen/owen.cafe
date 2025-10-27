@@ -13,8 +13,8 @@ function boxify(s, i, c, out) {
     if      (c == "-") c = "─"
     else if (c == "|") c = "│"
     else if (c == "+") c = "├"
-    else if (c == ",") c = "╭"
-    else if (c == "'" || c == "`") c = "╰"
+    else if (c == "," || c == "/") c = "╭"
+    else if (c == "'" || c == "`" || c == "\\") c = "╰"
     else if (c == ">") c = "➤"
     out = out c
   }

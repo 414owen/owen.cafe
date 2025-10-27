@@ -94,7 +94,7 @@ constructors, and `std::_Function_handler< ... >::_M_manager` is [this thing](ht
 The lexer was defined by a parser combinator library. The available
 function types to be combined were:
 
-```
+```c++
 typedef function<Result(State&)> Parser;
 typedef function<Parser(uint32_t)> CharParser;
 typedef function<Parser(Parser)> Modifier;

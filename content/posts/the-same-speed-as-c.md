@@ -361,23 +361,22 @@ extending.
 {{< tabs groupId="avoid-ze" >}}
 {{% tab name="gcc asm" %}}
 ```asm
-loop: /-> add    rdx, 1
-      |   add    ecx, dword ptr [rsi+rax*4]
-      |   movzx  eax, byte ptr [rdx-1]
-      |   test   rax, rax
-      \-- jne    loop
-
+loop: ╭─➤ add    rdx, 1
+      │   add    ecx, dword ptr [rsi+rax*4]
+      │   movzx  eax, byte ptr [rdx-1]
+      │   test   rax, rax
+      ╰── jne    loop
 ```
 {{% /tab %}}
 
 {{% tab name="clang asm" %}}
 ```asm
-loop: /-> movzx  ecx,cl
-      |   add    eax,dword ptr [rdx+rcx*4]
-      |   movzx  ecx,byte ptr [rdi]
-      |   add    rdi,0x1
-      |   test   cl,cl
-      \-- jne    <run_switches+0x20>
+loop: ╭─➤ movzx  ecx,cl
+      │   add    eax,dword ptr [rdx+rcx*4]
+      │   movzx  ecx,byte ptr [rdi]
+      │   add    rdi,0x1
+      │   test   cl,cl
+      ╰── jne    loop
 ```
 {{% /tab %}}
 {{< /tabs >}}
@@ -406,13 +405,13 @@ readable.
 run_switches:
           xor   eax, eax                   # res = 0
 loop:                                      # while (true) {
-  /---->  movsx rcx, byte ptr [rdi]        #   char c = *input
-  |       test  rcx, rcx                   #   if (c == '\0')
-  |  /--  je    ret                        #     return
-  |  |    add   eax, dword ptr [arr+rcx*4] #   res += arr[c]
-  |  |    inc   rdi                        #   input++
-  \--|--  jmp   loop                       # }
-ret: \->  ret
+  ╭────➤  movsx rcx, byte ptr [rdi]        #   char c = *input
+  │       test  rcx, rcx                   #   if (c == '\0')
+  │  ╭──  je    ret                        #     return
+  │  │    add   eax, dword ptr [arr+rcx*4] #   res += arr[c]
+  │  │    inc   rdi                        #   input++
+  ╰──│──  jmp   loop                       # }
+ret: ╰─➤  ret
 
 .data
 arr:
