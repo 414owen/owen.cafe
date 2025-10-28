@@ -1,5 +1,5 @@
 ---
-title: "On pass-by-value overhead"
+title: "Quantifying pass-by-value overhead"
 date: 2025-10-17T18:43:18+01:00
 tags:
 - C
