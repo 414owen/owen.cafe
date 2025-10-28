@@ -20,6 +20,11 @@ theme = 'owen.cafe'
   weight = 6
 
 [[menu.main]]
+  name = 'Tools'
+  pageref = 'tools'
+  weight = 7
+
+[[menu.main]]
   name = 'CV'
   url = '/cv.pdf'
   weight = 8
