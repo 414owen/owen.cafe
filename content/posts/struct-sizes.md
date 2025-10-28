@@ -27,9 +27,9 @@ copies are super cheap"*, but.. how cheap are they?
 
 Fine, I'll write a benchmark. Can't take too long.
 
-3... 2... (several months pass[^1]) 1... 🪄
+3... 2... (several months pass) 1... 🪄
 
-And that's how I ended up writing a graphing library, and a benchmark.
+And that's how I ended up writing a graphing library[^1], and a benchmark.
 
 ---
 
@@ -423,4 +423,5 @@ const mkEWMA = period => {
 })
 </script>
 
-[^1]: Why on earth do I have to [work around bugs](https://github.com/414owen/smolgraph/commit/39d21a48733c3c57877ee880febb78a8dac9f318) in modern browsers in 2025.
+[^1]: [smolgraph](https://github.com/414owen/smolgraph)
+  does one thing, and does it well, at a fraction of the size of equivalent libraries.
