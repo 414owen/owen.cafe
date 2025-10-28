@@ -27,7 +27,7 @@ copies are super cheap"*, but.. how cheap are they?
 
 Fine, I'll write a benchmark. Can't take too long.
 
-3.. 2.. (several months pass[^1]) 1... 🪄
+3... 2... (several months pass[^1]) 1... 🪄
 
 And that's how I ended up writing a graphing library, and a benchmark.
 
@@ -171,7 +171,7 @@ but the speed difference is negligible.
 {{< /tabs >}}
 
 There's a beautiful clean cliff here at 257 bytes. This seems to represent the
-difference between an unrolled, vectorized struct-zeroing routine, and one using
+difference between an unrolled, vectorized memcpy routine, and one using
 `rep movs` (ie. a microcoded for loop).
 
 In the tabs above, you can inspect the assembly for 256 and 257 bytes.
@@ -293,7 +293,7 @@ I'd also love to hear about it.
 * You can pass **730 million** structs of size **16** by value per second.
 * You can pass **26 million** structs of size **2048** by value per second.
 * **Don't** pass around data of size 4046-4080 bytes or 8161-8176 bytes,
-  by value (at least not on an AMD 9 3900X).
+  by value (at least not on an AMD Ryzen 3900X).
 
 <script type="module">
 
