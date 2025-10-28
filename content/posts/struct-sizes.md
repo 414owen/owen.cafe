@@ -392,16 +392,14 @@ const mkEWMA = period => {
       const skip = fidelity(numPoints);
       const ewma = mkEWMA(numPoints/50);
       return data.map(({data,label}) => {
-        const points = data.slice(Math.max(0, minX), maxX).filter(([x, y], i) => {
-          return i % skip == 0 || abs(ewma(y) - y) > 70;
-        });
+        const res = data.filter(([x, y], i) => (x >= minX && x <= maxX) && (i % skip == 0 || abs(ewma(y) - y) > 70));
         return {
           label,
-          data: points
+          data: res,
         };
       });
     };
-    data = boundData(initialMin, initialMax);
+    const boundedData = boundData(initialMin, initialMax);
     element.innerText = "";
 
     const graphConfig = {
@@ -413,7 +411,7 @@ const mkEWMA = period => {
         x: 'Struct size',
         y: 'Time (ns/call)'
       },
-      data,
+      data: boundedData,
       loadData: boundData
     };
 
