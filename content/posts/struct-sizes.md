@@ -8,11 +8,11 @@ tags:
 - assembly
 ---
 
-<link href="https://cdn.jsdelivr.net/npm/smolgraph@2.1.7/graph.min.css" rel="stylesheet">
-
 Should you pass data by value, or by reference?
 
 <!--more-->
+
+<link href="https://cdn.jsdelivr.net/npm/smolgraph@2.1.7/graph.min.css" rel="stylesheet">
 
 <!-- NOTE Assembly dump command: objdump --visualize-jumps -M intel intel-mnemonic --no-show-raw-insn --no-addresses -d benchmark -->
 
