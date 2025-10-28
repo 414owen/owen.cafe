@@ -11,5 +11,7 @@
   {{ range .Paginator.Pages }}
     {{ .Render "summary" }}
   {{ end }}
+  <br>
+  <br>
   {{ partial "pagination.html" . }}
 {{ end }}
