@@ -43,7 +43,7 @@ This part requires JS. Sorry.
 I promise all it's doing it creating a graph.
 </noscript>
 
-📢 Join the discussion on [lobste.rs](https://owen.cafe/posts/struct-sizes/), or [Hacker News](https://news.ycombinator.com/item?id=45728170).
+📢 Join the discussion on [lobste.rs](https://lobste.rs/s/mfxxce/quantifying_pass_by_value_overhead), or [Hacker News](https://news.ycombinator.com/item?id=45728170).
 
 ## All the data
 
