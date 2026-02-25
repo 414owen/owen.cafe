@@ -1,0 +1,119 @@
+html {
+  --main-padding: 2rem;
+  --bold-weight: 1000;
+}
+
+#debug {
+  position: fixed;
+}
+
+#category-list button::before {
+  content: "\2794  ";
+  color: #222;
+  cursor: auto;
+}
+
+#category-list button {
+  all: unset;
+  cursor: pointer;
+  color: #227;
+}
+
+#category-list button,
+#score,
+ul {
+  font-size: 1.5rem;
+  list-style: "\2794  " inside;
+  margin: 0;
+  padding: 0;
+}
+
+#main > * {
+  overflow: auto;
+}
+
+main, body, html {
+  border: 0;
+  margin: 0;
+}
+
+* {
+  font-family: Sans-Serif, sans;
+  box-sizing: border-box;
+}
+
+main > * {
+  display: none;
+  flex-direction: column;
+}
+
+main.results > #results,
+main.round > #word,
+main.round > #timer,
+main.menu > #category-list {
+  display: flex;
+}
+
+#timer {
+  top: 0;
+  right: 0;
+  position: fixed;
+  font-size: 3rem;
+  font-weight: var(--bold-weight);
+}
+
+#results {
+  width: 100vw;
+  height: 100vh;
+}
+
+h3 {
+  margin: 1rem 0;
+}
+
+#results,
+#category-list {
+  align-items: baseline;
+  padding: var(--main-padding);
+  width: 100vw;
+  height: 100vh;
+}
+
+#results > #missed-words {
+  flex-grow: 1;
+}
+
+#results > ul > li {
+  color: #222;
+}
+
+main {
+  background: #c79;
+}
+
+#word {
+  justify-content: center;
+  align-items: center;
+  /* When the text takes up multiple lines, make it centered */
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#word {
+  font-size: 4rem;
+  font-weight: var(--bold-weight);
+}
+
+button#continue {
+  margin-top: var(--main-padding);
+  padding: 0.5rem 2rem;
+  font-size: 1.5rem;
+  background: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+#word > #note {
+  font-size: 2rem;
+}
