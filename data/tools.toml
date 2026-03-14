@@ -2,4 +2,10 @@
 name = "GHC Symbol Demangler"
 desc = "Makes object symbols produced by your favourite compiler legible"
 local = "demangle-ghc"
-img = "haskell"
+img = "haskell-anim"
+
+[[els]]
+name = "Lambda calculus REPL"
+desc = "Step-by-step evaluator for lambda calculus expressions"
+local = "lambda-repl"
+img = "lambda-anim"
