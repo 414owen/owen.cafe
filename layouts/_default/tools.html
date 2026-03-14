@@ -1,0 +1,4 @@
+{{ define "main" }}
+  {{ .Content }}
+  {{ partial "fancy-list.html" (index (hugo.Data) "tools").els }}
+{{ end }}

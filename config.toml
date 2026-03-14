@@ -37,3 +37,5 @@ noClasses = false
 
 [params]
 Description = "Owen's personal website and portfolio"
+[params.author]
+  name = "Owen Shepherd"
