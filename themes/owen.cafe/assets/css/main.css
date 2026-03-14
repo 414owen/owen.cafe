@@ -548,6 +548,7 @@ select {
   background: #453a62;
   padding-bottom: 10px;
   grid-row: 1;
+  max-width: 400px;
 }
 
 .tool-output-container {
@@ -614,6 +615,16 @@ details {
 [alt=spinner] {
   width: 38px;
   image-rendering: pixelated;
+}
+
+.lambda-listing .param {
+  color: #99e;
+}
+.lambda-listing .bound {
+  color: #8d8;
+}
+.lambda-listing .free {
+  color: #f88;
 }
 
 {{ end }}
