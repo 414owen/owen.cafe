@@ -626,5 +626,16 @@ details {
 .lambda-listing .free {
   color: #f88;
 }
+#repl-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+#repl-container > .key {
+  margin-left: 30px;
+}
+#repl-container .tool-input-container {
+  flex-grow: 1;
+  min-width: 300px;
+}
 
 {{ end }}

@@ -5,20 +5,19 @@ layout: "blank"
 summary: "Lambda calculus REPL"
 ---
 
-<div style="float:right">
-<b>Key:</b>
+<div id="repl-container">
+  <div class="tool-input-container">
+    <textarea id="lambda-input" class="tool-input">(\a.aa)\ba.ca</textarea>
+  </div>
 
-<ul class="lambda-listing">
-<li class="param">param</li>
-<li class="free">free variable</li>
-<li class="bound">bound variable</li>
-</ul>
-</div>
-
-<br>
-
-<div class="tool-input-container">
-  <textarea id="lambda-input" class="tool-input">(\a.aa)\ba.ca</textarea>
+  <div class="key">
+    <b>Key:</b>
+    <ul class="lambda-listing">
+    <li class="param">param</li>
+    <li class="free">free variable</li>
+    <li class="bound">bound variable</li>
+    </ul>
+  </div>
 </div>
 
 <br>
