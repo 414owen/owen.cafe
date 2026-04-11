@@ -90,6 +90,15 @@ h5 > a {
   list-style: none;
 }
 
+li {
+  list-style-position: inside;
+  list-style-type: disc;
+}
+
+li > ul > li {
+  padding-left: 1em;
+}
+
 #sidebar li {
   display: block;
   white-space: nowrap;
@@ -466,6 +475,89 @@ pre {
   overflow: auto;
 }
 
+.lightbox-trigger {
+  cursor: zoom-in;
+  display: block;
+}
+
+.lightbox-trigger > object {
+  pointer-events: none;
+}
+
+.lightbox {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.lightbox:target {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.lightbox-backdrop {
+  background: rgba(17, 17, 17, 0.92);
+  inset: 0;
+  position: absolute;
+}
+
+.lightbox-dialog {
+  height: auto;
+  max-height: 92vh;
+  max-width: min(96vw, 1800px);
+  position: relative;
+  width: min(96vw, 1800px);
+  z-index: 1;
+}
+
+.lightbox-close {
+  background: {{ .purple_bg_hover }};
+  border-radius: 999px;
+  height: 3rem;
+  position: absolute;
+  right: 1rem;
+  text-decoration: none;
+  top: 1rem;
+  width: 3rem;
+  z-index: 2;
+}
+
+.lightbox-close::before,
+.lightbox-close::after {
+  background: currentColor;
+  content: "";
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  width: 1.25rem;
+}
+
+.lightbox-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.lightbox-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.lightbox-media {
+  height: auto;
+  margin: auto;
+  max-height: 100%;
+  max-width: 100% !important;
+  width: auto;
+}
+
 .time-tags {
   display: flex;
   justify-content: space-between;
@@ -503,14 +595,6 @@ li img {
   width: 320px;
 }
 
-figure {
-  margin-left: auto;
-  margin-right: auto;
-}
-figure > img {
-  width: 100%;
-}
-
 .smallimg {
   max-width: {{ mul 2 (div .page_width 3) }}px;
 }
@@ -518,9 +602,6 @@ figure > img {
 figure {
   margin-left: auto;
   margin-right: auto;
-}
-figure > img {
-  width: 100%;
 }
 
 #rsslink > img {

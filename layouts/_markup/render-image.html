@@ -1,0 +1,20 @@
+{{ $index := or (.Page.Store.Get "imageLightboxIndex") 0 }}
+{{ .Page.Store.Set "imageLightboxIndex" (add $index 1) }}
+{{ $src := .Destination | safeURL }}
+{{ $alt := .Text | default "" }}
+{{ $title := .Title }}
+{{ $id := printf "lightbox-image-%s-%d" (md5 (printf "%s:%s" $src $alt)) $index }}
+<figure>
+  {{ partial "lightbox.html" (dict
+    "id" $id
+    "mediaKind" "img"
+    "src" $src
+    "alt" $alt
+    "title" $title
+    "openLabel" "Open image fullscreen"
+    "closeLabel" "Close fullscreen image"
+  ) }}
+  {{ with $title }}
+  <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>

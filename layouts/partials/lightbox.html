@@ -1,0 +1,25 @@
+{{ $mediaKind := .mediaKind }}
+{{ $src := .src }}
+{{ $id := .id }}
+{{ $openLabel := .openLabel | default "Open media fullscreen" }}
+{{ $closeLabel := .closeLabel | default "Close fullscreen media" }}
+{{ $alt := .alt | default "" }}
+{{ $title := .title }}
+<a class="lightbox-trigger" href="#{{ $id }}" aria-label="{{ $openLabel }}">
+  {{ if eq $mediaKind "object" }}
+  <object class="lightbox-media" data="{{ $src }}" type="{{ .objectType }}" aria-label="{{ .previewLabel }}"></object>
+  {{ else }}
+  <img class="lightbox-media" src="{{ $src }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }}>
+  {{ end }}
+</a>
+<div class="lightbox" id="{{ $id }}">
+  <a class="lightbox-backdrop" href="#" aria-label="{{ $closeLabel }}"></a>
+  <div class="lightbox-dialog">
+    <a class="lightbox-close" href="#" aria-label="{{ $closeLabel }}"></a>
+    {{ if eq $mediaKind "object" }}
+    <object class="lightbox-media" data="{{ $src }}" type="{{ .objectType }}" aria-label="{{ .fullLabel }}"></object>
+    {{ else }}
+    <img class="lightbox-media" src="{{ $src }}" alt="{{ $alt }}">
+    {{ end }}
+  </div>
+</div>

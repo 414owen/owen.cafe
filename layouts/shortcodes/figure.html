@@ -1,0 +1,36 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $caption := .Get "caption" }}
+{{ $title := .Get "title" }}
+{{ $class := .Get "class" }}
+{{ $attr := .Get "attr" }}
+{{ $attrlink := .Get "attrlink" }}
+{{ $index := or (.Page.Store.Get "figureLightboxIndex") 0 }}
+{{ .Page.Store.Set "figureLightboxIndex" (add $index 1) }}
+{{ $id := printf "lightbox-figure-%s-%d" (md5 (printf "%s:%s:%s" $src $alt $caption)) $index }}
+<figure{{ with $class }} class="{{ . }}"{{ end }}>
+  {{ partial "lightbox.html" (dict
+    "id" $id
+    "mediaKind" "img"
+    "src" $src
+    "alt" $alt
+    "title" $title
+    "openLabel" "Open image fullscreen"
+    "closeLabel" "Close fullscreen image"
+  ) }}
+  {{ if or $title $caption $attr }}
+  <figcaption>
+    {{ with $title }}<h4>{{ . }}</h4>{{ end }}
+    {{ with $caption }}{{ . }}{{ end }}
+    {{ with $attr }}
+    <p>
+      {{ if $attrlink }}
+      <a href="{{ $attrlink }}">{{ . }}</a>
+      {{ else }}
+      {{ . }}
+      {{ end }}
+    </p>
+    {{ end }}
+  </figcaption>
+  {{ end }}
+</figure>

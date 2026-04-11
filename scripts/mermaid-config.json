@@ -1,0 +1,36 @@
+{
+  "layout": "elk",
+  "look": "classic",
+  "theme": "base",
+  "securityLevel": "strict",
+  "themeVariables": {
+    "darkMode": true,
+    "background": "#111",
+    "primaryColor": "#191724",
+    "primaryTextColor": "#eee",
+    "primaryBorderColor": "#57d",
+    "secondaryColor": "#2c283f",
+    "secondaryTextColor": "#eee",
+    "secondaryBorderColor": "#eb6f92",
+    "tertiaryColor": "#35314d",
+    "tertiaryTextColor": "#eee",
+    "tertiaryBorderColor": "#9ccfd8",
+    "lineColor": "#cdbae7",
+    "textColor": "#eee",
+    "mainBkg": "#191724",
+    "nodeBkg": "#191724",
+    "nodeBorder": "#57d",
+    "clusterBkg": "#16131f",
+    "clusterBorder": "#eb6f92",
+    "defaultLinkColor": "#cdbae37",
+    "titleColor": "#f6c177",
+    "edgeLabelBackground": "#111",
+    "fontFamily": "monospace"
+  },
+  "flowchart": {
+    "htmlLabels": true,
+    "curve": "basis",
+    "defaultRenderer": "elk",
+    "padding": 15
+  }
+}
