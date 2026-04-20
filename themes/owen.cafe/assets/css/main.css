@@ -480,17 +480,12 @@ pre {
   display: block;
 }
 
-.lightbox-trigger > object {
-  pointer-events: none;
-}
-
 .lightbox {
   align-items: center;
   display: flex;
   inset: 0;
   justify-content: center;
   opacity: 0;
-  pointer-events: none;
   position: fixed;
   transition: opacity 0.2s ease, visibility 0.2s ease;
   visibility: hidden;
@@ -499,34 +494,34 @@ pre {
 
 .lightbox:target {
   opacity: 1;
-  pointer-events: auto;
   visibility: visible;
 }
 
 .lightbox-backdrop {
   background: rgba(17, 17, 17, 0.92);
+  cursor: initial;
   inset: 0;
   position: absolute;
 }
 
 .lightbox-dialog {
   height: auto;
-  max-height: 92vh;
-  max-width: min(96vw, 1800px);
+  max-width: 1800px;
   position: relative;
-  width: min(96vw, 1800px);
+  width: fit-content;
   z-index: 1;
+  padding: {{ .padding }}px;
 }
 
 .lightbox-close {
   background: {{ .purple_bg_hover }};
   border-radius: 999px;
-  height: 3rem;
+  width: {{ .padding }}px;
+  height: {{ .padding }}px;
   position: absolute;
-  right: 1rem;
+  right: {{ div .padding 2 }}px;
+  top: {{ div .padding 2 }}px;
   text-decoration: none;
-  top: 1rem;
-  width: 3rem;
   z-index: 2;
 }
 
@@ -550,12 +545,12 @@ pre {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.lightbox-media {
-  height: auto;
-  margin: auto;
-  max-height: 100%;
-  max-width: 100% !important;
+.lightbox .lightbox-media {
   width: auto;
+  height: auto;
+  margin: 0 !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
 }
 
 .time-tags {
@@ -573,7 +568,6 @@ pre {
 
 #content > article img {
   margin: {{ div .padding 2 }}{{ .padding_unit }} auto;
-  max-width: {{ .img_width }}px;
   display: block;
 }
 
@@ -602,6 +596,13 @@ li img {
 figure {
   margin-left: auto;
   margin-right: auto;
+}
+
+figure > img,
+figure > object,
+figure > a > img,
+figure > a > object {
+  max-width: 100%;
 }
 
 #rsslink > img {

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg onload="init(evt)" version="1.1" viewBox="0 0 967.5 522.2" xmlns="http://www.w3.org/2000/svg" xmlns:fg="http://github.com/jonhoo/inferno">
+<svg onload="init(evt)" version="1.1" viewBox="0 0 967.5 522.2" xmlns="http://www.w3.org/2000/svg" xmlns:fg="http://github.com/jonhoo/inferno" width="1200">
  <style><![CDATA[text{font-family:"Verdana";font-size:12px;fill:#000}#subtitle,#title{text-anchor:middle}#title{font-size:17px}#search.show,#search:hover{opacity:1}#subtitle{font-color:#a0a0a0}#frames>:hover{stroke:#000;stroke-width:.5;cursor:pointer}.parent{opacity:.5}]]></style>
  <g transform="matrix(1.8761 0 0 1.8761 -258.67 -1218.3)">
   <rect x="15.4%" y="741" width=".5%" height="15" fill="#e51727" fg:w="45" fg:x="1290"/>

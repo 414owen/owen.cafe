@@ -1,0 +1,81 @@
+digraph state_machine {
+  bgcolor="#111111";
+
+  node [
+    fontname="monospace",
+    fontcolor="#eeeeee",
+    color="#57d",
+    fillcolor="#191724",
+    style="filled",
+    penwidth=1.2
+  ];
+  edge [
+    fontname="monospace",
+    fontcolor="#eeeeee",
+    color="#cdbae7",
+    penwidth=1.2
+  ];
+
+  a      [shape=circle, label="start"];
+  id     [shape=doublecircle, label="identifier"];
+  zint   [shape=doublecircle, label="integer"];
+  int    [shape=doublecircle, label="integer"];
+  assign [shape=doublecircle, label="="];
+  add    [shape=doublecircle, label="+"];
+
+  e   [shape=circle, label="e"];
+  el  [shape=circle, label="el"];
+  els [shape=circle, label="els"];
+  eli [shape=circle, label="eli"];
+
+  i1  [shape=circle, label="i"];
+  ifs [shape=doublecircle, label="if"];
+
+  l   [shape=circle, label="l"];
+  le  [shape=circle, label="le"];
+  let [shape=doublecircle, label="let"];
+
+  else_kw [shape=doublecircle, label="else"];
+  elif_kw [shape=doublecircle, label="elif"];
+
+  a -> a      [label="[ \\t\\n]"];
+  a -> e      [label="e"];
+  a -> i1     [label="i"];
+  a -> l      [label="l"];
+  a -> id     [label="[a-z--eil]"];
+  a -> zint   [label="0"];
+  a -> int    [label="[1-9]"];
+  a -> assign [label="="];
+  a -> add    [label="+"];
+
+  id  -> id   [label="[a-z]"];
+  int -> int  [label="[0-9]"];
+
+  e   -> el       [label="l"];
+  e   -> id       [label="[a-z--l]"];
+
+  el  -> eli      [label="i"];
+  el  -> els      [label="s"];
+  el  -> id       [label="[a-z--is]"];
+
+  els -> else_kw  [label="e"];
+  els -> id       [label="[a-z--e]"];
+
+  eli -> elif_kw [label="f"];
+  eli -> id      [label="[a-z--f]"];
+
+  else_kw -> id   [label="[a-z]"];
+  elif_kw -> id   [label="[a-z]"];
+
+  i1   -> ifs     [label="f"];
+  i1   -> id      [label="[a-z--f]"];
+  ifs  -> id      [label="[a-z]"];
+
+  l    -> le      [label="e"];
+  l    -> id      [label="[a-z--e]"];
+
+  le   -> let     [label="t"];
+  le   -> id      [label="[a-z--t]"];
+
+  let  -> id      [label="[a-z]"];
+}

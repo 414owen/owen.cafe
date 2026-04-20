@@ -1,9 +1,10 @@
 ---
-title: "Direct DFA interpretation and Keyword Recognition"
+title: "Lexing, DFA execution, and Keyword Recognition"
 date: 2026-04-06T13:55:25+01:00
 ---
 
-
+What's the best executable encoding of a DFA?
+What's the fastest way to do keyword recognition?
 
 <!--more-->
 
@@ -50,7 +51,7 @@ Which is, in the case of our domain:
   * Each with a unique (originating state, character) tuple
 * A start state
 * A set of final states
-  * Each annotated with lexeme family
+  * Each annotated with a lexeme family
 
 ## Lexing with DFAs
 
@@ -67,51 +68,48 @@ This language has the following lexemes, defined as regex:
 * assign: `=`
 * add: `+`
 
-```mermaid
-flowchart LR
-  a((start))
-
-  a -->|"[ #92;t#92;n]"| a
-  a -->|e| e
-  a -->|i| i1
-  a -->|l| l
-  a -->|"[a-z--eil]"| id
-  a -->|0| zint((("integer")))
-  a -->|"[1-9]"| int((("integer")))
-  a -->|=| assign((("=")))
-  a -->|+| add((("+")))
-
-  id((("identifier"))) -->|"[a-z]"| id
-  int -->|"[0-9]"| int
-
-  e -->|l| el
-  e -->|"[a-z--l]"| id
-
-  el -->|s| els
-  el -->|"[a-z--s]"| id
-
-  els -->|e| else((("else")))
-  els -->|i| e4
-  els -->|"[a-z--ei]"| id
-
-  e4 -->|f| elif((("elif")))
-  e4 -->|"[a-z--f]"| id
-
-  else -->|"[a-z]"| id
-  elif -->|"[a-z]"| id
-
-  i1 -->|f| if((("if")))
-  i1 -->|"[a-z--f]"| id
-  if -->|"[a-z]"| id
-
-  l -->|e| le
-  l -->|"[a-z--e]"| id
-
-  le -->|t| let((("let")))
-  le -->|"[a-z--t]"| id
-
-  let -->|"[a-z]"| id
-```
+![State machine for token recognition](/img/keyword-recognition-lexemes.svg)
 
 Here `[a-z--eil]` uses unicode regex character class [set subtraction](https://www.unicode.org/reports/tr18/#RL1.3).
 It's equivalent to `[a-df-hj-km-z]`.
+
+## Encoding a DFA as C
+
+Let's use the DFA for recognizing ints and floats, of the form: `0|-?[1-9][0-9]|-?(0|[1-9][0-9]*)\.[0-9]*[1-9]`.
+
+```text
+State 0 (start)
+ [-]       -> State 1
+ [0]       -> State 5
+ [1..9]    -> State 6
+
+State 1
+ [0]       -> State 2
+ [1..9]    -> State 6
+
+State 2
+ [.]       -> State 3
+
+State 3
+ [0]       -> State 3
+ [1..9]    -> State 4
+
+State 4 (accept)
+ [0]       -> State 3
+ [1..9]    -> State 4
+
+State 5 (accept)
+ [.]       -> State 3
+
+State 6
+ [.]       -> State 3
+ [0, 1..9] -> State 7
+
+State 7 (accept)
+ [.]       -> State 3
+ [0, 1..9] -> State 8
+
+State 8
+ [.]       -> State 3
+ [0, 1..9] -> State 8
+```

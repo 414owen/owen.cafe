@@ -7,13 +7,13 @@
 {{ $title := .title }}
 <a class="lightbox-trigger" href="#{{ $id }}" aria-label="{{ $openLabel }}">
   {{ if eq $mediaKind "object" }}
-  <object class="lightbox-media" data="{{ $src }}" type="{{ .objectType }}" aria-label="{{ .previewLabel }}"></object>
+  <object data="{{ $src }}" type="{{ .objectType }}" aria-label="{{ .previewLabel }}"></object>
   {{ else }}
-  <img class="lightbox-media" src="{{ $src }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }}>
+  <img src="{{ $src }}" alt="{{ $alt }}"{{ with $title }} title="{{ . }}"{{ end }}>
   {{ end }}
 </a>
 <div class="lightbox" id="{{ $id }}">
-  <a class="lightbox-backdrop" href="#" aria-label="{{ $closeLabel }}"></a>
+  <a class="lightbox-backdrop" href="#"></a>
   <div class="lightbox-dialog">
     <a class="lightbox-close" href="#" aria-label="{{ $closeLabel }}"></a>
     {{ if eq $mediaKind "object" }}

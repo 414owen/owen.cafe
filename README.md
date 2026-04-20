@@ -5,56 +5,32 @@ Static site built with Hugo.
 ## Requirements
 
 - `hugo`
-- `pnpm`
-- `chromium` for local Mermaid rendering only
 
 ## Build
 
-Install JS tooling:
-
 ```bash
-pnpm install
-```
-
-Build Mermaid SVGs, then build the site:
-
-```bash
-pnpm run build
-```
-
-If you only need to refresh generated Mermaid assets:
-
-```bash
-pnpm run build:mermaid
+hugo
 ```
 
 ## Live Reload
 
-Run both the Mermaid watcher and `hugo server`:
-
 ```bash
-pnpm run dev
+hugo server
 ```
 
-This does two things:
+## Palette
 
-- watches Markdown content for Mermaid fences and regenerates static SVGs
-- runs `hugo server`
-
-## Mermaid
-
-Mermaid diagrams are rendered ahead of time, not in the browser.
-
-- `scripts/render-mermaid.mjs` scans content for fenced `mermaid` blocks
-- each unique diagram is rendered to `static/generated/mermaid/<hash>.svg`
-- SVGs are optimized with `svgo`
-- Hugo emits those SVGs as figures during page render
-
-Generated Mermaid assets live under [static/generated/mermaid](static/generated/mermaid) and should be checked into the repo.
+- background: `#111111`
+- panel/node fill: `#191724`
+- primary accent: `#5577dd`
+- edge/accent: `#cdbae7`
+- green accent: `#3f8f6b`
+- red accent: `#9a4f67`
+- text: `#eeeeee`
 
 ## Lightbox
 
-Images, figures, and Mermaid diagrams all use the same pure-CSS lightbox.
+Images and figures use the same pure-CSS lightbox.
 
 - the preview is a link to `#lightbox-...`
 - the overlay has the matching `id`
