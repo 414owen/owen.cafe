@@ -75,41 +75,34 @@ It's equivalent to `[a-df-hj-km-z]`.
 
 ## Encoding a DFA as C
 
-Let's use the DFA for recognizing ints and floats, of the form: `0|-?[1-9][0-9]|-?(0|[1-9][0-9]*)\.[0-9]*[1-9]`.
+Let's use the DFA for recognizing ints and floats, with no leading or trailing zeros,
+and without the form `-0`, so: `0|-?[1-9][0-9]*|-?(0|[1-9][0-9]*)\.[0-9]*[1-9]`.
 
 ```text
 State 0 (start)
- [-]       -> State 1
- [0]       -> State 5
- [1..9]    -> State 6
+ [-]    -> State 1 
+ [0]    -> State 5 
+ [1..9] -> State 6 
 
 State 1
- [0]       -> State 2
- [1..9]    -> State 6
+ [0]    -> State 2 
+ [1..9] -> State 6 
 
 State 2
- [.]       -> State 3
+ [.]    -> State 3 
 
 State 3
- [0]       -> State 3
- [1..9]    -> State 4
+ [0]    -> State 3 
+ [1..9] -> State 4 
 
-State 4 (accept)
- [0]       -> State 3
- [1..9]    -> State 4
+State 4 (accept[0])
+ [0]    -> State 3 
+ [1..9] -> State 4 
 
-State 5 (accept)
- [.]       -> State 3
+State 5 (accept[0])
+ [.]    -> State 3 
 
-State 6
- [.]       -> State 3
- [0, 1..9] -> State 7
-
-State 7 (accept)
- [.]       -> State 3
- [0, 1..9] -> State 8
-
-State 8
- [.]       -> State 3
- [0, 1..9] -> State 8
+State 6 (accept[0])
+ [.]    -> State 3 
+ [0..9] -> State 6 
 ```

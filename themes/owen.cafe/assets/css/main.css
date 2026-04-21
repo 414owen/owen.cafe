@@ -506,9 +506,10 @@ pre {
 
 .lightbox-dialog {
   height: auto;
-  max-width: 1800px;
+  max-width: 1200px;
   position: relative;
   width: fit-content;
+  max-height: 100vh;
   z-index: 1;
   padding: {{ .padding }}px;
 }
@@ -527,14 +528,14 @@ pre {
 
 .lightbox-close::before,
 .lightbox-close::after {
+  width: 1.25rem;
+  height: 2px;
   background: currentColor;
   content: "";
-  height: 2px;
   left: 50%;
   position: absolute;
   top: 50%;
   transform-origin: center;
-  width: 1.25rem;
 }
 
 .lightbox-close::before {
@@ -549,8 +550,8 @@ pre {
   width: auto;
   height: auto;
   margin: 0 !important;
-  max-height: 100% !important;
   max-width: 100% !important;
+  max-height: calc(100vh - {{ .padding }}px * 2);
 }
 
 .time-tags {
