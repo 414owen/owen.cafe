@@ -2,3 +2,5 @@
 public
 .direnv
 node_modules/
+tests/*.o
+tests/test_is_number
