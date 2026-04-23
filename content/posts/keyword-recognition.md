@@ -210,10 +210,11 @@ bool is_number_table(char *input) {
 
 ## Method three -- Table-based with equivalence classes
 
-Okay, the table above is quite heavy. There are 256 entries per state.
+Okay, the table above is quite heavy, at 256b per state.
 What if we could get that down somewhat?
 
-Well, if we look at the DFA, we can see that there are bytes with very little difference between them.
+Well, if we look at the DFA, we can see that there are bytes which are indistinguishable
+from the perspective of the transition table.
 For example, the bytes '1' and '2' transition to the same target state from every source state.
 Similarly, all alphabetic characters `[a-zA-Z]` always lead to the DFA *not* matching.
 
@@ -252,6 +253,93 @@ bool is_number_table_equiv(char *input) {
 ```
 
 Neat, we've brought the per-state table size down from 256b, to 6b.
+
+## Direct interpretation
+
+Our final way, is going to use two forbidden constructs -- labels and gotos.
+These constructs are only forbidden for people who don't know what they're doing,
+the same way that memory management shouldn't be done by programmers who can't
+handle it.
+
+I've made the executive decision that we can handle it.
+
+In this version, we're going to store the state of our DFA in the program counter (PC)
+of our CPU:
+
+```C
+bool is_number_direct(char *input) {
+state_0:
+  switch (*input++) {
+    case '-':         goto state_1;
+    case '0':         goto state_5;
+    case one_to_nine: goto state_6;
+    case '\0':        return false;
+    default:          return false;
+  }
+state_1:
+  switch (*input++) {
+    case '0':         goto state_2;
+    case one_to_nine: goto state_6;
+    case '\0':        return false;
+    default:          return false;
+  }
+state_2:
+  switch (*input++) {
+    case '.':         goto state_6;
+    case '\0':        return false;
+    default:          return false;
+  }
+state_3:
+  switch (*input++) {
+    case '0':         goto state_3;
+    case one_to_nine: goto state_4;
+    case '\0':        return false;
+    default:          return false;
+  }
+state_4:
+  switch (*input++) {
+    case '0':         goto state_3;
+    case one_to_nine: goto state_4;
+    case '\0':        return true;
+    default:          return false;
+  }
+state_5:
+  switch (*input++) {
+    case '.':         goto state_3;
+    case '\0':        return true;
+    default:          return false;
+  }
+state_6:
+  switch (*input++) {
+    case '.':          goto state_3;
+    case zero_to_nine: goto state_6;
+    case '\0':         return true;
+    default:           return false;
+  }
+}
+```
+
+Do you see what we did? The program counter itself contains all
+the information already, so we don't need to reify the state
+as a number in a variable.
+
+Did we need gotos? Well, no, not really. One could model this program
+less discouraged constructs, but in order to transcribe the DFA *directly*,
+you need labels, and gotos. FWIW I actually think this code is very boring,
+and easy to analyse.
+
+This style of interpreter is called direct-threaded.
+
+## Let the compiler do it
+
+GCC actually turns the first method (loop-switch-switch) into the direct-threaded
+interpreter, automatically.
+
+[Here's a compile explorer link](https://godbolt.org/z/3Gcc4GxKE), showing GCC producing
+the same assembly structure for both direct and indirect threaded code.
+
+Clang/LLVM supports the same option, but it's not enabled by default. You can try it out
+with the `-mllvm --enable-dfa-jump-thread` clang options.
 
 TODO:
 
