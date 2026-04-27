@@ -1,0 +1,4 @@
+*.dat
+*.svg
+*.o
+test_is_number
