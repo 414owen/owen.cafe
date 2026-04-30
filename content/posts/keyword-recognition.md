@@ -352,7 +352,7 @@ bool is_number_table_equiv(char *input) {
 
 Neat, we've brought the per-state table size down from 256b, to 6b.
 
-## Method 4 - direct interpretation
+## Method four - direct interpretation
 
 Our final way is going to use two forbidden constructs -- labels and gotos.
 
