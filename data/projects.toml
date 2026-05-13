@@ -25,7 +25,7 @@ img = "game-of-life-anim"
 [[els]]
 name = "Lambda Repl"
 desc = "An online lambda calculus REPL, which shows evaluation step-by-step"
-website = "https://lambda.how/"
+website = "/tools/lambda-repl/"
 img = "lambda-anim"
 
 [[els]]
@@ -34,12 +34,12 @@ desc = "A game of CSS selectors"
 website = "https://select.pink/"
 img = "pink-anim"
 
-[[els]]
-name = "Brownian Music"
-desc = "A music recommendation interface and physics sandbox"
-website = "https://brownian.app"
-img = "brownian"
-interactive = true
+# [[els]]
+# name = "Brownian Music"
+# desc = "A music recommendation interface and physics sandbox"
+# website = "https://brownian.app"
+# img = "brownian"
+# interactive = true
 
 [[els]]
 name = "Brainfuck Interpreter"
@@ -53,11 +53,11 @@ desc = "An interpreter for a minimal turtle-graphics instruction set that output
 github = "turtle-svg"
 img = "turtle"
 
-[[els]]
-name = "Hexplode"
-desc = "A clone of J. Ansell's 1982 BBC Micro game"
-website = "https://hexplo.de"
-img = "hexplode-anim"
+# [[els]]
+# name = "Hexplode"
+# desc = "A clone of J. Ansell's 1982 BBC Micro game"
+# website = "https://hexplo.de"
+# img = "hexplode-anim"
 
 [[els]]
 name = "Pandoc Builder Monadic"
