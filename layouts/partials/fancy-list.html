@@ -1,6 +1,9 @@
 <ul class="fancy-list">
   {{ range . }}
-  {{ $url := cond (isset . "github") (printf "https://github.com/414owen/%s" .github) .website }}
+  {{ $url := cond
+    (isset . "github")
+    (printf "https://github.com/414owen/%s" .github)
+    (cond (isset . "codeberg") (printf "https://codeberg.org/414owen/%s" .codeberg) .website) }}
     <li>
       <div class="hsep"></div>
       {{ if isset . "img" }}
@@ -9,6 +12,9 @@
           <div>
         {{ else }}
           {{ with .github }}
+          <a target="_blank" rel="noopener" href="{{ $url }}">
+          {{ end }}
+          {{ with .codeberg }}
           <a target="_blank" rel="noopener" href="{{ $url }}">
           {{ end }}
           {{ with .local }}
@@ -32,6 +38,9 @@
       {{ end }}
         <div class="content">
           {{ with .github }}
+          <a target="_blank" rel="noopener" href="{{ $url }}">
+          {{ end }}
+          {{ with .codeberg }}
           <a target="_blank" rel="noopener" href="{{ $url }}">
           {{ end }}
           {{ with .local }}

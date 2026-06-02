@@ -1,4 +1,10 @@
 [[els]]
+name = "Stumpalo"
+desc = "A fast, zero-dependency, memory-efficient bump allocator for rust with chunk reuse and scoped stacks"
+codeberg = "stumpalo"
+img = "stumpy"
+
+[[els]]
 name = "Piq"
 desc = "Piq is a statically-typed, type-inferred, compiled programming language, written entirely in C99"
 github = "piq"
