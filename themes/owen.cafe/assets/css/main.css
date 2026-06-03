@@ -33,6 +33,11 @@ h2 {
   margin-top: 3rem;
 }
 
+
+th:not(:first-child):not(:last-child), td:not(:first-child):not(:last-child) {
+  padding: 0 8px;
+}
+
 .footnotes,
 h1 + *,
 h1 + p,
@@ -42,7 +47,9 @@ h2 + .time-tags + *,
 h2,
 h3 + *,
 h3 + .time-tags + *,
-h3 {
+h3,
+table,
+h4 {
   margin-top: {{ div .padding 2 }}{{ .padding_unit }};
 }
 
@@ -88,6 +95,18 @@ h5 > a {
   margin: 0;
   padding: {{ .padding }}{{ .padding_unit }};
   list-style: none;
+}
+
+li {
+  list-style-position: inside;
+}
+
+ul > li {
+  list-style-type: disc;
+}
+
+li > ul > li {
+  padding-left: 1em;
 }
 
 #sidebar li {
@@ -479,7 +498,7 @@ pre {
   border-radius: 4px;
 }
 
-#content > article img {
+#content > article img:not(.left) {
   margin: {{ div .padding 2 }}{{ .padding_unit }} auto;
   max-width: {{ .img_width }}px;
   display: block;
