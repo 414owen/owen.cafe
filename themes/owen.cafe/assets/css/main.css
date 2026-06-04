@@ -101,7 +101,7 @@ li {
   list-style-position: inside;
 }
 
-ul > li {
+ul:not(.fancy-list) > li {
   list-style-type: disc;
 }
 
