@@ -4,9 +4,10 @@ date: 2026-06-02T23:02:39+01:00
 summary: "Announcing stumpalo, an extremely fast bump allocator for rust, with chunk reuse and safe scoped stack support."
 ---
 
-<a href="https://codeberg.org/414owen/stumpalo"><img class="left" src="https://img.shields.io/badge/codeberg-repo-blue?logo=codeberg&logoColor=white"></a>
-<a href="https://docs.rs/stumpalo/"><img class="left" src="https://docs.rs/stumpalo/badge.svg"></a>
-<a href="https://crates.io/crates/stumpalo"><img class="left" src="https://img.shields.io/crates/v/stumpalo.svg"></a>
+<a href="https://codeberg.org/414owen/stumpalo"><img alt="Badge" class="left" src="https://img.shields.io/badge/codeberg-repo-blue?logo=codeberg&logoColor=white"></a>
+<a href="https://docs.rs/stumpalo/"><img alt="Badge" class="left" src="https://docs.rs/stumpalo/badge.svg"></a>
+<a href="https://crates.io/crates/stumpalo"><img alt="Badge" class="left" src="https://img.shields.io/crates/v/stumpalo.svg"></a>
+<a href="https://lobste.rs/s/vta6wp/faster_bump_allocator_for_rust"><img alt="Badge" class="left" src="https://img.shields.io/badge/lobste.rs-discuss-blue"></a>
 
 
 Say hello to stumpalo.
