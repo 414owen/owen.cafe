@@ -141,7 +141,7 @@ Stumpalo goes through one less layer of indirection to read the top.
 
 The following function:
 ```rust
-fn alloc_u32(a: &mut Arena, n: u32) -> &mut u32 {
+fn alloc_u32(a: &Arena, n: u32) -> &mut u32 {
     a.alloc(n)
 }
 ```
