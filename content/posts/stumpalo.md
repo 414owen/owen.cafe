@@ -197,7 +197,7 @@ let a = arena.alloc(1u32);
 arena.with_scope(|scope: &mut ArenaRef| {
     let temporary = scope.alloc(2u32);
     scope.with_scope(|scope: &mut ArenaRef| {
-        // Wow, you can have stacked scopes.
+        // Wow, you can have nested scopes.
         // That might be useful... I guess...
     });
 });
