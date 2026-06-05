@@ -2,6 +2,12 @@
 title: "A faster bump allocator for rust"
 date: 2026-06-02T23:02:39+01:00
 summary: "Announcing stumpalo, an extremely fast bump allocator for rust, with chunk reuse and safe scoped stack support."
+tags:
+- rust
+- performance
+- x86
+- assembly
+- allocators
 ---
 
 <a href="https://codeberg.org/414owen/stumpalo"><img alt="Badge" class="left" src="https://img.shields.io/badge/codeberg-repo-blue?logo=codeberg&logoColor=white"></a>
